@@ -59,7 +59,6 @@
 		<ul>
 			<li><a href="index.html" xml:lang="en">Home</a></li>
 			<li><a href="contatti.html">Contatti</a></li>
-			<li><a href="dottore.html">Dottore</a></li>
 			<li><a href="areamedica.html">Area medica</a></li>
 				<ul>
 					<li><a href="citologianasale.html">Citologia nasale</a></li>
@@ -72,10 +71,31 @@
 			<li><a href="consultionline.html">Consulti online</a></li>
 		</ul>
 </div>
-
+<!-- form per registrazione da fare registrati.php -->
 <div id="main">
-	
 
+<form action="registrati.php" method="post">
+	<fieldset>
+		<legend>Registrazione</legend>
+		
+		<label for="nome">Nome:</label>
+		<input type="text" name="nome" id="nome" value="Nome" /><br/>
+		
+		<label for="cognome">Cognome:</label>
+		<input type="text" name="cognome" id="cognome" value="Cognome" /><br/>
+		
+		<label for="telefono">Telefono:</label>
+		<input type="telefono" name="telefono" id="telefono" value="Telefono" /> <br/>
+			
+		<label for="username">Username:</label>
+		<input type="email" name="username" id="username" value="indirizi email" /><br/>
+		
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password"  /><br/>
+		
+		<input type="submit" value="Registri">
+	</fieldset>
+</form>
 </div>
 
 <div id="footer">
