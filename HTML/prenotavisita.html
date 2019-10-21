@@ -54,7 +54,7 @@
     <div id="nav">
         <ul>
             <li xml:lang="en"><a href="index.html">Home</a></li>
-            <li><a href="contatti.html">Contatti</li>
+            <li><a href="contatti.html">Contatti</a></li>
             <li><a href="dottore.html">Dottore</a></li>
             <li><a href="areamedica.html">Area medica</a>
                 <ul>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- br /eadcrumbs -->
-    <div id="br /eadcrumbs">
+    <div id="breadcrumbs">
         <p>Sei in: <a href="index.html"><span xml:lang="en">Home</span></a> &gt;&gt; Prenota visita </p>
     </div>
 
@@ -84,7 +84,7 @@
                 <fieldset>
 
                     <label for="giorno">Giorno:</label>
-                    <select name="giorno">
+                    <select name="giorno" id="giorno">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -120,35 +120,36 @@
 
 
                     <label for="mese">Mese:</label>
-                    <select name="mese">
+                    <select name="mese" id="mese" >
                         <option value="1">Gennaio</option>
-                        <option value="2">Febbr /aio</option>
+                        <option value="2">Febbraio</option>
                         <option value="3">Marzo</option>
                         <option value="4">Aprile</option>
                         <option value="5">Maggio</option>
                         <option value="6">Giugno</option>
                         <option value="7">Luglio</option>
                         <option value="8">Agosto</option>
-                        <option value="9">Settembr /e</option>
-                        <option value="10">Ottobr /e</option>
-                        <option value="11">Novembr /e</option>
-                        <option value="12">Dicembr /e</option>
+                        <option value="9">Settembre</option>
+                        <option value="10">Ottobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Dicembre</option>
                     </select>
 
 
                     <label for="anno">Anno:</label>
-                    <select name="anno">
-                        <option value="2019" selected>2019</option>
+                    <select name="anno" id="anno">
+                        <option value="2019" selected="selected">2019</option>
                         <option value="2020">2020</option>
                     </select>
                     <br />
 
-                    <input type="radio" name="tipovisita" value="impedenzometria" checked> Impedenzometria <br />
-                    <input type="radio" name="tipovisita" value="citologianasale"> Citologia nasale<br />
-                    <input type="radio" name="tipovisita" value="otomicroscopia"> Otomicroscopia<br />
-                    <input type="radio" name="tipovisita" value="posturografia"> Posturografia<br />
+                    <input type="radio" name="tipovisita" value="impedenzometria" checked="checked" /> Impedenzometria
+                    <br />
+                    <input type="radio" name="tipovisita" value="citologianasale" /> Citologia nasale<br />
+                    <input type="radio" name="tipovisita" value="otomicroscopia" /> Otomicroscopia<br />
+                    <input type="radio" name="tipovisita" value="posturografia" /> Posturografia<br />
 
-                    <input type="submit" value="Controlla disponibilit&agrave" />
+                    <input type="submit" value="Controlla disponibilit&agrave;" />
                 </fieldset>
             </form>
         </div>
@@ -156,28 +157,29 @@
         <div id="colonna2">
             <form action="prenotavisita.php" method="post">
                 <fieldset>
-                    <input type="radio" name="orario" value="ore8" checked> Ore 8:00-9:00<br />
-                    <input type="radio" name="orario" value="ore9"> Ore 9:00-10:00<br />
-                    <input type="radio" name="orario" value="ore10"> Ore 10:00-11:00<br />
-                    <input type="radio" name="orario" value="ore11"> Ore 11:00-12:00<br />
-                    <input type="radio" name="orario" value="ore16"> Ore 16:00-17:00<br />
-                    <input type="radio" name="orario" value="ore17"> Ore 17:00-18:00<br />
-                    <input type="radio" name="orario" value="ore18"> Ore 18:00-19:00<br />
+                    <input type="radio" name="orario" value="ore8" checked="checked" /> Ore 8:00-9:00<br />
+                    <input type="radio" name="orario" value="ore9" /> Ore 9:00-10:00<br />
+                    <input type="radio" name="orario" value="ore10" /> Ore 10:00-11:00<br />
+                    <input type="radio" name="orario" value="ore11" /> Ore 11:00-12:00<br />
+                    <input type="radio" name="orario" value="ore16" /> Ore 16:00-17:00<br />
+                    <input type="radio" name="orario" value="ore17" /> Ore 17:00-18:00<br />
+                    <input type="radio" name="orario" value="ore18" /> Ore 18:00-19:00<br />
                 </fieldset>
             </form>
         </div>
+    </div>
 
-        <div id="footer">
-            <p>
-                Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n.
-                12585
-            </p>
-            <p>
-                <img src="../img/valid-xhtml10.png" alt="xHTML valido" />
-                2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
-                <img src="../img/vcss-blue.gif" alt="CSS valido" />
-            </p>
-        </div>
+    <div id="footer">
+        <p>
+            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n.
+            12585
+        </p>
+        <p>
+            <img src="../img/valid-xhtml10.png" alt="xHTML valido" />
+            2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
+            <img src="../img/vcss-blue.gif" alt="CSS valido" />
+        </p>
+    </div>
 </body>
 
 </html>
