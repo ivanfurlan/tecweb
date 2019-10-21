@@ -69,8 +69,8 @@
         </ul>
     </div>
 
-    <!-- Breadcrumbs -->
-    <div id="breadcrumbs">
+    <!-- br /eadcrumbs -->
+    <div id="br /eadcrumbs">
         <p>Sei in: <a href="index.html"><span xml:lang="en">Home</span></a> &gt;&gt; Prenota visita </p>
     </div>
 
@@ -79,7 +79,7 @@
         <div id="colonna1">
             <h2> Scegli il giorno e il tipo di visita</h2>
 
-  								<form action="prenotavisita.php" method="post">
+  				<form action="prenotavisita.php" method="post">
                     <fieldset>
 
                       <label for="giorno">Giorno:</label>
@@ -87,52 +87,36 @@
 
 
                         <label for="mese">Mese:</label>
-                        <select name="mese"><option value="1">Gennaio</option><option value="2">Febbraio</option><option value="3">Marzo</option><option value="4">Aprile</option><option value="5">Maggio</option><option value="6">Giugno</option><option value="7">Luglio</option><option value="8">Agosto</option><option value="9">Settembre</option><option value="10">Ottobre</option><option value="11">Novembre</option><option value="12">Dicembre</option></select>
+                        <select name="mese"><option value="1">Gennaio</option><option value="2">Febbr /aio</option><option value="3">Marzo</option><option value="4">Aprile</option><option value="5">Maggio</option><option value="6">Giugno</option><option value="7">Luglio</option><option value="8">Agosto</option><option value="9">Settembr /e</option><option value="10">Ottobr /e</option><option value="11">Novembr /e</option><option value="12">Dicembr /e</option></select>
 
 
                         <label for="anno">Anno:</label>
   											<select name="anno"><option value="2019" selected>2019</option><option value="2020" >2020</option></select>
-                        <br>
+                        <br />
 
-                        <input type="radio" name="tipovisita" value="impedenzometria" checked> Impedenzometria <br>
-                        <input type="radio" name="tipovisita" value="citologianasale"> Citologia nasale<br>
-                        <input type="radio" name="tipovisita" value="otomicroscopia"> Otomicroscopia<br>
-                        <input type="radio" name="tipovisita" value="posturografia"> Posturografia<br>
+                        <input type="radio" name="tipovisita" value="impedenzometria" checked> Impedenzometria <br />
+                        <input type="radio" name="tipovisita" value="citologianasale"> Citologia nasale<br />
+                        <input type="radio" name="tipovisita" value="otomicroscopia"> Otomicroscopia<br />
+                        <input type="radio" name="tipovisita" value="posturografia"> Posturografia<br />
 
                         <input type="submit" value="Controlla disponibilit&agrave" />
-                     </fieldset>
-  								</form>
+                    </fieldset>
+  				</form>
         </div>
-
+		<!--da fare in modo che quando Click Controlla disponibilit&agrave viene fuori questa form -->
         <div id="colonna2">
-          <table>
-            <tr>
-              <th>Orari disponibili (in verde)</th>
-            </tr>
-            <tr>
-              <td>8:00-9:00</td>
-            </tr>
-            <tr>
-              <td>9:00-10:00</td>
-            </tr>
-            <tr>
-              <td>10:00-11:00</td>
-            </tr>
-            <tr>
-              <td>11:00-12:00</td>
-            </tr>
-            <tr>
-              <td>16:00-17:00</td>
-            </tr>
-            <tr>
-              <td>17:00-18:00</td>
-            </tr>
-            <tr>
-              <td>18:00-19:00</td>
-            </tr>
-          </table>
-        </div>
-    </div>
+			<form action="prenotavisita.php" method="post">
+                    <fieldset>
+						<input type="radio" name="orario" value="ore8" checked> Ore 8:00-9:00<br />
+                        <input type="radio" name="orario" value="ore9">  Ore 9:00-10:00<br />
+                        <input type="radio" name="orario" value="ore10"> Ore 10:00-11:00<br />
+                        <input type="radio" name="orario" value="ore11"> Ore 11:00-12:00<br />
+                        <input type="radio" name="orario" value="ore16"> Ore 16:00-17:00<br />
+                        <input type="radio" name="orario" value="ore17"> Ore 17:00-18:00<br />
+                        <input type="radio" name="orario" value="ore18"> Ore 18:00-19:00<br />
+                    </fieldset>
+  			</form>
+		</div>
 
     <div id="footer">
         <p>
