@@ -1,88 +1,148 @@
-*{
-  padding: 0em;
-  margin: 0em;
+* {
+    padding: 0em;
+    margin: 0em;
 }
 
-html,body{
-  max-width: 1024px;
-  margin: auto;
+html, body {
+    max-width: 1024px;
+    margin: auto;
 }
 
-#skipLink{
-  display: none;
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 0.8em;
+    background-color: white;
 }
 
-body{
-  font-family: Verdana, Helvetica, sans-serif;
-  font-size: 0.8em;
-  background-color: white;
+h1, h2, h3, h4, h5, h6 {
+    font-variant: small-caps;
 }
 
-#logo{
-  float: left;
-  width: 10em;
-  height: 5em;
-  margin: 1em;
-  margin-left: 1.5em;
-  padding: 1em;
-  padding-bottom: 0.5em;
+a:link {
+    color: #000099;
+    text-decoration: none;
 }
 
-#header ul{
-  float: right;
-  list-style-type: none;
+a:visited {
+    color: #A0A;
 }
 
-#header li{
-  float: right;
+a:hover {
+    color: #A0A;
+    text-decoration: underline;
 }
 
-a:link{
-  color:#000099
-  text-decoration: none;
+#skipLink {
+    display: none;
 }
 
-a:visited{
-  color:#A0A;
+#logo {
+    display: block;
+    float: left;
+    width: 5em;
+    height: 5em;
+    margin: 1em;
+    padding: 1em;
 }
 
-a:hover{
-  color:#A0A;
-  text-decoration: underline;
+#header ul {
+    float: right;
+    list-style-type: none;
+    margin: 1em 1em 0 0;
 }
 
-#header{
-  background-color: #F8F8FF
+#header li {
+    background-color: #2E5894;
+    float: right;
+    margin: 1em;
 }
 
-
-#nav{
-  weight: 100%;
+#header {
+    background-color: #F8F8FF;
+    height: 10em;
 }
 
-#nav ul{
-  background-color: #2E5894
-  float: left;
-  list-style-type: none;
+#header h1 {
+    float: left;
+    width: 50%;
+    margin-top: 1em;
 }
 
-#nav li{
-  float: left;
-  font-color: white;
+#nav {
+    clear: both;
+    background-color: #2E5894;
+    color: white;
+    width: 100%;
+    height: 2.23em;
 }
 
-#nav li a, #header li a {
-  display: block;
-  text-align: center;
-  padding: 0.5em;
-  text-decoration: none;
+#nav ul {
+    float: left;
+    list-style-type: none;
 }
 
-#nav li a:hover, #header li a:hover {
-  background-color: #3A6FBA;
+#nav li {
+    float: left;
 }
 
+#nav ul li, #header ul li {
+    display: block;
+    text-align: center;
+    padding: 0.5em;
+    text-decoration: none;
+}
 
-h1,h2,h3,h4,h5,h6{
-  font-variant: small-caps;
+#nav li:hover, #header li:hover {
+    background-color: #3A6FBA;
+    color: white;
+}
+
+#nav a, #header a {
+    color: white;
+}
+
+#navAreaMedica {
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+#navAreaMedica ul {
+    display: none;
+    position: absolute;
+    background-color: #3A6FBA;
+    z-index: 1;
+    margin-top: 0.5em;
+    margin-left: -0.5em;
+}
+
+#navAreaMedica ul li {
+    color: black;
+    text-decoration: none;
+    display: block;
+    min-width: 10em;
+}
+
+#navAreaMedica ul li:hover {
+    background-color: #2E5894
+}
+
+#navAreaMedica:hover ul {
+    display: block;
+}
+
+#breadcrumbs {
+    clear: left;
+    width: 100%;
+    background-color: #F8F8FF;
+    margin-bottom: 1.5em;
+    padding: 0.3em;
+}
+
+#footer {
+    margin-top: 2em;
+    background-color: #2E5894;
+    color: white;
+    text-align: center;
 }
