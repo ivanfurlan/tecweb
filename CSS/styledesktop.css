@@ -8,34 +8,14 @@ html, body {
     margin: auto;
 }
 
-
-body{
-  font-family: Verdana, Helvetica, sans-serif;
-  font-size: 0.8em;
-  background-color: white;
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 0.8em;
+    background-color: white;
 }
 
-#skipLink{
-    display: none;
-}
- 
-#logo {
-    display: block;
-    float: left;
-    width: 5em;
-    height: 5em;
-    margin: 1em;
-    padding: 1em;
-}
-
-#header ul {
-    float: right;
-    list-style-type: none;
-}
-
-#header li {
-    background-color: #2E5894;
-    float: right;
+h1, h2, h3, h4, h5, h6 {
+    font-variant: small-caps;
 }
 
 a:link {
@@ -52,21 +32,48 @@ a:hover {
     text-decoration: underline;
 }
 
+#skipLink {
+    display: none;
+}
+
+#logo {
+    display: block;
+    float: left;
+    width: 5em;
+    height: 5em;
+    margin: 1em;
+    padding: 1em;
+}
+
+#header ul {
+    float: right;
+    list-style-type: none;
+    margin: 1em 1em 0 0;
+}
+
+#header li {
+    background-color: #2E5894;
+    float: right;
+    margin: 1em;
+}
+
 #header {
     background-color: #F8F8FF;
     height: 10em;
 }
-#header h1{
+
+#header h1 {
     float: left;
     width: 50%;
     margin-top: 1em;
 }
+
 #nav {
     clear: both;
     background-color: #2E5894;
     color: white;
     width: 100%;
-    height: 5em;
+    height: 2.23em;
 }
 
 #nav ul {
@@ -74,66 +81,11 @@ a:hover {
     list-style-type: none;
 }
 
-
-
-
-
-
-
-#navAreaMedica span{
-  border: none;
-  cursor: pointer;
-}
-
-#navAreaMedica{
-    position: relative;
-    display: inline-block;
-}
-
-#navAreaMedica ul {
-    display: none;
-    position: absolute;
-    background-color:inherit;
-    /*min-width: 160px;*/
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /*z-index: 1;*/
-    margin-top: 0.5em;
-}
-
-#navAreaMedica ul li{
-    color: black;
-  text-decoration: none;
-  display: block;
-}
-
-#navAreaMedica ul li:hover{
-    background-color: #2E5894
-}
-
-#navAreaMedica:hover ul {
-    display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #nav li {
     float: left;
 }
 
-#nav ul li, #header ul li  {
+#nav ul li, #header ul li {
     display: block;
     text-align: center;
     padding: 0.5em;
@@ -144,15 +96,53 @@ a:hover {
     background-color: #3A6FBA;
     color: white;
 }
+
 #nav a, #header a {
     color: white;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-variant: small-caps;
+#navAreaMedica {
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
 }
 
-#breadcrumbs{
+#navAreaMedica ul {
+    display: none;
+    position: absolute;
+    background-color: #3A6FBA;
+    z-index: 1;
+    margin-top: 0.5em;
+    margin-left: -0.5em;
+}
+
+#navAreaMedica ul li {
+    color: black;
+    text-decoration: none;
+    display: block;
+    min-width: 10em;
+}
+
+#navAreaMedica ul li:hover {
+    background-color: #2E5894
+}
+
+#navAreaMedica:hover ul {
+    display: block;
+}
+
+#breadcrumbs {
     clear: left;
     width: 100%;
+    background-color: #F8F8FF;
+    margin-bottom: 1.5em;
+    padding: 0.3em;
+}
+
+#footer {
+    margin-top: 2em;
+    background-color: #2E5894;
+    color: white;
+    text-align: center;
 }
