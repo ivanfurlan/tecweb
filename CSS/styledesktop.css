@@ -8,10 +8,15 @@ html,body{
   margin: auto;
 }
 
+#skipLink{
+  display: none;
+}
+
 body{
   font-family: Verdana, Helvetica, sans-serif;
   font-size: 0.8em;
   background-color: white;
+}
 
 #logo{
   float: left;
@@ -52,18 +57,18 @@ a:hover{
 
 
 #nav{
-  background-color: #2E5894
-  font-color: white;
   weight: 100%;
 }
 
 #nav ul{
+  background-color: #2E5894
   float: left;
   list-style-type: none;
 }
 
 #nav li{
   float: left;
+  font-color: white;
 }
 
 #nav li a, #header li a {
