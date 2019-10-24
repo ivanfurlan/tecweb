@@ -8,10 +8,11 @@ html, body {
     margin: auto;
 }
 
-body {
-    font-family: Verdana, Helvetica, sans-serif;
-    font-size: 0.8em;
-    background-color: white;
+
+body{
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 0.8em;
+  background-color: white;
 }
 
 #skipLink{
