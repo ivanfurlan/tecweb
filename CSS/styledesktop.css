@@ -17,6 +17,10 @@ html, body {
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
+	
+	
+	display:flex;
+	flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -67,6 +71,8 @@ a:hover {
 #header {
     background-color: #F8F8FF;
     overflow: auto;
+	
+	flex: 0 0 auto;
 }
 
 #header h1 {
@@ -84,6 +90,7 @@ a:hover {
     width: 100%;
     height: 2.23em;
     /*overflow: auto;*/
+	flex: 0 0 auto;
 }
 
 #nav ul {
@@ -153,6 +160,8 @@ a:hover {
     background-color: white;
     margin-bottom: 1em;
     padding: 0.3em 0 0.3em 0.3em;
+	
+	flex: 0 0 auto;
 }
 
 /*      CSS MAIN       */
@@ -161,6 +170,8 @@ a:hover {
     margin: auto;
     text-align: justify;
     overflow: auto;
+	
+	flex: 1 0 auto;
 }
 
 .colonna1 {
