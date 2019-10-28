@@ -167,21 +167,22 @@ a:hover {
 /*      CSS MAIN       */
 
 #main {
-    margin: auto;
+    margin: 0 1.5em 0;
     text-align: justify;
     overflow: auto;
 	
 	flex: 1 0 auto;
+    width: auto;
 }
 
 .colonna1 {
     float: left;
-    width: 60%;
+    width: 50%;
 }
 
 .colonna2 {
     float: right;
-    width: 30%;
+    width: 45%;
     overflow: hidden;
 }
 .colonna2 img{
@@ -197,6 +198,8 @@ a:hover {
     color: white;
     text-align: center;
     padding: 0.3em;
+    margin-bottom: 0.5em;
+    flex: 0 0 auto;
 }
 
 
@@ -221,6 +224,26 @@ a:hover {
 #mappaGoogle{
     width: 100%;
     min-height: 16em;
+}
+
+.contatti em{
+    font-style: unset;
+    font-weight: bold;
+
+}
+
+#recapitiContatti{
+    padding-top: 1.5em;;
+}
+
+#recapitiContatti dt{
+    float: left;
+    font-weight:bold;
+    padding-right: 0.4em;
+}
+
+#recapitiContatti dl{
+    float: left;
 }
 
 /*      CSS DOTTORE.HTML       */
