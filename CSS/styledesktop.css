@@ -54,6 +54,16 @@ a:hover {
     padding: 1em;
 }
 
+
+
+/* Stile per paragrafo(può essere cambiato in futuro) */
+p{
+  word-spacing: 2.5px;
+  line-height: 22px;
+}
+
+
+
 /*      CSS HEADER       */
 
 #header ul {
