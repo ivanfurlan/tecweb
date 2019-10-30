@@ -54,8 +54,6 @@ a:hover {
     padding: 1em;
 }
 
-
-
 /* Stile per paragrafo(può essere cambiato in futuro) */
 p{
   word-spacing: 2.5px;
@@ -110,6 +108,7 @@ p{
 
 #nav li {
     float: left;
+    min-width: 4em;
 }
 
 #nav ul li, #header ul li {
@@ -121,7 +120,19 @@ p{
 
 #nav li:hover, #header li:hover {
     background-color: #3A6FBA;
-    color: white;
+    /*color: white;*/
+}
+
+#currentLink{
+    background-color: #2E5894 !important;
+    color: #caebf7 !important;
+    font-weight: bold !important;
+}
+
+#navAreaMedica #currentLink{
+    background-color: #3A6FBA !important;
+    color: #caebf7 !important;
+    font-weight: bold !important;
 }
 
 #nav a, #header a {
