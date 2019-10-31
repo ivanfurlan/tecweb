@@ -287,6 +287,17 @@ p{
 /*      CSS NOTIZIE.HTML       */
 
 
+.notizia {
+  padding: 1em;
+  border-bottom: 1px solid #000;
+}
+
+.notizia p{
+  padding: 0.2em;
+
+}
+
+
 
 /*      CSS PRENOTAVISITA.HTML       */
 
