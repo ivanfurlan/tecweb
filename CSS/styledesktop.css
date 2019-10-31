@@ -222,7 +222,10 @@ p{
     margin-bottom: 0.5em;
     flex: 0 0 auto;
 }
-
+#footer img{
+	width:6em;
+	float:left;
+}
 
 /*      CSS SPECIFICO ACCEDI.HTML       */
 
