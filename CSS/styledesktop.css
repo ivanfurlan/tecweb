@@ -100,8 +100,7 @@ p{
     background-color: #2E5894;
     color: white;
     width: 100%;
-    height: 2.23em;
-    /*overflow: auto;*/
+    overflow: visible;
 	flex: 0 0 auto;
 }
 
@@ -119,23 +118,25 @@ p{
     display: block;
     text-align: center;
     padding: 0.5em;
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 
 #nav li:hover, #header li:hover {
     background-color: #192168;
+    /*text-decoration: underline;*/
     /*color: white;*/
 }
 
 #nav a, #header a {
     color: white;
+    padding: 0.5em 0 0.5em;
 }
 
 /*      CSS NAVIGAZIONE AREAMEDICA SOTTOMENU       */
 
 #navAreaMedica {
-    border: none;
-    cursor: pointer;
+    /*border: none;*/
+    /*cursor: pointer;*/
     position: relative;
     display: inline-block;
 }
@@ -244,6 +245,7 @@ p{
 
 
 /*      CSS SPECIFICO CONSULTIONLINE.HTML       */
+
 
 
 
