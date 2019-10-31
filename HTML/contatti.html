@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<!DOCTYPE html>
+<html lang="it">
 
 <head>
     <title>Contatti - Dott. Marco Donati</title>
@@ -15,7 +15,7 @@
    
     <!-- Mobile -->
     <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css"
-        media="handheld, screen and (max-width: 600px)" />
+        media="screen and (max-width: 600px)" />
    
     <!-- Print -->
     <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
@@ -49,8 +49,8 @@
     <!-- Barra di navigazione -->
     <div id="nav">
         <ul>
-            <li xml:lang="en"><a href="index.html">Home</a></li>
-            <li id="currentLink">Contatti</li>
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li class="currentLink">Contatti</li>
             <li><a href="dottore.html">Dottore</a></li>
             <li id="navAreaMedica"><a href="areamedica.html">Area medica</a>
                 <ul>
@@ -62,16 +62,16 @@
             </li>
             <li><a href="notizie.html">Notizie</a></li>
             <li><a href="prenotavisita.html">Prenota visita</a></li>
-            <li><a href="consultionline.html">Consulti <span xml:lang="en">online</span></a></li>
+            <li><a href="consultionline.html">Consulti <span lang="en">online</span></a></li>
         </ul>
     </div>
 
     <!-- Breadcrumbs -->
     <div id="breadcrumbs">
-        <p>Sei in: <a href="index.html"><span xml:lang="en">Home</span></a> &gt;&gt; Contatti </p>
+        <p>Sei in: <a href="index.html"><span lang="en">Home</span></a> &gt;&gt; Contatti </p>
     </div>
 
-    <div id="main">
+    <div id="main" class="contatti">
         <h1>Contatti</h1>
         <div class="colonna1">
             <p>
@@ -81,13 +81,13 @@
             </p>
             <h2>Orari</h2>
             <p>Lo studio &egrave; aperto con i seguenti orari: <br />
-                <strong>Segreteria:</strong><br />
-                Luned&igrave; - Venerd&igrave;: 9:30 - 12:00 / 16:00 - 19:00<br />
-                <strong>Studio:</strong><br />
+                <em>Segreteria:</em><br />
+                Luned&igrave; - Venerd&igrave;: 8:00 - 12:30 / 16:00 - 19:00<br />
+                <em>Studio:</em><br />
                 Luned&igrave; - Venerd&igrave;: 16:00 - 19:00<br />
 
                 Rimane permanentemente in funzione un servizio di segreteria telefonica.</p>
-            <dl id="contatti">
+            <dl id="recapitiContatti">
                 <dt>Telefono</dt>
                 <dd>049 1234567</dd>
                 <dt>Fax</dt>
@@ -101,21 +101,18 @@
         <div class="colonna2">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.5349899327482!2d11.886011192767873!3d45.407928396048725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58121508c7%3A0xce9bf01594057558!2sEdificio%20Paolotti%2C%20Via%20Giambattista%20Belzoni%2C%207%2C%2035121%20Padova%20PD!5e0!3m2!1sit!2sit!4v1571318420037!5m2!1sit!2sit"
-                id="mappaGoogle" allowfullscreen="">
+                id="mappaGoogle">
             </iframe>
         </div>
     </div>
 
     <div id="footer">
-        <p>
-            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n.
-            12585
-        </p>
-        <p>
-            <a href="http://validator.w3.org/check?uri=referer"><img src="../img/valid-xhtml10.png" alt="xHTML valido" /></a>
-            2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
-            <a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img src="../img/vcss-blue.gif" alt="CSS valido" /></a>
-        </p>
+         <p>
+			<a href="http://validator.w3.org/check?uri=referer"><img  src="../img/valid-xhtml10.png" alt="xHTML valido" /></a>
+			<a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img  src="../img/vcss-blue.gif" alt="CSS valido" /></a>
+            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n. 12585<br />
+		    2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
+        <p>	 
     </div>
 </body>
 

@@ -17,6 +17,10 @@ html, body {
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
+	
+	
+	display:flex;
+	flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,6 +41,10 @@ a:hover {
     text-decoration: underline;
 }
 
+img{
+    max-width: 100%;
+}
+
 #skipLink {
     display: none;
 }
@@ -49,6 +57,14 @@ a:hover {
     margin: 1em;
     padding: 1em;
 }
+
+/* Stile per paragrafo(può essere cambiato in futuro) */
+p{
+  word-spacing: 2.5px;
+  line-height: 22px;
+}
+
+
 
 /*      CSS HEADER       */
 
@@ -67,6 +83,8 @@ a:hover {
 #header {
     background-color: #F8F8FF;
     overflow: auto;
+	
+	flex: 0 0 auto;
 }
 
 #header h1 {
@@ -82,8 +100,8 @@ a:hover {
     background-color: #2E5894;
     color: white;
     width: 100%;
-    height: 2.23em;
-    /*overflow: auto;*/
+    overflow: visible;
+	flex: 0 0 auto;
 }
 
 #nav ul {
@@ -93,29 +111,32 @@ a:hover {
 
 #nav li {
     float: left;
+    min-width: 4em;
 }
 
 #nav ul li, #header ul li {
     display: block;
     text-align: center;
     padding: 0.5em;
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 
 #nav li:hover, #header li:hover {
-    background-color: #3A6FBA;
-    color: white;
+    background-color: #192168;
+    /*text-decoration: underline;*/
+    /*color: white;*/
 }
 
 #nav a, #header a {
     color: white;
+    padding: 0.5em 0 0.5em;
 }
 
 /*      CSS NAVIGAZIONE AREAMEDICA SOTTOMENU       */
 
 #navAreaMedica {
-    border: none;
-    cursor: pointer;
+    /*border: none;*/
+    /*cursor: pointer;*/
     position: relative;
     display: inline-block;
 }
@@ -123,7 +144,7 @@ a:hover {
 #navAreaMedica ul {
     display: none;
     position: absolute;
-    background-color: #3A6FBA;
+    background-color: #192168;
     z-index: 1;
     margin-top: 0.5em;
     margin-left: -0.5em;
@@ -145,6 +166,18 @@ a:hover {
     display: block;
 }
 
+.currentLink{
+    background-color: #192168;
+    color: white;
+    font-weight: bold;
+}
+
+#navAreaMedica .currentLink{
+    background-color: #2E5894;
+    color: white;
+    font-weight: bold;
+}
+
 /*      CSS BREADCRUMS       */
 
 #breadcrumbs {
@@ -153,24 +186,29 @@ a:hover {
     background-color: white;
     margin-bottom: 1em;
     padding: 0.3em 0 0.3em 0.3em;
+	
+	flex: 0 0 auto;
 }
 
 /*      CSS MAIN       */
 
 #main {
-    margin: auto;
+    margin: 0 1.5em 0;
     text-align: justify;
     overflow: auto;
+	
+	flex: 1 0 auto;
+    width: auto;
 }
 
 .colonna1 {
     float: left;
-    width: 60%;
+    width: 50%;
 }
 
 .colonna2 {
     float: right;
-    width: 30%;
+    width: 45%;
     overflow: hidden;
 }
 .colonna2 img{
@@ -186,8 +224,13 @@ a:hover {
     color: white;
     text-align: center;
     padding: 0.3em;
+    margin-bottom: 0.5em;
+    flex: 0 0 auto;
 }
-
+#footer img{
+	width:6em;
+	float:left;
+}
 
 /*      CSS SPECIFICO ACCEDI.HTML       */
 
@@ -205,11 +248,32 @@ a:hover {
 
 
 
+
 /*      CSS SPECIFICO CONTATTI.HTML       */
 
 #mappaGoogle{
     width: 100%;
     min-height: 16em;
+}
+
+.contatti em{
+    font-style: unset;
+    font-weight: bold;
+
+}
+
+#recapitiContatti{
+    padding-top: 1.5em;;
+}
+
+#recapitiContatti dt{
+    float: left;
+    font-weight:bold;
+    padding-right: 0.4em;
+}
+
+#recapitiContatti dl{
+    float: left;
 }
 
 /*      CSS DOTTORE.HTML       */
@@ -221,6 +285,17 @@ a:hover {
 
 
 /*      CSS NOTIZIE.HTML       */
+
+
+.notizia {
+  padding: 1em;
+  border-bottom: 1px solid #000;
+}
+
+.notizia p{
+  padding: 0.2em;
+
+}
 
 
 

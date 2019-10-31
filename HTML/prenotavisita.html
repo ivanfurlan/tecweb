@@ -12,14 +12,14 @@
 
     <!-- Desktop -->
     <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
-    
+
     <!-- Mobile -->
     <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css"
-        media="handheld, screen and (max-width: 600px)" />
-    
+        media="screen and (max-width: 600px)" />
+
     <!-- Print -->
     <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
-    
+
     <!-- Icon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
 
@@ -61,7 +61,7 @@
                 </ul>
             </li>
             <li><a href="notizie.html">Notizie</a></li>
-            <li id="currentLink">Prenota visita</li>
+            <li class="currentLink">Prenota visita</li>
             <li><a href="consultionline.html">Consulti <span xml:lang="en">online</span></a></li>
         </ul>
     </div>
@@ -73,11 +73,32 @@
 
     <div id="main">
         <h1>Prenota visita</h1>
-        <div class="colonna1">
-            <h2> Scegli il giorno e il tipo di visita</h2>
-
-            <form action="prenotavisita.php" method="post">
+        <form action="prenotavisita.php" method="post">
+            <div class="colonna1">
                 <fieldset>
+                    <legend>Scegli il giorno e il tipo di visita</legend>
+
+                    <label for="anno">Anno:</label>
+                    <select name="anno" id="anno">
+                        <option value="2019" selected="selected">2019</option>
+                        <option value="2020">2020</option>
+                    </select>
+
+                    <label for="mese">Mese:</label>
+                    <select name="mese" id="mese">
+                        <option value="1">Gennaio</option>
+                        <option value="2">Febbraio</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Aprile</option>
+                        <option value="5">Maggio</option>
+                        <option value="6">Giugno</option>
+                        <option value="7">Luglio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Settembre</option>
+                        <option value="10">Ottobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Dicembre</option>
+                    </select>
 
                     <label for="giorno">Giorno:</label>
                     <select name="giorno" id="giorno">
@@ -113,46 +134,21 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-
-
-                    <label for="mese">Mese:</label>
-                    <select name="mese" id="mese" >
-                        <option value="1">Gennaio</option>
-                        <option value="2">Febbraio</option>
-                        <option value="3">Marzo</option>
-                        <option value="4">Aprile</option>
-                        <option value="5">Maggio</option>
-                        <option value="6">Giugno</option>
-                        <option value="7">Luglio</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Settembre</option>
-                        <option value="10">Ottobre</option>
-                        <option value="11">Novembre</option>
-                        <option value="12">Dicembre</option>
-                    </select>
-
-
-                    <label for="anno">Anno:</label>
-                    <select name="anno" id="anno">
-                        <option value="2019" selected="selected">2019</option>
-                        <option value="2020">2020</option>
-                    </select>
-                    <br />
-
+                    </br>
                     <input type="radio" name="tipovisita" value="impedenzometria" checked="checked" /> Impedenzometria
                     <br />
                     <input type="radio" name="tipovisita" value="citologianasale" /> Citologia nasale<br />
                     <input type="radio" name="tipovisita" value="otomicroscopia" /> Otomicroscopia<br />
                     <input type="radio" name="tipovisita" value="posturografia" /> Posturografia<br />
 
-                    <input type="submit" value="Controlla disponibilit&agrave;" />
+                    <button type="button" onclick="">Controlla disponibilit&agrave;</button>
                 </fieldset>
-            </form>
-        </div>
-        <!--da fare in modo che quando Click Controlla disponibilit&agrave viene fuori questa form -->
-        <div class="colonna2">
-            <form action="prenotavisita.php" method="post">
+            </div>
+            <!--da fare in modo che quando Click Controlla disponibilit&agrave viene fuori questa form -->
+            <div class="colonna2">
                 <fieldset>
+                    <legend>Scegli l'orario della visita</legend>
+
                     <input type="radio" name="orario" value="ore8" checked="checked" /> Ore 8:00-9:00<br />
                     <input type="radio" name="orario" value="ore9" /> Ore 9:00-10:00<br />
                     <input type="radio" name="orario" value="ore10" /> Ore 10:00-11:00<br />
@@ -160,21 +156,21 @@
                     <input type="radio" name="orario" value="ore16" /> Ore 16:00-17:00<br />
                     <input type="radio" name="orario" value="ore17" /> Ore 17:00-18:00<br />
                     <input type="radio" name="orario" value="ore18" /> Ore 18:00-19:00<br />
+
+                    <input type="submit" value="Prenota visita" />
                 </fieldset>
-            </form>
-        </div>
+
+            </div>
+        </form>
     </div>
 
     <div id="footer">
-        <p>
-            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n.
-            12585
-        </p>
-        <p>
-            <a href="http://validator.w3.org/check?uri=referer"><img src="../img/valid-xhtml10.png" alt="xHTML valido" /></a>
-            2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
-            <a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img src="../img/vcss-blue.gif" alt="CSS valido" /></a>
-        </p>
+         <p>
+			<a href="http://validator.w3.org/check?uri=referer"><img  src="../img/valid-xhtml10.png" alt="xHTML valido" /></a>
+			<a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img  src="../img/vcss-blue.gif" alt="CSS valido" /></a>
+            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n. 12585<br />
+		    2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
+        <p>	 
     </div>
 </body>
 
