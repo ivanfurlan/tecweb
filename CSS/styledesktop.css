@@ -41,6 +41,10 @@ a:hover {
     text-decoration: underline;
 }
 
+img{
+    max-width: 100%;
+}
+
 #skipLink {
     display: none;
 }
@@ -119,20 +123,8 @@ p{
 }
 
 #nav li:hover, #header li:hover {
-    background-color: #3A6FBA;
+    background-color: #192168;
     /*color: white;*/
-}
-
-#currentLink{
-    background-color: #2E5894 !important;
-    color: #caebf7 !important;
-    font-weight: bold !important;
-}
-
-#navAreaMedica #currentLink{
-    background-color: #3A6FBA !important;
-    color: #caebf7 !important;
-    font-weight: bold !important;
 }
 
 #nav a, #header a {
@@ -151,7 +143,7 @@ p{
 #navAreaMedica ul {
     display: none;
     position: absolute;
-    background-color: #3A6FBA;
+    background-color: #192168;
     z-index: 1;
     margin-top: 0.5em;
     margin-left: -0.5em;
@@ -171,6 +163,18 @@ p{
 
 #navAreaMedica:hover ul {
     display: block;
+}
+
+.currentLink{
+    background-color: #192168;
+    color: white;
+    font-weight: bold;
+}
+
+#navAreaMedica .currentLink{
+    background-color: #2E5894;
+    color: white;
+    font-weight: bold;
 }
 
 /*      CSS BREADCRUMS       */
