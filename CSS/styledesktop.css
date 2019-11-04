@@ -12,13 +12,13 @@ html, body {
     margin: auto;
 
     height: 100%;
+    overflow: auto;
 }
 
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
-	
-	
+
 	display:flex;
 	flex-direction: column;
 }
@@ -237,6 +237,22 @@ p{
 
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
+
+.terapia {
+  padding:1.2em;
+  margin-bottom: 2em;
+  border-bottom:  1px solid;
+}
+
+.terapia dt{
+  padding-bottom: 0.3em;
+  font-size: 1.2em;
+}
+
+.terapia dd{
+  padding: 0.2em;
+  font-size: 1.2em;
+}
 
 
 
