@@ -352,7 +352,10 @@ p{
 /*      CSS DOTTORE.HTML       */
 #presentazione{
      text-align: justify;
-
+      border: 1em #2E5894;
+      padding: 2em;
+      border-radius: 7em;
+}
 /*      CSS INDEX.HTML       */
 
 
