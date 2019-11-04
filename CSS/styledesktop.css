@@ -25,6 +25,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-variant: small-caps;
+    margin-bottom: 0.2em;
 }
 
 a:link {
@@ -232,7 +233,63 @@ p{
 	float:left;
 }
 
-/*      CSS SPECIFICO ACCEDI.HTML       */
+/*      CSS FORM      */
+
+.form {
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+.form input[type=text], select {
+  width: 100%;
+  padding: 1em 1.5em;
+  margin: 0.8em 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+}
+
+.form input[type=password], select {
+  width: 100%;
+  padding: 1em 1.5em;
+  margin: 0.8em 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+}
+
+#descrizioneForm{
+  padding: 1em;
+  font-size: 1.2em;
+  margin-bottom: 2em;
+}
+
+.form input[type=submit] {
+  width: 100%;
+  background-color: #2E5894;
+  color: white;
+  padding: 1em 1.5em;
+  margin: 0.8em 0;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.form input[type=submit]:hover {
+  background-color: #192168;
+}
+
+.form fieldset {
+    border: 0;
+}
+
+.form legend{
+  display: none;
+}
+
 
 
 
@@ -319,6 +376,5 @@ p{
 
 
 
-/*      CSS REGISTRATI.HTML       */
 
 
