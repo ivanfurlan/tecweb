@@ -17,8 +17,8 @@ html, body {
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
-	
-	
+    min-height: 780px;
+    min-width: 1024px;
 	display:flex;
 	flex-direction: column;
 }
