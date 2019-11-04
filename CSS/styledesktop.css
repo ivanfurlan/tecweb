@@ -7,20 +7,19 @@
 
 html, body {
     font-family: Verdana, Helvetica, sans-serif;
-    max-width: 1024px;
     background-color: white;
     margin: auto;
-
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 body {
     font-size: 0.8em;
+    max-width: 1024px;
+    overflow-y: auto;
     background-color: #F8F8FF;
-
-	display:flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,7 +41,7 @@ a:hover {
     text-decoration: underline;
 }
 
-img{
+img {
     max-width: 100%;
 }
 
@@ -60,12 +59,11 @@ img{
 }
 
 /* Stile per paragrafo(può essere cambiato in futuro) */
-p{
-  word-spacing: 2.5px;
-  line-height: 22px;
+
+p {
+    word-spacing: 2.5px;
+    line-height: 22px;
 }
-
-
 
 /*      CSS HEADER       */
 
@@ -79,13 +77,13 @@ p{
     background-color: #2E5894;
     float: right;
     margin: 1em;
+    min-width: 5.5em;
 }
 
 #header {
     background-color: #F8F8FF;
     overflow: auto;
-	
-	flex: 0 0 auto;
+    flex: 0 0 auto;
 }
 
 #header h1 {
@@ -102,7 +100,9 @@ p{
     color: white;
     width: 100%;
     overflow: visible;
-	flex: 0 0 auto;
+    flex: 0 0 auto;
+    position: sticky;
+    top: 0;
 }
 
 #nav ul {
@@ -112,7 +112,7 @@ p{
 
 #nav li {
     float: left;
-    min-width: 4em;
+    min-width: 5.5em;
 }
 
 #nav ul li, #header ul li {
@@ -156,7 +156,6 @@ p{
     text-decoration: none;
     display: block;
     min-width: 10em;
-
 }
 
 #navAreaMedica ul li:hover {
@@ -167,28 +166,30 @@ p{
     display: block;
 }
 
-.currentLink{
+.currentLink, #header .currentLink {
     background-color: #192168;
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
-#navAreaMedica .currentLink{
+#navAreaMedica .currentLink {
     background-color: #2E5894;
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
+}
+
+.currentLink ul {
+    font-weight: normal;
 }
 
 /*      CSS BREADCRUMS       */
 
 #breadcrumbs {
     clear: left;
-    width: 100% - 0.3em;
     background-color: white;
     margin-bottom: 1em;
     padding: 0.3em 0 0.3em 0.3em;
-	
-	flex: 0 0 auto;
+    flex: 0 0 auto;
 }
 
 /*      CSS MAIN       */
@@ -197,8 +198,7 @@ p{
     margin: 0 1.5em 0;
     text-align: justify;
     overflow: auto;
-	
-	flex: 1 0 auto;
+    flex: 1 0 auto;
     width: auto;
 }
 
@@ -212,7 +212,8 @@ p{
     width: 45%;
     overflow: hidden;
 }
-.colonna2 img{
+
+.colonna2 img {
     width: 100%;
 }
 
@@ -228,175 +229,190 @@ p{
     margin-bottom: 0.5em;
     flex: 0 0 auto;
 }
-#footer img{
-	width:6em;
-	float:left;
+
+#footer img {
+    width: 6em;
+    float: left;
 }
 
 /*      CSS FORM      */
 
-
 form {
-  border-radius: 0.5em;
-  padding: 0.5em;
+    border-radius: 0.5em;
+    padding: 0.5em;
 }
 
-form input[type=text], select {
-  width: 100%;
-  padding: 1em 1.5em;
-  margin: 0.8em 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  box-sizing: border-box;
+form input[type=text], select, textarea {
+    width: 100%;
+    padding: 1em 1.5em;
+    margin: 0.8em 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    box-sizing: border-box;
 }
 
 form input[type=password], select {
-  width: 100%;
-  padding: 1em 1.5em;
-  margin: 0.8em 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 1em 1.5em;
+    margin: 0.8em 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    box-sizing: border-box;
 }
 
-#descrizioneForm{
-  padding: 1em;
-  font-size: 1.2em;
-  margin-bottom: 2em;
+#descrizioneForm {
+    padding: 1em;
+    font-size: 1.2em;
+    margin-bottom: 2em;
 }
 
 form input[type=submit] {
-  width: 100%;
-  background-color: #2E5894;
-  color: white;
-  padding: 1em 1.5em;
-  margin: 0.8em 0;
-  border: none;
-  border-radius: 0.5em;
-  cursor: pointer;
-  font-size: 1.1em;
+    width: 100%;
+    background-color: #2E5894;
+    color: white;
+    padding: 1em 1.5em;
+    margin: 0.8em 0;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1.1em;
 }
 
 form input[type=submit]:hover {
-  background-color: #192168;
+    background-color: #192168;
 }
 
 form fieldset {
     border: 0;
 }
 
-form legend{
-  padding-bottom:  1em;
+form legend {
+    padding-bottom: 1em;
 }
 
 select {
-  width: 100%;
-  padding: 0.6em;
-  border-radius: 0.5em;
+    width: 100%;
+    padding: 0.6em;
+    border-radius: 0.5em;
 }
 
 button {
-  background-color: #2E5894;
-  border-radius: 0.5em;
-  color: white;
-  padding: 0.7em 1.4em;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 1.3em;
+    background-color: #2E5894;
+    border-radius: 0.5em;
+    color: white;
+    padding: 0.7em 1.4em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
 }
 
-button:hover{
-  background-color: #192168;
+button:hover {
+    background-color: #192168;
 }
-
-
-
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
 
-.terapia {
-  padding:1.2em;
-  margin-bottom: 2em;
-  border-bottom:  1px solid;
+#contenutoAreaMedica dt {
+    padding: 1.2em;
+    padding-bottom: 0.3em;
+    font-size: 1.2em;
 }
 
-.terapia dt{
-  padding-bottom: 0.3em;
-  font-size: 1.2em;
+#contenutoAreaMedica dd {
+    padding: 0 1.2em 1.2em;
+    font-size: 1.2em;
+    border-bottom: 1px solid;
 }
-
-.terapia dd{
-  padding: 0.2em;
-  font-size: 1.2em;
-}
-
-
 
 /*      CSS SPECIFICO SUBAREAMEDICA.HTML       */
 
-
-
 /*      CSS SPECIFICO CONSULTIONLINE.HTML       */
 
+#chat {
+    margin: 1em;
+}
 
+#chat form {
+    border-top: 1px solid;
+    border-radius: unset;
+    margin-top: 1.5em;
+}
 
+.messaggioUtente, .messaggioDottore {
+    border: 1px solid #cbcccf;
+    border-top: none;
+    margin: 1em;
+    /* width: 100%;*/
+    background-color: white;
+}
+
+.messaggioUtente p, .messaggioDottore p {
+    padding: 0.2em 0.5em 0.5em;
+}
+
+.intestazioneMessaggio {
+    padding: 0.2em;
+    background-color: #2E5894;
+    color: white;
+    overflow: auto;
+}
+
+.messaggioDottore .intestazioneMessaggio {
+    background-color: #192168;
+}
+
+.intestazioneMessaggio .email {
+    padding: 0 0.2em 0.1em;
+    float: left;
+}
+
+.intestazioneMessaggio .orario {
+    padding: 0 0.2em 0.1em;
+    float: right;
+}
 
 /*      CSS SPECIFICO CONTATTI.HTML       */
 
-#mappaGoogle{
+#mappaGoogle {
     width: 100%;
     min-height: 16em;
 }
 
-.contatti em{
+.contatti em {
     font-style: unset;
     font-weight: bold;
-
 }
 
-#recapitiContatti{
-    padding-top: 1.5em;;
+#recapitiContatti, #prezzi {
+    padding-top: 1.5em;
 }
 
-#recapitiContatti dt{
+#recapitiContatti dt, #prezzi dt {
     float: left;
-    font-weight:bold;
+    font-weight: bold;
     padding-right: 0.4em;
 }
 
-#recapitiContatti dl{
+#recapitiContatti dl, #prezzi dl {
     float: left;
 }
 
 /*      CSS DOTTORE.HTML       */
-#presentazione{
-     text-align: justify;
-}
+
 /*      CSS INDEX.HTML       */
-
-
 
 /*      CSS NOTIZIE.HTML       */
 
-
 .notizia {
-  padding: 1em;
-  border-bottom: 1px solid #000;
+    padding: 1em;
+    border-bottom: 1px solid #000;
 }
 
-.notizia p{
-  padding: 0.2em;
-
+.notizia p {
+    padding: 0.2em;
 }
-
-
 
 /*      CSS PRENOTAVISITA.HTML       */
-
-
-
-
-
