@@ -11,14 +11,14 @@
 
     <!-- Desktop -->
     <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
-   
+
     <!-- Mobile -->
     <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css"
         media="screen and (max-width: 600px)" />
-    
+
     <!-- Print -->
     <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
-    
+
     <!-- Icon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
 
@@ -70,13 +70,14 @@
         <p>Sei in: <a href="index.html"><span xml:lang="en">Home</span></a> &gt;&gt; Registrati</p>
     </div>
     <div id="main">
-        <p>
+      <h1>Registrati</h1>
+        <p id="descrizioneForm">
             Registrati completando con i tuoi dati il modulo sottostante, cos&igrave; potrai prenotare le visite
             direttamente su questo sito, o inviare un messaggio al Dott. Marco Donati chiedendo una consulenza <span
                 xml:lang="en">online</span>.
         </p>
         <!-- form per registrazione da fare registrati.php -->
-        <form id="registra" action="registrati.php" method="post">
+        <form class="form" action="registrati.php" method="post">
             <fieldset>
                 <legend>Registrazione</legend>
 
@@ -87,7 +88,7 @@
                 <input type="text" name="cognome" id="cognome"  /><br />
 
                 <label for="telefono">Telefono:</label>
-                <input type="number" name="telefono" id="telefono" /> <br />
+                <input type="text" name="telefono" id="telefono" /> <br />
 
                 <label for="email" xml:lang="en">Email:</label>
                 <input type="text" name="email" id="email" /><br />
@@ -95,8 +96,8 @@
 				<!--  da fare controllo di due password -->
 				<label for="password" xml:lang="en">Password:</label>
                 <input type="password" name="password" id="password"/><br />
-				
-                <label for="confermapassword">Conferma <span xml:lang="en">Password</span>:</label>
+
+                <label for="confermapassword">Conferma <span xml:lang="en">password</span>:</label><br/>
                 <input type="password" name="confermapassword" id="confermapassword" /><br />
 
                 <input type="submit" value="Registrati" />
@@ -111,7 +112,7 @@
 			<a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img  src="../img/vcss-blue.gif" alt="CSS valido" /></a>
             Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n. 12585<br />
 		    2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
-        <p>	 
+        <p>
     </div>
 </body>
 
