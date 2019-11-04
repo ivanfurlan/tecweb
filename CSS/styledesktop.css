@@ -235,12 +235,13 @@ p{
 
 /*      CSS FORM      */
 
-.form {
+
+form {
   border-radius: 0.5em;
   padding: 0.5em;
 }
 
-.form input[type=text], select {
+form input[type=text], select {
   width: 100%;
   padding: 1em 1.5em;
   margin: 0.8em 0;
@@ -250,7 +251,7 @@ p{
   box-sizing: border-box;
 }
 
-.form input[type=password], select {
+form input[type=password], select {
   width: 100%;
   padding: 1em 1.5em;
   margin: 0.8em 0;
@@ -266,7 +267,7 @@ p{
   margin-bottom: 2em;
 }
 
-.form input[type=submit] {
+form input[type=submit] {
   width: 100%;
   background-color: #2E5894;
   color: white;
@@ -278,16 +279,37 @@ p{
   font-size: 1.1em;
 }
 
-.form input[type=submit]:hover {
+form input[type=submit]:hover {
   background-color: #192168;
 }
 
-.form fieldset {
+form fieldset {
     border: 0;
 }
 
-.form legend{
-  display: none;
+form legend{
+  padding-bottom:  1em;
+}
+
+select {
+  width: 100%;
+  padding: 0.6em;
+  border-radius: 0.5em;
+}
+
+button {
+  background-color: #2E5894;
+  border-radius: 0.5em;
+  color: white;
+  padding: 0.7em 1.4em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3em;
+}
+
+button:hover{
+  background-color: #192168;
 }
 
 
@@ -352,9 +374,6 @@ p{
 /*      CSS DOTTORE.HTML       */
 #presentazione{
      text-align: justify;
-      border: 1em #2E5894;
-      padding: 2em;
-      border-radius: 7em;
 }
 /*      CSS INDEX.HTML       */
 
