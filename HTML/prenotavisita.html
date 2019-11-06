@@ -148,13 +148,20 @@
                 <fieldset>
                     <legend>Scegli l'orario della visita</legend>
 
-                    <input type="radio" name="orario" value="ore8" checked="checked" /> Ore 8:00-9:00<br />
-                    <input type="radio" name="orario" value="ore9" /> Ore 9:00-10:00<br />
-                    <input type="radio" name="orario" value="ore10" /> Ore 10:00-11:00<br />
-                    <input type="radio" name="orario" value="ore11" /> Ore 11:00-12:00<br />
-                    <input type="radio" name="orario" value="ore16" /> Ore 16:00-17:00<br />
-                    <input type="radio" name="orario" value="ore17" /> Ore 17:00-18:00<br />
-                    <input type="radio" name="orario" value="ore18" /> Ore 18:00-19:00<br />
+                    <input type="radio" name="orario" id="ore8" value="8:00" checked="checked" /> <label for="ore8">Ore
+                        8:00-9:00</label><br />
+                    <input type="radio" name="orario" id="ore9" value="9:00" disabled="disabled"/> <label for="ore9">Ore
+                        9:00-10:00</label><br />
+                    <input type="radio" name="orario" id="ore10" value="10:00" /> <label for="ore10">Ore
+                        10:00-11:00</label><br />
+                    <input type="radio" name="orario" id="ore11" value="11:00" /> <label for="ore11">Ore
+                        11:00-12:00</label><br />
+                    <input type="radio" name="orario" id="ore16" value="16:00" disabled="disabled"/> <label for="ore16">Ore
+                        16:00-17:00</label><br />
+                    <input type="radio" name="orario" id="ore17" value="17:00" /> <label for="ore17">Ore
+                        17:00-18:00</label><br />
+                    <input type="radio" name="orario" id="ore18" value="18:00" /> <label for="ore18">Ore
+                        18:00-19:00</label><br />
 
                     <input type="submit" value="Prenota visita" />
                 </fieldset>

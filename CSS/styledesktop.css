@@ -237,17 +237,7 @@ form {
     padding: 0.5em;
 }
 
-form input[type=text], select, textarea {
-    width: 100%;
-    padding: 1em 1.5em;
-    margin: 0.8em 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 0.5em;
-    box-sizing: border-box;
-}
-
-form input[type=password], select {
+form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button {
     width: 100%;
     padding: 1em 1.5em;
     margin: 0.8em 0;
@@ -263,19 +253,15 @@ form input[type=password], select {
     margin-bottom: 2em;
 }
 
-form input[type=submit] {
-    width: 100%;
+form input[type=submit], form button {
     background-color: #2E5894;
     color: white;
-    padding: 1em 1.5em;
-    margin: 0.8em 0;
     border: none;
-    border-radius: 0.5em;
     cursor: pointer;
     font-size: 1.1em;
 }
 
-form input[type=submit]:hover {
+form input[type=submit]:hover, form button:hover {
     background-color: #192168;
 }
 
@@ -287,25 +273,37 @@ form legend {
     padding-bottom: 1em;
 }
 
-select {
+form select {
     width: 100%;
     padding: 0.6em;
     border-radius: 0.5em;
 }
 
-button {
-    background-color: #2E5894;
-    border-radius: 0.5em;
-    color: white;
-    padding: 0.7em 1.4em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.3em;
+form input[type="radio"] {
+    visibility: hidden;
+    position: absolute;
 }
 
-button:hover {
-    background-color: #192168;
+form input[type="radio"]+label {
+    display: block;
+    padding: 0.5em 0.2em 0.5em;
+    background-color: green;
+    color: white;
+    text-align: center;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+}
+
+form input[type="radio"]:disabled+label {
+    background-color: darkred;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+form input[type="radio"]:checked+label {
+    font-weight: bold;
+    border: 3px solid rgb(11, 95, 39);
+    background-color: green;
 }
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
