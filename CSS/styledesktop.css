@@ -279,12 +279,12 @@ form select {
     border-radius: 0.5em;
 }
 
-form input[type="radio"] {
+form input[type="radio"][name="orario"] {
     visibility: hidden;
     position: absolute;
 }
 
-form input[type="radio"]+label {
+form input[type="radio"][name="orario"]+label {
     display: block;
     padding: 0.5em 0.2em 0.5em;
     background-color: green;
@@ -294,13 +294,13 @@ form input[type="radio"]+label {
     box-sizing: border-box;
 }
 
-form input[type="radio"]:disabled+label {
+form input[type="radio"][name="orario"]:disabled+label {
     background-color: darkred;
     font-weight: bold;
     text-decoration: line-through;
 }
 
-form input[type="radio"]:checked+label {
+form input[type="radio"][name="orario"]:checked+label {
     font-weight: bold;
     border: 3px solid rgb(11, 95, 39);
     background-color: green;
