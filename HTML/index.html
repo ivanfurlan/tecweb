@@ -23,10 +23,8 @@
     <!-- Icon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
 
-    <!-- Javascript
-	<script src="../JS/script1.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../JS/script2.js" type="text/javascript" charset="utf-8"></script>
-	eccc....   -->
+    <!-- Javascript -->
+    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
@@ -38,15 +36,22 @@
 
     <!-- Header primo livello -->
     <div id="header">
+        <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="userMobile()">
+            <img src="../img/user-icon.png" />
+        </a>
         <a href="index.html"> <img src="../img/logo.png" id="logo" alt="Studio medico del dott. Marco Donati" /> </a>
         <h1>Dott. Marco Donati</h1>
-        <ul>
+        <a href="javascript:void(0);" id="pulsanteMenuNav" onclick="navMobile()">
+            <img src="../img/menu-icon.png" />
+        </a>
+        <ul id="navUser">
             <li><a href="registrati.html">Registrati</a></li>
             <li><a href="accedi.html">Accedi</a></li>
         </ul>
     </div>
 
     <!-- Barra di navigazione -->
+
     <div id="nav">
         <ul>
             <li class="currentLink" xml:lang="en">Home</li>
@@ -76,10 +81,12 @@
         <p>
             Nello studio di Via Paolotti 2, in provincia di Padova, il dott. Marco Donati esegue visite specialistiche
             preoccupandosi della salute
-            del condotto uditivo, nasale e sui disturbi dell'equilibrio dovuti a posture scorrette. <br/>
-            Per avere informazioni dettagliate sulle prestazioni offerte si consiglia di visitare la pagina presente nel menù di
+            del condotto uditivo, nasale e sui disturbi dell'equilibrio dovuti a posture scorrette. <br />
+            Per avere informazioni dettagliate sulle prestazioni offerte si consiglia di visitare la pagina presente nel
+            menù di
             navigazione, denominata <a href="areamedica.html">Area medica</a>.
-            Il dottore svolge anche un servizio di consulti online gratuiti, per avere rapida un'opinione sullo stato di salute, 
+            Il dottore svolge anche un servizio di consulti online gratuiti, per avere rapida un'opinione sullo stato di
+            salute,
             magari da approfondire con una visita.
             I servizi offerti dallo studio sono in continuo aggiornamento, quindi vi consigliamo di controllare la
             pagina <a href="notizie.html">Notizie</a> per restare aggiornati

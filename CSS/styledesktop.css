@@ -1,5 +1,9 @@
 /*      CSS GENERALE       */
 
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: none;
+}
+
 * {
     padding: 0em;
     margin: 0em;
@@ -234,7 +238,7 @@ p {
     text-align: center;
     padding: 0.3em;
     margin-bottom: 0.5em;
-
+    
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -242,6 +246,12 @@ p {
 #footer img {
     width: 6em;
     float: left;
+}
+
+@media (max-width: 906px) {
+    #footer img {
+        display: none;
+    }
 }
 
 /*      CSS FORM      */
@@ -318,7 +328,7 @@ form input[type="radio"][name="orario"]+label {
 }
 
 form input[type="radio"][name="orario"][disabled="disabled"]+label {
-    background-color: darkred;
+    background-color: #8B0000;
     font-weight: bold;
     text-decoration: line-through;
 }
