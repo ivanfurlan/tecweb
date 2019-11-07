@@ -1,5 +1,9 @@
 /*      CSS GENERALE       */
 
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: none;
+}
+
 * {
     padding: 0em;
     margin: 0em;
@@ -17,6 +21,8 @@ html, body {
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
+
+    /*CSS3*/
     display: flex;
     flex-direction: column;
 }
@@ -82,6 +88,8 @@ p {
 #header {
     background-color: #F8F8FF;
     overflow: auto;
+
+    /*CSS3*/
     flex: 0 0 auto;
 }
 
@@ -99,6 +107,8 @@ p {
     color: white;
     width: 100%;
     overflow: visible;
+
+    /*CSS3*/
     flex: 0 0 auto;
     position: sticky;
     top: 0;
@@ -138,6 +148,8 @@ p {
     /*border: none;*/
     /*cursor: pointer;*/
     position: relative;
+
+    /*CSS3*/
     display: inline-block;
 }
 
@@ -184,6 +196,8 @@ p {
     background-color: white;
     margin-bottom: 1em;
     padding: 0.3em 0 0.3em 0.3em;
+
+    /*CSS3*/
     flex: 0 0 auto;
 }
 
@@ -193,8 +207,10 @@ p {
     margin: 0 1.5em 0;
     text-align: justify;
     overflow: auto;
-    flex: 1 0 auto;
     width: auto;
+
+    /*CSS3*/
+    flex: 1 0 auto;
 }
 
 .colonna1 {
@@ -222,6 +238,8 @@ p {
     text-align: center;
     padding: 0.3em;
     margin-bottom: 0.5em;
+    
+    /*CSS3*/
     flex: 0 0 auto;
 }
 
@@ -230,19 +248,29 @@ p {
     float: left;
 }
 
+@media (max-width: 906px) {
+    #footer img {
+        display: none;
+    }
+}
+
 /*      CSS FORM      */
 
 form {
-    border-radius: 0.5em;
     padding: 0.5em;
+
+    /*CSS3*/
+    border-radius: 0.5em;
 }
 
 form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button {
     width: 100%;
     padding: 1em 1.5em;
     margin: 0.8em 0;
-    display: inline-block;
     border: 1px solid #ccc;
+
+    /*CSS3*/
+    display: inline-block;
     border-radius: 0.5em;
     box-sizing: border-box;
 }
@@ -276,12 +304,15 @@ form legend {
 form select {
     width: 100%;
     padding: 0.6em;
+
+    /*CSS3*/
     border-radius: 0.5em;
 }
 
 form input[type="radio"][name="orario"] {
-    visibility: hidden;
-    position: absolute;
+    /*visibility: hidden;*/
+    /*position: relative;*/
+    float: left;
 }
 
 form input[type="radio"][name="orario"]+label {
@@ -290,16 +321,19 @@ form input[type="radio"][name="orario"]+label {
     background-color: green;
     color: white;
     text-align: center;
+
+    /*CSS3*/
     border-radius: 0.5em;
     box-sizing: border-box;
 }
 
-form input[type="radio"][name="orario"]:disabled+label {
-    background-color: darkred;
+form input[type="radio"][name="orario"][disabled="disabled"]+label {
+    background-color: #8B0000;
     font-weight: bold;
     text-decoration: line-through;
 }
 
+/*CSS3*/
 form input[type="radio"][name="orario"]:checked+label {
     font-weight: bold;
     border: 3px solid rgb(11, 95, 39);
@@ -330,8 +364,10 @@ form input[type="radio"][name="orario"]:checked+label {
 
 #chat form {
     border-top: 1px solid;
-    border-radius: unset;
     margin-top: 1.5em;
+
+    /*CSS3*/
+    border-radius: unset;
 }
 
 .messaggioUtente, .messaggioDottore {

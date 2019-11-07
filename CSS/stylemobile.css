@@ -1,0 +1,51 @@
+#logo{
+    margin: 0.5em 0 0 0.5em;
+    padding: 0;
+}
+#navUser{
+    display: none;
+}
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: block;
+    width: 2em;
+    height: 2em;
+    min-height: 48px;
+    min-width: 48px;
+    /*background-color: dodgerblue;*/
+}
+
+#pulsanteMenuUser {
+    float: left;
+
+}
+
+#pulsanteMenuNav {
+    float: right;
+}
+
+#header ul {
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+
+#header li{
+    margin: 0;
+    width: 40% ;
+}
+
+#nav {
+    display: none;
+}
+
+#navAreaMedica:hover ul {
+    display: none;
+}
+
+#nav li {
+    width: 100%;
+}
+
+#navAreaMedica {
+    display: block;
+}
