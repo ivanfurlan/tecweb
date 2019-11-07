@@ -300,8 +300,9 @@ form select {
 }
 
 form input[type="radio"][name="orario"] {
-    visibility: hidden;
-    position: absolute;
+    /*visibility: hidden;*/
+    /*position: relative;*/
+    float: left;
 }
 
 form input[type="radio"][name="orario"]+label {
@@ -316,10 +317,8 @@ form input[type="radio"][name="orario"]+label {
     box-sizing: border-box;
 }
 
-
-/*CSS3*/
-form input[type="radio"][name="orario"]:disabled+label {
-    background-color: red;
+form input[type="radio"][name="orario"][disabled="disabled"]+label {
+    background-color: darkred;
     font-weight: bold;
     text-decoration: line-through;
 }
