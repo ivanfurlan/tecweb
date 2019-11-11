@@ -29,8 +29,9 @@ img {
 #skipLink {
     display: none;
 }
-a:link,a:visited {
-    color:#cbcccf;
+a:link:after, a:visited:after {
+content: " [" attr(href) "] ";
+font-size:90%;
 }
 
 #logo{
