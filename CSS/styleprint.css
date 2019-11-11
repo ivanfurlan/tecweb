@@ -44,15 +44,7 @@ p {
 /*      CSS HEADER       */
 
 #header ul {
-    float: right;
-    list-style-type: none;
-    margin: 1em 1em 0 0;
-}
-
-#header li {
-    float: right;
-    margin: 1em;
-    min-width: 5.5em;
+    display:none;
 }
 
 #header{
