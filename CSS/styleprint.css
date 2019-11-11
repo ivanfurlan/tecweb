@@ -33,7 +33,9 @@ a:link:after, a:visited:after {
 content: " [" attr(href) "] ";
 font-size:90%;
 }
-
+a:link,a:visited{
+    color: #5e5e64;
+}
 #logo{
 display:none;
 }

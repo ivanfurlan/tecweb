@@ -1,17 +1,22 @@
-#logo{
+#logo img{
     margin: 0.5em 0 0 0.5em;
     padding: 0;
 }
-#navUser{
-    display: none;
-}
+
 #pulsanteMenuUser, #pulsanteMenuNav {
     display: block;
     width: 2em;
     height: 2em;
     min-height: 48px;
     min-width: 48px;
-    /*background-color: dodgerblue;*/
+}
+
+.menuClose{
+    display: none;
+}
+
+.menuOpen{
+    display: block;
 }
 
 #pulsanteMenuUser {
@@ -23,19 +28,32 @@
     float: right;
 }
 
+#nav ul li, #header ul li {
+    padding: 0.5em 0;
+    min-height: 44px;
+    font-size: initial;
+}
+
+#header ul li a,#nav ul li a{
+    display: inline-block;
+}
+
+#header ul li {
+    border-bottom: 2px solid #192168;
+    display: inline;
+    vertical-align: middle;
+}
+
 #header ul {
     float: left;
     width: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 #header li{
     margin: 0;
-    width: 40% ;
-}
-
-#nav {
-    display: none;
+    width: 50% ;
 }
 
 #navAreaMedica:hover ul {
@@ -44,6 +62,10 @@
 
 #nav li {
     width: 100%;
+}
+
+#nav{
+   /* overflow: hidden;*/
 }
 
 #navAreaMedica {

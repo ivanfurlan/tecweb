@@ -36,15 +36,15 @@
 
     <!-- Header primo livello -->
     <div id="header">
-        <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="userMobile()">
+        <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="openCloseMenu('navUser')">
             <img src="../img/user-icon.png" />
         </a>
-        <a href="index.html"> <img src="../img/logo.png" id="logo" alt="Studio medico del dott. Marco Donati" /> </a>
+        <a href="index.html" id="logo"> <img src="../img/logo.png"  alt="Studio medico del dott. Marco Donati" /> </a>
         <h1>Dott. Marco Donati</h1>
-        <a href="javascript:void(0);" id="pulsanteMenuNav" onclick="navMobile()">
+        <a href="javascript:void(0);" id="pulsanteMenuNav" onclick="openCloseMenu('nav')">
             <img src="../img/menu-icon.png" />
         </a>
-        <ul id="navUser">
+        <ul id="navUser" class="menuClose">
             <li><a href="registrati.html">Registrati</a></li>
             <li><a href="accedi.html">Accedi</a></li>
         </ul>
@@ -52,7 +52,7 @@
 
     <!-- Barra di navigazione -->
 
-    <div id="nav">
+    <div id="nav" class="menuClose">
         <ul>
             <li class="currentLink" xml:lang="en">Home</li>
             <li><a href="contatti.html">Contatti</a></li>

@@ -24,10 +24,8 @@
     <!-- Icon -->
     <link rel="icon" href="../img/logo.png" type="image/gif" />
 
-    <!-- Javascript
-	<script src="../JS/script1.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../JS/script2.js" type="text/javascript" charset="utf-8"></script>
-	eccc....   -->
+    <!-- Javascript -->
+    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 
@@ -39,16 +37,22 @@
 
     <!-- Header primo livello -->
     <div id="header">
-        <a href="index.html"> <img src="../img/logo.png" id="logo" alt="Studio medico del dott. Marco Donati" /> </a>
+        <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="openCloseMenu('navUser')">
+            <img src="../img/user-icon.png" />
+        </a>
+        <a href="index.html" id="logo"> <img src="../img/logo.png"  alt="Studio medico del dott. Marco Donati" /> </a>
         <h1>Dott. Marco Donati</h1>
-        <ul>
+        <a href="javascript:void(0);" id="pulsanteMenuNav" onclick="openCloseMenu('nav')">
+            <img src="../img/menu-icon.png" />
+        </a>
+        <ul id="navUser" class="menuClose">
             <li><a href="registrati.html">Registrati</a></li>
             <li><a href="accedi.html">Accedi</a></li>
         </ul>
     </div>
 
     <!-- Barra di navigazione -->
-    <div id="nav">
+    <div id="nav" class="menuClose">
         <ul>
             <li xml:lang="en"><a href="index.html">Home</a></li>
             <li><a href="contatti.html">Contatti</a></li>
