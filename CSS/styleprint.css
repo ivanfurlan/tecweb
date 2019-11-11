@@ -30,8 +30,7 @@ img {
     display: none;
 }
 a:link,a:visited {
-    content: " [" attr(href) "] ";
-    font-size:90%;
+    color:#cbcccf;
 }
 
 #logo{
