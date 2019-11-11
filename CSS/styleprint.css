@@ -29,8 +29,9 @@ img {
 #skipLink {
     display: none;
 }
-a:link,a:visited {
-    color:#cbcccf;
+a:link:after, a:visited:after {
+content: " [" attr(href) "] ";
+font-size:90%;
 }
 
 #logo{
@@ -136,7 +137,6 @@ form input[type=text], form input[type=password], form input[type=submit], form 
     font-size: 1.2em;
     margin-bottom: 2em;
 }
-
 
 form fieldset {
     border: 0;
