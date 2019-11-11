@@ -9,6 +9,14 @@
     margin: 0em;
 }
 
+.menuClose{
+    display: inherit;
+}
+
+.menuOpen{
+    display: inherit;
+}
+
 html, body {
     font-family: Verdana, Helvetica, sans-serif;
     background-color: white;
@@ -54,7 +62,7 @@ img {
     display: none;
 }
 
-#logo {
+#logo img{
     display: block;
     float: left;
     width: 5em;
