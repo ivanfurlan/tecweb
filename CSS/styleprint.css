@@ -29,13 +29,11 @@ img {
 #skipLink {
     display: none;
 }
-a:link {
-    color: #89898d;
-    text-decoration: none;
+a:link,a:visited {
+    content: " [" attr(href) "] ";
+    font-size:90%;
 }
-a:visited {
-    color: #89898d;
-}
+
 #logo{
 display:none;
 }
