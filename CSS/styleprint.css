@@ -64,10 +64,10 @@ p {
 display:none;
 }
 
-a:link:after, a:visited:after {
+/*a:link:after, a:visited:after {
 content: " [" attr(href) "] ";
 font-size:90%;
-}
+}*/
 /*      CSS BREADCRUMS       */
 
 #breadcrumbs {
@@ -117,7 +117,6 @@ font-size:90%;
 
 form {
     padding: 0.5em;
-
     /*CSS3*/
     border-radius: 0.5em;
 }
@@ -200,13 +199,8 @@ form select {
 
 .intestazioneMessaggio {
     padding: 0.2em;
-    background-color: #2E5894;
     color: white;
     overflow: auto;
-}
-
-.messaggioDottore .intestazioneMessaggio {
-    background-color: #192168;
 }
 
 .intestazioneMessaggio .email {
