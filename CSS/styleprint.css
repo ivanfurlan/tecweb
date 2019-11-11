@@ -1,0 +1,271 @@
+/*      CSS GENERALE       */
+
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: none;
+}
+
+html, body {
+   font-family: "Times New Roman", Times, serif;
+   font-size:12pt;
+}
+
+body {
+    font-size: 0.8em;
+    padding:0.1em 1.5em 0.5em;
+    /*CSS3*/
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-variant: small-caps;
+    margin-bottom: 0.2em;
+}
+
+img {
+    max-width: 100%;
+}
+
+#skipLink {
+    display: none;
+}
+
+#logo{
+display:none;
+}
+
+/* Stile per paragrafo(può essere cambiato in futuro) */
+
+p {
+    word-spacing: 2.5px;
+    line-height: 22px;
+}
+
+/*      CSS HEADER       */
+
+#header ul {
+    float: right;
+    list-style-type: none;
+    margin: 1em 1em 0 0;
+}
+
+#header li {
+    float: right;
+    margin: 1em;
+    min-width: 5.5em;
+}
+
+#header{
+   padding:0.1em 1.5em 0.5em;
+}
+
+
+#header h1 {
+    float: left;
+    width: 50%;
+    margin-top: 1em;
+}
+
+/*      CSS NAVIGAZIONE       */
+
+#nav{
+display:none;
+}
+
+a:link:after, a:visited:after {
+content: " [" attr(href) "] ";
+font-size:90%;
+}
+/*      CSS BREADCRUMS       */
+
+#breadcrumbs {
+    clear: left;
+    margin-bottom: 1em;
+    padding: 0.3em 0 0.3em 0.3em;
+
+    /*CSS3*/
+    flex: 0 0 auto;
+}
+
+/*      CSS MAIN       */
+
+#main {
+    margin: 0 1.5em 0;
+    text-align: justify;
+    overflow: auto;
+    width: auto;
+
+    /*CSS3*/
+    flex: 1 0 auto;
+}
+
+.colonna1 {
+    float: left;
+    width: 50%;
+}
+
+.colonna2 {
+    float: right;
+    width: 45%;
+    overflow: hidden;
+}
+
+.colonna2 img {
+    width: 100%;
+}
+
+/*      CSS FOOTER       */
+
+#footer {
+  display:none;
+}
+
+
+/*      CSS FORM      */
+
+form {
+    padding: 0.5em;
+
+    /*CSS3*/
+    border-radius: 0.5em;
+}
+
+form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button {
+    width: 100%;
+    padding: 1em 1.5em;
+    margin: 0.8em 0;
+    border: 1px solid #ccc;
+
+    /*CSS3*/
+    display: inline-block;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+}
+
+#descrizioneForm {
+    padding: 1em;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+form fieldset {
+    border: 0;
+}
+
+form legend {
+    padding-bottom: 1em;
+}
+
+form select {
+    width: 100%;
+    padding: 0.6em;
+
+    /*CSS3*/
+    border-radius: 0.5em;
+}
+
+/*      CSS SPECIFICO AREAMEDICA.HTML       */
+
+#contenutoAreaMedica dt {
+    padding: 1.2em;
+    padding-bottom: 0.3em;
+    font-size: 1.2em;
+}
+
+#contenutoAreaMedica dd {
+    padding: 0 1.2em 1.2em;
+    font-size: 1.2em;
+    border-bottom: 1px solid;
+}
+
+/*      CSS SPECIFICO SUBAREAMEDICA.HTML       */
+
+/*      CSS SPECIFICO CONSULTIONLINE.HTML       */
+
+#chat {
+    margin: 1em;
+}
+
+#chat form {
+    border-top: 1px solid;
+    margin-top: 1.5em;
+
+    /*CSS3*/
+    border-radius: unset;
+}
+
+.messaggioUtente, .messaggioDottore {
+    border: 1px solid #cbcccf;
+    border-top: none;
+    margin: 1em;
+    /* width: 100%;*/
+    background-color: white;
+}
+
+.messaggioUtente p, .messaggioDottore p {
+    padding: 0.2em 0.5em 0.5em;
+}
+
+.intestazioneMessaggio {
+    padding: 0.2em;
+    background-color: #2E5894;
+    color: white;
+    overflow: auto;
+}
+
+.messaggioDottore .intestazioneMessaggio {
+    background-color: #192168;
+}
+
+.intestazioneMessaggio .email {
+    padding: 0 0.2em 0.1em;
+    float: left;
+}
+
+.intestazioneMessaggio .orario {
+    padding: 0 0.2em 0.1em;
+    float: right;
+}
+
+/*      CSS SPECIFICO CONTATTI.HTML       */
+
+#mappaGoogle {
+    width: 100%;
+    min-height: 16em;
+}
+
+.contatti em {
+    font-style: normal;
+    font-weight: bold;
+}
+
+#recapitiContatti, #prezzi {
+    padding-top: 1.5em;
+}
+
+#recapitiContatti dt, #prezzi dt {
+    float: left;
+    font-weight: bold;
+    padding-right: 0.4em;
+}
+
+#recapitiContatti dl, #prezzi dl {
+    float: left;
+}
+
+/*      CSS DOTTORE.HTML       */
+
+/*      CSS INDEX.HTML       */
+
+/*      CSS NOTIZIE.HTML       */
+
+.notizia {
+    padding: 1em;
+    border-bottom: 1px solid #000;
+}
+
+.notizia p {
+    padding: 0.2em;
+}
+
+/*      CSS PRENOTAVISITA.HTML       */
