@@ -116,7 +116,6 @@ display:none;
 
 
 /*      CSS FORM      */
-
 form {
     padding: 0.5em;
     /*CSS3*/
@@ -141,6 +140,7 @@ form input[type=text], form input[type=password], form input[type=submit], form 
     margin-bottom: 2em;
 }
 
+
 form fieldset {
     border: 0;
 }
@@ -156,6 +156,7 @@ form select {
     /*CSS3*/
     border-radius: 0.5em;
 }
+
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
 
