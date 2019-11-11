@@ -129,13 +129,13 @@ p {
 
 #nav li {
     float: left;
-    min-width: 5.5em;
+    /*min-width: 5.5em;*/
 }
 
 #nav ul li, #header ul li {
     display: block;
     text-align: center;
-    padding: 0.5em;
+    /*padding: 0.5em;*/
     /*text-decoration: none;*/
 }
 
@@ -145,9 +145,11 @@ p {
     /*color: white;*/
 }
 
-#nav a, #header a {
+#nav a, #header li a {
+    display: block;
     color: white;
-    padding: 0.5em 0 0.5em;
+    padding: 0.5em;
+    min-width: 5.5em;
 }
 
 /*      CSS NAVIGAZIONE AREAMEDICA SOTTOMENU       */
@@ -166,14 +168,17 @@ p {
     position: absolute;
     background-color: #192168;
     z-index: 1;
-    margin-top: 0.5em;
-    margin-left: -0.5em;
+    /*margin-top: 0.5em;
+    margin-left: -0.5em;*/
 }
 
 #navAreaMedica ul li {
     color: white;
     text-decoration: none;
     display: block;
+}
+
+#navAreaMedica ul li a{
     min-width: 10em;
 }
 
@@ -188,6 +193,7 @@ p {
 .currentLink, #header .currentLink {
     background-color: #192168;
     color: white;
+    padding: 0.5em;
     /*font-weight: bold;*/
 }
 
