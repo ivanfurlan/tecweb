@@ -29,7 +29,10 @@ img {
 #skipLink {
     display: none;
 }
-
+a:link {
+    color: #89898d;
+    text-decoration: none;
+}
 #logo{
 display:none;
 }
@@ -64,10 +67,6 @@ p {
 display:none;
 }
 
-/*a:link:after, a:visited:after {
-content: " [" attr(href) "] ";
-font-size:90%;
-}*/
 /*      CSS BREADCRUMS       */
 
 #breadcrumbs {
@@ -189,8 +188,8 @@ form select {
     border: 1px solid #cbcccf;
     border-top: none;
     margin: 1em;
-    /* width: 100%;*/
-    background-color: white;
+   
+  
 }
 
 .messaggioUtente p, .messaggioDottore p {
@@ -199,7 +198,6 @@ form select {
 
 .intestazioneMessaggio {
     padding: 0.2em;
-    color: white;
     overflow: auto;
 }
 
