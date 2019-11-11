@@ -33,6 +33,9 @@ a:link {
     color: #89898d;
     text-decoration: none;
 }
+a:visited {
+    color: #89898d;
+}
 #logo{
 display:none;
 }
