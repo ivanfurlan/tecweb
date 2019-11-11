@@ -156,7 +156,9 @@ form select {
     /*CSS3*/
     border-radius: 0.5em;
 }
-
+form input[type="radio"][name="orario"]:checked+label {
+    border:none;
+}
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
 
