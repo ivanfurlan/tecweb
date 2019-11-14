@@ -39,7 +39,9 @@ a:link,a:visited{
 #logo{
 display:none;
 }
-
+img {
+    display: none;
+}
 /* Stile per paragrafo(può essere cambiato in futuro) */
 
 p {
@@ -219,8 +221,7 @@ form input[type="radio"][name="orario"]:checked+label {
 /*      CSS SPECIFICO CONTATTI.HTML       */
 
 #mappaGoogle {
-    width: 100%;
-    min-height: 16em;
+  display:none;
 }
 
 .contatti em {
