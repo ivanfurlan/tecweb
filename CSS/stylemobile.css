@@ -17,21 +17,20 @@ p, dt, dl, li{
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 510px) {
     #logo img {
         max-width: 2em;
         max-height: 2em;
-    }
-}
-
-
-@media (max-width: 495px) {
-    #header h1{
+    }#header h1{
       margin: 0;
-      max-height: 1em;
+	  max-height:1em;
     }
-
 }
+
+
+
+
+
 
 
 
