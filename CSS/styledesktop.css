@@ -129,7 +129,7 @@ p {
 
 #nav li {
     float: left;
-    /*min-width: 5.5em;*/
+    min-width: 5.5em;
 }
 
 #nav ul li, #header ul li {
@@ -172,10 +172,16 @@ p {
     margin-left: -0.5em;*/
 }
 
+.currentLink ul {
+    margin-top: 0.5em;
+    margin-left: -0.5em;
+}
+
 #navAreaMedica ul li {
     color: white;
     text-decoration: none;
     display: block;
+    min-width: 10em;
 }
 
 #navAreaMedica ul li a{
@@ -190,10 +196,11 @@ p {
     display: block;
 }
 
-.currentLink, #header .currentLink {
+#nav .currentLink, #header .currentLink {
     background-color: #192168;
     color: white;
     padding: 0.5em;
+    /*min-width: 5.5em;*/
     /*font-weight: bold;*/
 }
 
