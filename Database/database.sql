@@ -7,7 +7,7 @@
 -- Versione del server: 5.7.27-0ubuntu0.19.04.1
 -- Versione PHP: 7.2.19-0ubuntu0.19.04.2
 
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `database`
 --
-CREATE DATABASE IF NOT EXISTS `database` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `database`;
+CREATE DATABASE IF NOT EXISTS `dbDottMarcoDonati` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `dbDottMarcoDonati`;
 
 -- --------------------------------------------------------
 

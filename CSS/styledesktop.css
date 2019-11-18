@@ -23,8 +23,8 @@ html, body {
     margin: auto;
     height: 100%;
     max-width: 1024px;
-    /*overflow: auto;*/
-    overflow: visible;
+    overflow: auto;
+    /*overflow: visible;*/
 }
 
 body {
@@ -468,7 +468,8 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
     display: none;
 }
 
-#leftButton {
+#leftButton, #rightButton {
+    margin-top: -30%;
     padding: 1em;
     background-color: black;
     color: white;
@@ -476,19 +477,22 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
     text-align: center;
     cursor: pointer;
     position: relative;
-    top: 10%;
-    left: 1em;
+    /*top: 10%;*/
+    left: 2em;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+    float: left;
 }
 
-#leftButton:hover {
+#leftButton:hover, #rightButton:hover{
     background-color: white;
     color: black;
 }
 
 #rightButton {
-    padding: 1em;
+    float: right;
+    margin-right: 1em;
+    /*padding: 1em;*/
 }
 
 .notizia {
