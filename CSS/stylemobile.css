@@ -10,20 +10,34 @@ p, dt, dl, li {
 #header {
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 #header h1 {
     margin: 0.2em;
+    width: 56%;
+    height: 0;
+    margin-top: 0.5em;
 }
 
 @media (max-width: 510px) {
     #logo img {
         max-width: 2em;
         max-height: 2em;
+        margin-top: 1.5em;
     }
     #header h1 {
         margin: 0;
         max-height: 1em;
+        width: 56%;
+        margin-top: 0.5em;
+    }
+}
+
+@media (max-width: 346px) {
+    #header h1 {
+        min-height: 4em;
+        max-width: 1em;
     }
 }
 
@@ -63,16 +77,15 @@ p, dt, dl, li {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 48px;
+    /*min-height: 48px;*/
 }
 
 #header ul li a, #nav ul li a {
     display: block;
     margin: 0;
-    padding: 0;
+    padding: 1em 0;
     height: 100%;
     width: 100%;
-    min-height: 48px;
 }
 
 #header ul li {
@@ -108,6 +121,9 @@ p, dt, dl, li {
 
 #nav .currentLink {
     padding: 0;
+    height: 1em;
+    border-top: 1em solid #192168;
+    border-bottom: 1em solid #192168;
 }
 
 #navAreaMedica {
@@ -121,4 +137,8 @@ p, dt, dl, li {
 
 #mappaGoogle {
     min-height: 23em;
+}
+
+#leftButton, #rightButton {
+    zoom: 0.7;
 }

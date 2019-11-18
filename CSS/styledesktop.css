@@ -104,7 +104,7 @@ p {
 
 #header h1 {
     float: left;
-    width: 50%;
+    width: 45%;
     margin-top: 1em;
 }
 
@@ -121,6 +121,7 @@ p {
     flex: 0 0 auto;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 #nav ul {
@@ -149,7 +150,7 @@ p {
 #nav a, #header li a {
     display: block;
     color: white;
-    padding: 0.5em;
+    padding: 1em 0.5em;
     min-width: 5.5em;
 }
 
@@ -174,7 +175,7 @@ p {
 }
 
 .currentLink ul {
-    margin-top: 0.5em;
+    margin-top: 1em;
     margin-left: -0.5em;
 }
 
@@ -200,7 +201,7 @@ p {
 #nav .currentLink, #header .currentLink {
     background-color: #192168;
     color: white;
-    padding: 0.5em;
+    padding: 1em 0.5em;
     /*min-width: 5.5em;*/
     /*font-weight: bold;*/
 }
@@ -466,6 +467,10 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
 
 .imgSlider {
     display: none;
+}
+
+.imgSlider:first-child{
+    display: block;
 }
 
 #leftButton, #rightButton {
