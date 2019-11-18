@@ -77,7 +77,48 @@
     </div>
 
     <div id="main">
-        <img src="../img/studio.jpg" id="imgstudio" alt="" />
+
+
+
+
+
+
+
+
+        <img src="../img/studio1.jpg" class="imgSlider" alt="" />
+        <img src="../img/studio2.jpg" class="imgSlider" alt="" />
+        <img src="../img/studio3.jpg" class="imgSlider" alt="" />
+
+
+
+
+
+        <button id="leftButton" onclick="plusDivs(-1)">&#10094;</button>
+        <button id="rightButton" onclick="plusDivs(1)">&#10095;</button>
+
+
+        <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("imgSlider");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+          }
+          x[slideIndex-1].style.display = "block";
+        }
+        </script>
+
+
+
         <p>
             Nello studio di Via Paolotti 2, in provincia di Padova, il dott. Marco Donati esegue visite specialistiche
             preoccupandosi della salute

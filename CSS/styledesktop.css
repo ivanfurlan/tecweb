@@ -9,11 +9,11 @@
     margin: 0em;
 }
 
-.menuClose{
+.menuClose {
     display: inherit;
 }
 
-.menuOpen{
+.menuOpen {
     display: inherit;
 }
 
@@ -24,6 +24,7 @@ html, body {
     height: 100%;
     max-width: 1024px;
     overflow: auto;
+    /*overflow: visible;*/
 }
 
 body {
@@ -62,7 +63,7 @@ img {
     display: none;
 }
 
-#logo img{
+#logo img {
     display: block;
     float: left;
     width: 5em;
@@ -129,7 +130,7 @@ p {
 
 #nav li {
     float: left;
-    /*min-width: 5.5em;*/
+    min-width: 5.5em;
 }
 
 #nav ul li, #header ul li {
@@ -172,13 +173,19 @@ p {
     margin-left: -0.5em;*/
 }
 
+.currentLink ul {
+    margin-top: 0.5em;
+    margin-left: -0.5em;
+}
+
 #navAreaMedica ul li {
     color: white;
     text-decoration: none;
     display: block;
+    min-width: 10em;
 }
 
-#navAreaMedica ul li a{
+#navAreaMedica ul li a {
     min-width: 10em;
 }
 
@@ -190,10 +197,11 @@ p {
     display: block;
 }
 
-.currentLink, #header .currentLink {
+#nav .currentLink, #header .currentLink {
     background-color: #192168;
     color: white;
     padding: 0.5em;
+    /*min-width: 5.5em;*/
     /*font-weight: bold;*/
 }
 
@@ -252,7 +260,7 @@ p {
     text-align: center;
     padding: 0.3em;
     margin-bottom: 0.5em;
-    
+
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -327,12 +335,17 @@ form input[type="radio"][name="orario"] {
     /*visibility: hidden;*/
     /*position: relative;*/
     float: left;
+    margin: 1em 0 0 1em;
+    height: 1.3em;
+    width: 1.3em;
 }
 
 form input[type="radio"][name="orario"]+label {
     display: block;
     padding: 0.5em 0.2em 0.5em;
+    margin: 0.3em 0.1em;
     background-color: green;
+    border: 3px solid green;
     color: white;
     text-align: center;
 
@@ -343,15 +356,21 @@ form input[type="radio"][name="orario"]+label {
 
 form input[type="radio"][name="orario"][disabled="disabled"]+label {
     background-color: #8B0000;
+    border: 3px solid #8B0000;
     font-weight: bold;
     text-decoration: line-through;
 }
 
 /*CSS3*/
+
 form input[type="radio"][name="orario"]:checked+label {
     font-weight: bold;
     border: 3px solid rgb(11, 95, 39);
     background-color: green;
+}
+
+form input[type="radio"][name="orario"][disabled="disabled"] {
+    visibility: hidden;
 }
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
@@ -379,7 +398,7 @@ form input[type="radio"][name="orario"]:checked+label {
 #chat form {
     border-top: 1px solid;
     margin-top: 1.5em;
-
+    
     /*CSS3*/
     border-radius: unset;
 }
@@ -443,11 +462,38 @@ form input[type="radio"][name="orario"]:checked+label {
     float: left;
 }
 
-/*      CSS DOTTORE.HTML       */
-
 /*      CSS INDEX.HTML       */
 
-/*      CSS NOTIZIE.HTML       */
+.imgSlider {
+    display: none;
+}
+
+#leftButton, #rightButton {
+    margin-top: -30%;
+    padding: 1em;
+    background-color: black;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    /*top: 10%;*/
+    left: 2em;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    float: left;
+}
+
+#leftButton:hover, #rightButton:hover{
+    background-color: white;
+    color: black;
+}
+
+#rightButton {
+    float: right;
+    margin-right: 1em;
+    /*padding: 1em;*/
+}
 
 .notizia {
     padding: 1em;
@@ -457,5 +503,3 @@ form input[type="radio"][name="orario"]:checked+label {
 .notizia p {
     padding: 0.2em;
 }
-
-/*      CSS PRENOTAVISITA.HTML       */
