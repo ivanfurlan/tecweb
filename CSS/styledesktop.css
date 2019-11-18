@@ -60,7 +60,10 @@ img {
 }
 
 #skipLink {
-    display: none;
+    position: relative;
+    z-index: -1;
+    top: -99999999999999%;
+    left: -999999999999999%;
 }
 
 #logo img {
