@@ -9,11 +9,11 @@
     margin: 0em;
 }
 
-.menuClose{
+.menuClose {
     display: inherit;
 }
 
-.menuOpen{
+.menuOpen {
     display: inherit;
 }
 
@@ -23,7 +23,8 @@ html, body {
     margin: auto;
     height: 100%;
     max-width: 1024px;
-    overflow: auto;
+    /*overflow: auto;*/
+    overflow: visible;
 }
 
 body {
@@ -62,7 +63,7 @@ img {
     display: none;
 }
 
-#logo img{
+#logo img {
     display: block;
     float: left;
     width: 5em;
@@ -184,7 +185,7 @@ p {
     min-width: 10em;
 }
 
-#navAreaMedica ul li a{
+#navAreaMedica ul li a {
     min-width: 10em;
 }
 
@@ -334,12 +335,17 @@ form input[type="radio"][name="orario"] {
     /*visibility: hidden;*/
     /*position: relative;*/
     float: left;
+    margin: 1em 0 0 1em;
+    height: 1.3em;
+    width: 1.3em;
 }
 
 form input[type="radio"][name="orario"]+label {
     display: block;
     padding: 0.5em 0.2em 0.5em;
+    margin: 0.3em 0.1em;
     background-color: green;
+    border: 3px solid green;
     color: white;
     text-align: center;
 
@@ -350,15 +356,21 @@ form input[type="radio"][name="orario"]+label {
 
 form input[type="radio"][name="orario"][disabled="disabled"]+label {
     background-color: #8B0000;
+    border: 3px solid #8B0000;
     font-weight: bold;
     text-decoration: line-through;
 }
 
 /*CSS3*/
+
 form input[type="radio"][name="orario"]:checked+label {
     font-weight: bold;
     border: 3px solid rgb(11, 95, 39);
     background-color: green;
+}
+
+form input[type="radio"][name="orario"][disabled="disabled"] {
+    visibility: hidden;
 }
 
 /*      CSS SPECIFICO AREAMEDICA.HTML       */
@@ -386,7 +398,7 @@ form input[type="radio"][name="orario"]:checked+label {
 #chat form {
     border-top: 1px solid;
     margin-top: 1.5em;
-
+    
     /*CSS3*/
     border-radius: unset;
 }
@@ -450,39 +462,34 @@ form input[type="radio"][name="orario"]:checked+label {
     float: left;
 }
 
-
 /*      CSS INDEX.HTML       */
 
-.imgSlider{
-  display: none;
+.imgSlider {
+    display: none;
 }
 
-#leftButton{
-  padding: 1em;
-  background-color: black;
-  color: white;
-  font-size: 2em;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  top: 10%;
-  left: 1em;
-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
+#leftButton {
+    padding: 1em;
+    background-color: black;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: 10%;
+    left: 1em;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
-#leftButton:hover{
-  background-color: white;
-  color: black;
+#leftButton:hover {
+    background-color: white;
+    color: black;
 }
 
-#rightButton{
-  padding: 1em;
-
+#rightButton {
+    padding: 1em;
 }
-
-
-
 
 .notizia {
     padding: 1em;
