@@ -259,7 +259,7 @@ p {
     text-align: center;
     padding: 0.3em;
     margin-bottom: 0.5em;
-    
+
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -450,11 +450,39 @@ form input[type="radio"][name="orario"]:checked+label {
     float: left;
 }
 
-/*      CSS DOTTORE.HTML       */
 
 /*      CSS INDEX.HTML       */
 
-/*      CSS NOTIZIE.HTML       */
+.imgSlider{
+  display: none;
+}
+
+#leftButton{
+  padding: 1em;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  top: 10%;
+  left: 1em;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+}
+
+#leftButton:hover{
+  background-color: white;
+  color: black;
+}
+
+#rightButton{
+  padding: 1em;
+
+}
+
+
+
 
 .notizia {
     padding: 1em;
@@ -464,5 +492,3 @@ form input[type="radio"][name="orario"]:checked+label {
 .notizia p {
     padding: 0.2em;
 }
-
-/*      CSS PRENOTAVISITA.HTML       */
