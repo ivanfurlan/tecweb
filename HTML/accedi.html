@@ -75,7 +75,7 @@
     <div id="main">
         <!-- form per accedi da fare accedi.php -->
 
-        <form action="accedi.php" method="post">
+        <form action="accedi.php" method="post" name="myForm">
             <fieldset>
 
                 <label for="email" xml:lang="en">Email:</label>
@@ -84,7 +84,7 @@
                 <label for="password" xml:lang="en">Password:</label>
                 <input type="password" name="password" id="password" /><br />
 
-                <input type="submit" value="Accedi" />
+                <input type="submit" value="Accedi" onclick="validaAccedi()"/>
             </fieldset>
         </form>
         <p><a href="registrati.html">Se non sei registrato clicca qui</a></p>
