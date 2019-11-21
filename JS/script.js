@@ -43,7 +43,7 @@ function validaAccedi() {
         formAccedi.password.focus();
         return false;
     } else {
-        formAccedi.action = "accedi.php";
+        formAccedi.action = "accDFedi.php";
         formAccedi.submit();
     }
 }
@@ -100,5 +100,5 @@ function validaRegistrati() {
 }
 
 function setSubmitForJS() {
-    document.getElementById("submit").setAttribute("type", "button");
+    document.getElementById("btnSubmit").setAttribute("type", "button");
 }
