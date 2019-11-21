@@ -58,13 +58,8 @@ img {
     max-width: 100%;
 }
 
-<<<<<<< HEAD
-.skipLink {
-    position: relative;
-=======
 #skipLink {
     position: absolute;
->>>>>>> 138566df3dd2ec5ed618f4d19458de3e748437f7
     z-index: -1;
     top: -99999999999999%;
     left: -999999999999999%;
