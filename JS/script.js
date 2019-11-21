@@ -1,118 +1,104 @@
 function openCloseMenu(menu) {
     var x = document.getElementById(menu);
     if (x.classList.contains("menuClose") === true) {
-        x.classList.replace("menuClose","menuOpen");
+        x.classList.replace("menuClose", "menuOpen");
     } else {
-        x.classList.replace("menuOpen","menuClose");
+        x.classList.replace("menuOpen", "menuClose");
     }
 }
-
-
 
 var slideIndex = 1;
 
 function plusDivs(n) {
-  showDivs(slideIndex += n);
+    showDivs(slideIndex += n);
 }
 
 function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("imgSlider");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
+    var i;
+    var x = document.getElementsByClassName("imgSlider");
+    if (n > x.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = x.length }
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex - 1].style.display = "block";
 }
-
-
 
 function validaAccedi() {
-// Variabili associate ai campi del modulo
-var email = document.myForm.email.value;
-var password = document.myForm.password.value;
-var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
 
-// Espressione regolare dell'email
-if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
-alert("Devi inserire un indirizzo email corretto");
-document.myForm.email.focus();
-return false;
-}
+    var formAccedi = document.getElementById("formAccedi");
 
-else if (password.length<6 || (password == "") || (password == "undefined") ) {
-alert("Scegli una password, minimo 6 caratteri");
-document.myForm.password.focus();
-return false;
-}
-else {
-document.myForm.action = "accedi.php";
-document.myForm.submit();
-}
-}
+    // Variabili associate ai campi del modulo
+    var email = formAccedi.email.value;
+    var password = formAccedi.password.value;
+    // Espressione regolare dell'email
+    var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
 
-
+    if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
+        alert("Devi inserire un indirizzo email corretto");
+        formAccedi.email.focus();
+        return false;
+    } else if ((password == "") || (password == "undefined")) {
+        alert("Inserisci una password");
+        formAccedi.password.focus();
+        return false;
+    } else {
+        formAccedi.action = "accedi.php";
+        formAccedi.submit();
+    }
+}
 
 function validaRegistrati() {
-// Variabili associate ai campi del modulo
-var email = document.myForm.email.value;
-var password = document.myForm.password.value;
-var nome = document.myForm.nome.value;
-var cognome = document.myForm.cognome.value;
-var telefono = document.myForm.telefono.value;
-var confermapassword= document.myForm.confermapassword.value;
-var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
 
-if ((nome == "") || (nome == "undefined")) {
-alert("Devi inserire un nome");
-document.myForm.nome.focus();
-return false;
+    var formRegistrati = document.getElementById("formRegistrati");
+
+    // Variabili associate ai campi del modulo
+    var email = formRegistrati.email.value;
+    var password = formRegistrati.password.value;
+    var nome = formRegistrati.nome.value;
+    var cognome = formRegistrati.cognome.value;
+    var telefono = formRegistrati.telefono.value;
+    var confermapassword = formRegistrati.confermapassword.value;
+    // Espressione regolare dell'email
+    var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+
+    if ((nome == "") || (nome == "undefined")) {
+        alert("Devi inserire un nome");
+        formRegistrati.nome.focus();
+        return false;
+    } else if ((cognome == "") || (cognome == "undefined")) {
+        alert("Devi inserire un cognome");
+        formRegistrati.cognome.focus();
+        return false;
+    } else if ((isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
+        alert("Devi inserire il numero di telefono");
+        formRegistrati.telefono.value = "";
+        formRegistrati.telefono.focus();
+        return false;
+    } else if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
+        alert("Devi inserire un indirizzo email corretto");
+        formRegistrati.email.focus();
+        return false;
+    } else if (password.length < 6 || (password == "") || (password == "undefined")) {
+        alert("Scegli una password, minimo 6 caratteri");
+        formRegistrati.password.focus();
+        return false;
+    } else if ((confermapassword == "") || (confermapassword == "undefined")) {
+        //Effettua il controllo sul campo CONFERMA PASSWORD
+        alert("Devi confermare la password");
+        formRegistrati.confermapassword.focus();
+        return false;
+    } else if (password != confermapassword) {
+        alert("La password inserita in conferma password e' diversa dalla password");
+        formRegistrati.confermapassword.value = "";
+        formRegistrati.confermapassword.focus();
+        return false;
+    } else {
+        formRegistrati.action = "registrati.php";
+        formRegistrati.submit();
+    }
 }
 
-else if ((cognome == "") || (cognome == "undefined")) {
-alert("Devi inserire un cognome");
-document.myForm.cognome.focus();
-return false;
-}
-
-else if ((isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
-alert("Devi inserire il numero di telefono");
-document.myForm.telefono.value = "";
-document.myForm.telefono.focus();
-return false;
-}
-
-// Espressione regolare dell'email
-
-else if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
-alert("Devi inserire un indirizzo email corretto");
-document.myForm.email.focus();
-return false;
-}
-
-else if (password.length<6 || (password == "") || (password == "undefined") ) {
-alert("Scegli una password, minimo 6 caratteri");
-document.myForm.password.focus();
-return false;
-}
-
-//Effettua il controllo sul campo CONFERMA PASSWORD
-else if ((confermapassword == "") || (confermapassword == "undefined")) {
-alert("Devi confermare la password");
-document.myForm.confermapassword.focus();
-return false;
-}
-
-else if (password != confermapassword) {
-alert("La password inserita in conferma password e' diversa dalla password");
-document.myForm.confermapassword.value = "";
-document.myForm.confermapassword.focus();
-return false;
-}
-
-else {
-document.myForm.action = "registrati.php";
-document.myForm.submit();
-}
+function setSubmitForJS() {
+    document.getElementById("submit").setAttribute("type", "button");
 }

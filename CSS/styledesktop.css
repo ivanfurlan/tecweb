@@ -289,7 +289,7 @@ form {
     border-radius: 0.5em;
 }
 
-form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button {
+form input[type=text], form input[type=password], form input[type=submit], form input[type=button], form select, form textarea, form button {
     width: 100%;
     padding: 1em 1.5em;
     margin: 0.8em 0;
@@ -307,7 +307,7 @@ form input[type=text], form input[type=password], form input[type=submit], form 
     margin-bottom: 2em;
 }
 
-form input[type=submit], form button {
+form input[type=submit], form button, form input[type=button] {
     background-color: #2E5894;
     color: white;
     border: none;
@@ -315,7 +315,7 @@ form input[type=submit], form button {
     font-size: 1.1em;
 }
 
-form input[type=submit]:hover, form button:hover {
+form input[type=submit]:hover, form button:hover, form input[type=button]:hover {
     background-color: #192168;
 }
 
