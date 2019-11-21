@@ -30,7 +30,6 @@ html, body {
 body {
     font-size: 0.8em;
     background-color: #F8F8FF;
-
     /*CSS3*/
     display: flex;
     flex-direction: column;
@@ -60,7 +59,7 @@ img {
 }
 
 #skipLink {
-    position: relative;
+    position: absolute;
     z-index: -1;
     top: -99999999999999%;
     left: -999999999999999%;
@@ -100,7 +99,6 @@ p {
 #header {
     background-color: #F8F8FF;
     overflow: auto;
-
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -119,7 +117,6 @@ p {
     color: white;
     width: 100%;
     overflow: visible;
-
     /*CSS3*/
     flex: 0 0 auto;
     position: sticky;
@@ -163,7 +160,6 @@ p {
     /*border: none;*/
     /*cursor: pointer;*/
     position: relative;
-
     /*CSS3*/
     display: inline-block;
 }
@@ -222,7 +218,6 @@ p {
     background-color: white;
     margin-bottom: 1em;
     padding: 0.3em 0 0.3em 0.3em;
-
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -234,7 +229,6 @@ p {
     text-align: justify;
     overflow: auto;
     width: auto;
-
     /*CSS3*/
     flex: 1 0 auto;
 }
@@ -264,7 +258,6 @@ p {
     text-align: center;
     padding: 0.3em;
     margin-bottom: 0.5em;
-
     /*CSS3*/
     flex: 0 0 auto;
 }
@@ -284,7 +277,6 @@ p {
 
 form {
     padding: 0.5em;
-
     /*CSS3*/
     border-radius: 0.5em;
 }
@@ -294,7 +286,6 @@ form input[type=text], form input[type=password], form input[type=submit], form 
     padding: 1em 1.5em;
     margin: 0.8em 0;
     border: 1px solid #ccc;
-
     /*CSS3*/
     display: inline-block;
     border-radius: 0.5em;
@@ -330,7 +321,6 @@ form legend {
 form select {
     width: 100%;
     padding: 0.6em;
-
     /*CSS3*/
     border-radius: 0.5em;
 }
@@ -352,7 +342,6 @@ form input[type="radio"][name="orario"]+label {
     border: 3px solid green;
     color: white;
     text-align: center;
-
     /*CSS3*/
     border-radius: 0.5em;
     box-sizing: border-box;
@@ -402,7 +391,6 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
 #chat form {
     border-top: 1px solid;
     margin-top: 1.5em;
-    
     /*CSS3*/
     border-radius: unset;
 }
@@ -472,29 +460,30 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
     display: none;
 }
 
-.imgSlider:first-child{
+.imgSlider:first-child {
     display: block;
 }
 
 #leftButton, #rightButton {
     margin-top: -30%;
     padding: 1em;
-    background-color: black;
-    color: white;
+    background-color: rgba(0, 0, 0, 0.307);
+    color: black;
     font-size: 2em;
     text-align: center;
     cursor: pointer;
     position: relative;
     /*top: 10%;*/
     left: 2em;
+    float: left;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    float: left;
+    border: none;
 }
 
-#leftButton:hover, #rightButton:hover{
-    background-color: white;
-    color: black;
+#leftButton:hover, #rightButton:hover {
+    background-color: #192168;
+    color: white;
 }
 
 #rightButton {
