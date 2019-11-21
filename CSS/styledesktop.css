@@ -329,19 +329,20 @@ form input[type="radio"][name="orario"] {
     /*visibility: hidden;*/
     /*position: relative;*/
     float: left;
-    margin: 1em 0 0 1em;
+    margin: 0.77em 0 0 1em;
     height: 1.3em;
     width: 1.3em;
 }
 
 form input[type="radio"][name="orario"]+label {
     display: block;
-    padding: 0.5em 0.2em 0.5em;
-    margin: 0.3em 0.1em;
+    padding: 0.5em 0.2em;
+    margin: 0 0.1em 1.4em;
     background-color: green;
     border: 3px solid green;
     color: white;
     text-align: center;
+    font-size: 1.1em;
     /*CSS3*/
     border-radius: 0.5em;
     box-sizing: border-box;
