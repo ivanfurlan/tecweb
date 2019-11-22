@@ -43,7 +43,7 @@ function validaAccedi() {
         formAccedi.password.focus();
         return false;
     } else {
-        formAccedi.action = "accDFedi.php";
+        formAccedi.action = "accedi.php";
         formAccedi.submit();
     }
 }
