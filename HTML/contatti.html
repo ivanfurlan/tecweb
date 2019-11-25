@@ -8,7 +8,7 @@
     <meta name="keywords"
         content="contatti,orari,indirizzo,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
     <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
     <!-- Desktop -->
@@ -37,12 +37,12 @@
     <!-- Header primo livello -->
     <div id="header">
         <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="openCloseMenu('navUser')">
-             <img src="../img/user-icon.png"alt="menu login" />
+            <img src="../img/user-icon.png" alt="menu login" />
         </a>
-        <a href="index.html" id="logo"> <img src="../img/logo.png"  alt="Studio medico del dott. Marco Donati" /> </a>
-        <h1>Dott. Marco Donati</h1>
+        <a href="index.html" id="logo"> <img src="../img/logo.png" alt="Studio medico del dott. Marco Donati" /> </a>
+        <h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>
         <a href="javascript:void(0);" id="pulsanteMenuNav" onclick="openCloseMenu('nav')">
-           <img src="../img/menu-icon.png"alt="menu principale" />
+            <img src="../img/menu-icon.png" alt="menu principale" />
         </a>
         <ul id="navUser" class="menuClose">
             <li><a href="registrati.html">Registrati</a></li>
@@ -96,33 +96,34 @@
                 <dd>049 1234567</dd>
                 <dt>Fax</dt>
                 <dd>049 7654321</dd>
-                <dt>Email</dt>
+                <dt lang="en">Email</dt>
                 <dd>info@dottmarcodonati.it</dd>
                 <dt>Indirizzo</dt>
                 <dd>Padova (PD), via Paolotti 2, 35121, al terzo piano.</dd>
             </dl>
         </div>
         <div class="colonna2">
-            <legend  lang="en">Google maps</legend>
+            <!-- <span lang="en">Google maps</span> -->
             <div class="skipLink">
-                    <a href="#footer">Salta la mappa</a>
-                </div>
+                <a href="#footer">Salta la mappa</a>
+            </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.5349899327482!2d11.886011192767873!3d45.407928396048725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58121508c7%3A0xce9bf01594057558!2sEdificio%20Paolotti%2C%20Via%20Giambattista%20Belzoni%2C%207%2C%2035121%20Padova%20PD!5e0!3m2!1sit!2sit!4v1571318420037!5m2!1sit!2sit"
-                id="mappaGoogle">
+                id="mappaGoogle" title="Mappa con la posizione dello studio">
             </iframe>
         </div>
     </div>
-      <div class="skipLink">
-            <a href="#nav">Vai al menu principale</a>
-        </div>
+    <div class="skipLink">
+        <a href="#nav">Vai al menu principale</a>
+    </div>
     <div id="footer">
         <p>
             <a href="http://validator.w3.org/check?uri=referer"><img src="../img/valid-xhtml10.png"
                     alt="xHTML valido" /></a>
             <a href="https://jigsaw.w3.org/css-validator/check?uri=referer"><img src="../img/vcss-blue.gif"
                     alt="CSS valido" /></a>
-            Dott. Marco Donati - IVA 02948932423 iscritto all'ordine dei Medici della Provincia di Padova con il n.
+            <abbr title="Dottor">Dott.</abbr> Marco Donati - <abbr title="Partita">P.</abbr> IVA 02948932423 iscritto
+            all'ordine dei Medici della Provincia di Padova con il <abbr title="numero">n.</abbr>
             12585<br />
             2019 &copy;Sviluppato da Francesco-Ivan-Lin-Francesco
         </p>
