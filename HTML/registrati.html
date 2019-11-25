@@ -9,7 +9,8 @@
     <meta name="keywords"
         content="registrati,registrazione,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
     <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
     <!-- Desktop -->
     <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
@@ -82,7 +83,7 @@
                 xml:lang="en">online</span>.
         </p>
         <!-- form per registrazione da fare registrati.php -->
-        <form id="formRegistrati" action="registrati.php" method="post" name="myForm">
+        <form id="formRegistrati" action="registrati.php" method="post" >
             <fieldset>
 
                 <label for="nome">Nome:</label>
@@ -104,14 +105,14 @@
                 <label for="confermapassword">Conferma <span xml:lang="en">password</span>:</label><br />
                 <input type="password" name="confermapassword" id="confermapassword" /><br />
 
-                <input type="submit" value="Registrati" onclick="validaRegistrati()" id="submit" />
+                <input type="submit" value="Registrati" onclick="validaRegistrati()" id="btnSubmit" />
             </fieldset>
         </form>
         <p><a href="accedi.html">Se sei gi&agrave; registrato clicca qui</a></p>
     </div>
 
       <div class="skipLink">
-            <a href="#navbar">Vai al menu principale</a>
+            <a href="#nav">Vai al menu principale</a>
         </div>
     <div id="footer">
         <p>

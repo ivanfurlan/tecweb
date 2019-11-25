@@ -8,6 +8,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
 
     <!-- Desktop -->
     <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
@@ -75,7 +76,7 @@
     <div id="main">
         <!-- form per accedi da fare accedi.php -->
 
-        <form id="formAccedi" action="accedi.php" method="post" name="myForm">
+        <form id="formAccedi" action="accedi.php" method="post" >
             <fieldset>
 
                 <label for="email" xml:lang="en">Email:</label>
@@ -84,14 +85,14 @@
                 <label for="password" xml:lang="en">Password:</label>
                 <input type="password" name="password" id="password" /><br />
 
-                <input type="submit" value="Accedi" onclick="validaAccedi()" id="submit"/>
+                <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit"/>
             </fieldset>
         </form>
         <p><a href="registrati.html">Se non sei registrato clicca qui</a></p>
     </div>
 
       <div class="skipLink">
-            <a href="#navbar">Vai al menu principale</a>
+            <a href="#nav">Vai al menu principale</a>
         </div>
     <div id="footer">
         <p>
