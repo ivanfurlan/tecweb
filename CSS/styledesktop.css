@@ -241,7 +241,7 @@ p {
 
 #main {
     margin: 0 1.5em 0;
-    text-align: justify;
+    text-align: left;
     overflow: auto;
     width: auto;
     /*CSS3*/
@@ -251,6 +251,7 @@ p {
 .colonna1 {
     float: left;
     width: 50%;
+    text-align: justify;
 }
 
 .colonna2 {
