@@ -80,6 +80,11 @@ img {
     padding: 1em;
 }
 
+#logo:link, #logo:visited, #logo:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Stile per paragrafo(può essere cambiato in futuro) */
 
 p {
