@@ -9,6 +9,12 @@
     margin: 0em;
 }
 
+abbr {
+    border-bottom: none;
+    cursor: inherit;
+    text-decoration: none
+}
+
 .menuClose {
     display: inherit;
 }
