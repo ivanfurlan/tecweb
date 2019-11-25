@@ -61,6 +61,7 @@ function validaRegistrati() {
     var confermapassword = formRegistrati.confermapassword.value;
     // Espressione regolare dell'email
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+    var telefono_valid = /^[0-9]{5,10}$/;
 
     if ((nome == "") || (nome == "undefined")) {
         alert("Devi inserire un nome");
@@ -70,7 +71,7 @@ function validaRegistrati() {
         alert("Devi inserire un cognome");
         formRegistrati.cognome.focus();
         return false;
-    } else if ((isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
+    } else if (!telefono_valid.test(telefono) || (isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
         alert("Devi inserire il numero di telefono");
         formRegistrati.telefono.value = "";
         formRegistrati.telefono.focus();
