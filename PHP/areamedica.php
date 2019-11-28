@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Area medica - Dott. Marco Donati</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Elenco delle terapie offerte dallo studio del dott. Marco Donati." />
+    <meta name="keywords" content="area medica,terapie,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
+    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <!-- Desktop -->
+    <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
+
+    <!-- Mobile -->
+    <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css" media="screen and (max-width: 630px)" />
+
+    <!-- Print -->
+    <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
+
+    <!-- Icon -->
+    <link rel="icon" href="../img/logo.png" type="image/gif" />
+
+    <!-- Javascript -->
+    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <?php
+    include "header.php";
+    ?>
+
+    <!-- Main content -->
+    <div id="main">
+        <dl id="contenutoAreaMedica">
+            <dt><a href="citologianasale.php">Citologia nasale</a></dt>
+            <dd>L’esame citologico consiste nell’osservazione al microscopio ottico di cellule prelevate dalla mucosa
+                nasale.</dd>
+            <dt><a href="impedenzometria.php">Impedenzometria</a></dt>
+            <dd>E' un esame attraverso il quale si ricavano informazioni circa lo stato di salute e la funzionalità
+                dell'orecchio.</dd>
+            <dt><a href="otomicroscopia.php">Otomicroscopia</a></dt>
+            <dd>L’otomicroscopia è l’ispezione del condotto uditivo e della membrana timpanica per valutarne lo stato di
+                salute e curarne eventuali infezioni.</dd>
+            <dt><a href="posturografia.php">Posturografia</a></dt>
+            <dd>Esame eseguito su pedana stabilometrica per lo studio dei disturbi dell’equilibrio legato a deficit
+                posturali.</dd>
+        </dl>
+    </div>
+
+    <?php
+    include "../HTML/footer.html";
+    ?>
+</body>
+
+</html>

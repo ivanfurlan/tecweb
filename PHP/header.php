@@ -1,6 +1,9 @@
 <!-- INIZIO HEADER -->
 
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1);
 ?>
 
@@ -28,16 +31,21 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
         <img src="../img/menu-icon.png" alt="menu principale" />
     </a>
     <ul id="navUser" class="menuClose">
-        <?php if ($pageName == "registrati.php") { ?>
-            <li class="currentLink">Registrati</li>
+        <?php if (isset($_SESSION['emailUtente'])) { ?>
+            <li><a href="logout.php">Esci</a></li>
         <?php } else { ?>
-            <li><a href="registrati.php">Registrati</a></li>
-        <?php } ?>
 
-        <?php if ($pageName == "accedi.php") { ?>
-            <li class="currentLink">Accedi</li>
-        <?php } else { ?>
-            <li><a href="accedi.php">Accedi</a></li>
+            <?php if ($pageName == "registrati.php") { ?>
+                <li class="currentLink">Registrati</li>
+            <?php } else { ?>
+                <li><a href="registrati.php">Registrati</a></li>
+            <?php } ?>
+
+            <?php if ($pageName == "accedi.php") { ?>
+                <li class="currentLink">Accedi</li>
+            <?php } else { ?>
+                <li><a href="accedi.php">Accedi</a></li>
+            <?php } ?>
         <?php } ?>
     </ul>
 </div>
@@ -48,7 +56,7 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
         <?php if ($pageName == "index.php") { ?>
             <li class="currentLink" xml:lang="en">Home</li>
         <?php } else { ?>
-            <li xml:lang="en"><a href="index.php">Home</a></li>
+            <li <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en"><a href="index.php">Home</a></li>
         <?php } ?>
 
         <?php if ($pageName == "contatti.php") { ?>
@@ -66,7 +74,7 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
         <?php if ($pageName == "areamedica.php") { ?>
             <li class="currentLink" id="navAreaMedica">Area medica
             <?php } else { ?>
-            <li id="navAreaMedica"><a href="areamedica.html">Area medica</a>
+            <li id="navAreaMedica"><a href="areamedica.php">Area medica</a>
             <?php } ?>
 
             <ul>
@@ -113,7 +121,7 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
             <?php if ($pageName == "consultionline.php") { ?>
                 <li class="currentLink">Consulti <span xml:lang="en">online</span></li>
             <?php } else { ?>
-                <li><a href="consultionline.php">Consulti <span xml:lang="en">online</span></a></li>
+                <li><a href="consultionline.php">Consulti <span <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en">online</span></a></li>
             <?php } ?>
 
     </ul>
@@ -124,7 +132,7 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
     <?php if ($pageName == "index.php") { ?>
         <p>Sei in: <span xml:lang="en">Home</span></p>
     <?php } else { ?>
-        <p>Sei in: <span xml:lang="en"><a href="index.php">Home</a></span> &gt;&gt;
+        <p>Sei in: <span <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en"><a href="index.php">Home</a></span> &gt;&gt;
             <?php
                 switch ($pageName) {
                     case "contatti.php":
@@ -137,19 +145,19 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
                         echo "Area medica";
                         break;
                     case "citologianasale.php":
-                        echo '<a href="areamedica.html">Area medica</a> &gt;&gt; ';
+                        echo '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
                         echo "Citologia nasale";
                         break;
                     case "impedenzometria.php":
-                        echo '<a href="areamedica.html">Area medica</a> &gt;&gt; ';
+                        echo '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
                         echo "Impedenzometria";
                         break;
                     case "otomicroscopia.php":
-                        echo '<a href="areamedica.html">Area medica</a> &gt;&gt; ';
+                        echo '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
                         echo "Otomicroscopia";
                         break;
                     case "posturografia.php":
-                        echo '<a href="areamedica.html">Area medica</a> &gt;&gt; ';
+                        echo '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
                         echo "Posturografia";
                         break;
                     case "notizie.php":

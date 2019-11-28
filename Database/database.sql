@@ -97,7 +97,7 @@ INSERT INTO `Notizie` (`id`, `Data`, `Titolo`, `Contenuto`) VALUES
                 consiglio, da parte del <abbr title="Dottor">Dott.</abbr>Marco Donati, su disturbi o patologie di
                 pertinenza otorinolaringoiatrica e sui disturbi dell’equilibrio. <br />
                 Per accedervi basta seguire questo <span xml:lang="en">link</span> e registrarsi al sito <a
-                    href="consultionline.html">Consulti <span xml:lang="en">Online</span></a>'),
+                    href="consultionline.php">Consulti <span xml:lang="en">Online</span></a>'),
 (2, NULL, 'Annuncio nuova Terapia', "Dal giorno 10 Febbraio 2020 sarà disponibile per la prenotazione una nuova terapia nell'ambito della
                 citologianasale.<br />
                 Per ogni comunicazione potete chiamare al numero 0491234567 o scrivere una mail ad

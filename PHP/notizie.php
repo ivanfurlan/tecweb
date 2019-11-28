@@ -50,7 +50,7 @@
                 <div class="notizia">
                     <h2><?php echo $notizia['Titolo']; ?></h2>
                     <p>
-                        Postato il <?php echo $notizia['Data']; ?> dal <a href="dottore.html"><abbr title="Dottor">Dott.</abbr> Marco Donati&nbsp;</a>
+                        Postato il <?php echo $notizia['Data']; ?> dal <a href="dottore.php"><abbr title="Dottor">Dott.</abbr> Marco Donati&nbsp;</a>
                     </p>
                     <p>
                         <?php echo $notizia['Contenuto']; ?>
