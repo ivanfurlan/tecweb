@@ -66,7 +66,3 @@ if (isset($_SESSION['emailUtente'])) {
 </body>
 
 </html>
-
-<?php
-    require_once "databaseclose.php";
-?>

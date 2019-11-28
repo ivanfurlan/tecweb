@@ -1,3 +1,4 @@
 <?php
-    $mysqli->close();
+    if(isset($mysqli))
+        $mysqli->close();
 ?>
