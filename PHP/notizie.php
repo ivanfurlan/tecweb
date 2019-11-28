@@ -1,6 +1,3 @@
-<?php
-    require_once "databaseconnection.php";
-?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -42,6 +39,7 @@
     <div id="main">
         <h1 xml:lang="en">Notizie</h1>
         <?php
+            require_once "databaseconnection.php";
             $query="SELECT * FROM `Notizie`";
             $result=$mysqli->query($query);
 

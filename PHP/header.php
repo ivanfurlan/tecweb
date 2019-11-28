@@ -56,7 +56,7 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
         <?php if ($pageName == "index.php") { ?>
             <li class="currentLink" xml:lang="en">Home</li>
         <?php } else { ?>
-            <li <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en"><a href="index.php">Home</a></li>
+            <li <?php echo ($pageName != "contatti.php") ? "xml:" : ""; ?>lang="en"><a href="index.php">Home</a></li>
         <?php } ?>
 
         <?php if ($pageName == "contatti.php") { ?>
@@ -118,10 +118,10 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
                 <li><a href="prenotavisita.php">Prenota visita</a></li>
             <?php } ?>
 
-            <?php if ($pageName == "consultionline.php") { ?>
+            <?php if ($pageName == "consultionline.php" || $pageName == "elencoconsultionline.php") { ?>
                 <li class="currentLink">Consulti <span xml:lang="en">online</span></li>
             <?php } else { ?>
-                <li><a href="consultionline.php">Consulti <span <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en">online</span></a></li>
+                <li><a href="consultionline.php">Consulti <span <?php echo ($pageName != "contatti.php") ? "xml:" : ""; ?>lang="en">online</span></a></li>
             <?php } ?>
 
     </ul>
@@ -129,10 +129,10 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
 
 <!-- Breadcrumbs -->
 <div id="breadcrumbs">
-    <?php if ($pageName == "index.php") { ?>
+    <?php if ($pageName == "404.php" || $pageName == "500.php") { } else if ($pageName == "index.php") { ?>
         <p>Sei in: <span xml:lang="en">Home</span></p>
     <?php } else { ?>
-        <p>Sei in: <span <?php echo ($pageName != "contatti.php")? "xml:":""; ?>lang="en"><a href="index.php">Home</a></span> &gt;&gt;
+        <p>Sei in: <span <?php echo ($pageName != "contatti.php") ? "xml:" : ""; ?>lang="en"><a href="index.php">Home</a></span> &gt;&gt;
             <?php
                 switch ($pageName) {
                     case "contatti.php":
@@ -167,13 +167,20 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
                         echo "Prenota visita";
                         break;
                     case "consultionline.php":
-                        echo 'Consulti <span xml:lang="en">online</span>';
+                        if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']==true){
+                            echo '<a href="elencoconsultionline.php">Elenco Chat</a> &gt;&gt; ';
+                            echo $_GET['email'];
+                        }else 
+                            echo 'Consulti <span xml:lang="en">online</span>';
                         break;
                     case "registrati.php":
                         echo "Registrati";
                         break;
                     case "accedi.php":
                         echo "Accedi";
+                        break;
+                    case "elencoconsultionline.php":
+                        echo "Elenco Chat";
                         break;
                 }
                 ?>

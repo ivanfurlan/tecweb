@@ -6,7 +6,7 @@
 	
 	// check connection
 	if($mysqli->connect_error) {
-		die("Connection Failed : " . $conn->error);
+		header("Location: 500.php");
     }
 ?>
 

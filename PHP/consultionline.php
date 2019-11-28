@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if ($_SESSION['isAdmin'] == true && !isset($_GET['email'])){
+    header('location: elencoconsultionline.php');
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- doctype html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
@@ -36,40 +43,37 @@
     <div id="main">
 
         <div id="chat">
+            <?php
+            if (isset($_SESSION['emailUtente'])) {
+                require_once "databaseconnection.php";
 
-            <div class="messaggioUtente">
-                <div class="intestazioneMessaggio">
-                    <span class="email">utentedelsito@gmail.com</span>
-                    <span class="orario">21/10/2019 07:53:42</span>
-                </div>
-                <p>Salve dottore ciao!</p>
-            </div>
+                $emailChat = ($_SESSION['isAdmin'] == true && isset($_GET['email'])) ? $_GET['email'] : $_SESSION['emailUtente'];
+                $query = "SELECT * FROM `Messaggi` WHERE `EmailUtente` = '$emailChat' ORDER BY `TimeInvio` ASC";
+                $result = $mysqli->query($query);
 
-            <div class="messaggioDottore">
-                <div class="intestazioneMessaggio">
-                    <span class="email">info@dottmarcodonati.com</span>
-                    <span class="orario">04/11/2019 14:24:07</span>
-                </div>
-                <p>Ciao carissimo utente!</p>
-            </div>
+                while ($messaggio = $result->fetch_assoc()) {
+                    ?>
+                    <div <?php echo ($messaggio['IsDottore']) ? 'class="messaggioDottore"' : 'class="messaggioUtente"'; ?>>
+                        <div class="intestazioneMessaggio">
+                            <span class="email"><?php echo ($messaggio['IsDottore']) ? "Dottor Marco Donati" : $messaggio['EmailUtente']; ?></span>
+                            <span class="orario"><?php echo $messaggio['TimeInvio']; ?></span>
+                        </div>
+                        <p><?php echo $messaggio['Messaggio']; ?></p>
+                    </div>
+                <?php } ?>
 
-            <div class="messaggioUtente">
-                <div class="intestazioneMessaggio">
-                    <span class="email">utentedelsito@gmail.com</span>
-                    <span class="orario">07/11/2019 22:12:01</span>
-                </div>
-                <p>Alla prossima!</p>
-            </div>
-
-            <form action="consultionline.php" method="post">
-                <fieldset>
-                    <legend class="nascosto">Rispondi</legend>
-                    <label for="nuovomessaggio">Scrivi un messaggio: </label>
-                    <textarea name="nuovomessaggio" rows="7" cols="40" title="Messaggio di risposta"> </textarea>
-                    <input type="submit" value="Rispondi" />
-                </fieldset>
-            </form>
-
+                <form action="consultionline.php" method="post">
+                    <fieldset>
+                        <legend class="nascosto">Rispondi</legend>
+                        <label for="nuovomessaggio">Scrivi un messaggio<?php echo ($_SESSION['isAdmin'] == true) ? " a $emailChat" : " al Dottore"; ?>: </label>
+                        <textarea name="nuovomessaggio" rows="7" cols="40" title="Messaggio di risposta"> </textarea>
+                        <input type="submit" value="Rispondi" />
+                    </fieldset>
+                </form>
+            <?php } else { ?>
+                <h1>Consulti <span xml:lang="en">online</span></h1>
+                <p><a href="accedi.php" title="Pagina per accedere">Effettua il login</a>, oppure <a href="registrati.php" title="Pagina per registrarsi">registrati</a>, per poter chiedere direttamente al <abbr title="dottor">Dott.</abbr> Marco Donati una consulenza online e potergli porre le tue domande direttamente da questa pagina.</p>
+            <?php } ?>
         </div>
 
     </div>
