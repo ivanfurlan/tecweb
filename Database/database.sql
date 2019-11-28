@@ -93,9 +93,18 @@ TRUNCATE TABLE `Notizie`;
 --
 
 INSERT INTO `Notizie` (`id`, `Data`, `Titolo`, `Contenuto`) VALUES
-(1, NULL, 'Apertura straordinaria', 'Incredibile, siamo aperti!'),
-(2, NULL, 'Chiusura', 'Siamo in ferie, ciao'),
-(3, NULL, 'Nuovo corso su posturografia', 'Venite a vederlo, molto bello'),
+(1, NULL, 'Attivato il nuovo servizio consulti <span xml:lang="en">online</span>', 'Il servizio gratuito è rivolto a tutti i pazienti registrati che desiderano una valutazione o un
+                consiglio, da parte del <abbr title="Dottor">Dott.</abbr>Marco Donati, su disturbi o patologie di
+                pertinenza otorinolaringoiatrica e sui disturbi dell’equilibrio. <br />
+                Per accedervi basta seguire questo <span xml:lang="en">link</span> e registrarsi al sito <a
+                    href="consultionline.html">Consulti <span xml:lang="en">Online</span></a>'),
+(2, NULL, 'Annuncio nuova Terapia', "Dal giorno 10 Febbraio 2020 sarà disponibile per la prenotazione una nuova terapia nell'ambito della
+                citologianasale.<br />
+                Per ogni comunicazione potete chiamare al numero 0491234567 o scrivere una mail ad
+                info@dottormarcodonati.it"),
+(3, NULL, 'Chiusura attività studio', 'Dal giorno 24 Dicembre al giorno 26 Dicembre 2019 l’attività ambulatoriale è momentaneamente sospesa.
+                Per ogni comunicazione potete chiamare dal 27 Agosto 2019 al numero 0491234567 o scrivere una <span xml:lang="en">mail</span> ad
+                info@dottormarcodonati.it'),
 (4, NULL, 'Testo a caso', 'Incredibile, del buon e sano testo a caso');
 
 -- --------------------------------------------------------
