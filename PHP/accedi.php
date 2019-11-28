@@ -1,29 +1,72 @@
 <?php
-/*accedi.php */
+session_start();
 
-include ("../PHP/databaseconnection.php");
-
-$connection=mysql_connect("$servername", "$username", "$password")or die("cannot connect");
-
-$db=mysql_select_db("$dbname")or die("cannot select DB");
-
-//aggiungere nome user e password
-$username=$_POST[''];
-$password=$_POST[''];
-$sql="SELECT * FROM Utenti WHERE Email='$username' and Password='$password'";
-
-
-$result=mysql_query($sql);
-
-$count=mysql_num_rows($result);
-if($count==1){
-	
-//aggiungere nome user e password
-// Register $myusername, $mypassword and redirect to file "login.php"
-session_register("");
-session_register("");
-header("location:../PHP/login.php");
-else {
-echo "Attenzione username o password errati";
+if (isset($_SESSION['emailUtente'])) {
+    header("location: index.php");
 }
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Accedi - Dott. Marco Donati</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Acecdi al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
+    <meta name="keywords" content="accedi,accesso,login,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
+    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <!-- Desktop -->
+    <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
+
+    <!-- Mobile -->
+    <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css" media="screen and (max-width: 630px)" />
+
+    <!-- Print -->
+    <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
+
+    <!-- Icon -->
+    <link rel="icon" href="../img/logo.png" type="image/gif" />
+
+    <!-- Javascript -->
+    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body onload="setSubmitForJS()">
+
+    <?php
+    include "header.php";
+    ?>
+
+    <div id="main">
+        <!-- form per accedi da fare accedi.php -->
+
+        <form id="formAccedi" action="../PHP/login.php" method="post">
+            <fieldset>
+                <legend class="nascosto">Accedi</legend>
+                <label for="email" xml:lang="en">Email:</label>
+                <input type="text" name="email" id="email" /><br />
+
+                <label for="password" xml:lang="en">Password:</label>
+                <input type="password" name="password" id="password" /><br />
+
+                <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit" />
+            </fieldset>
+        </form>
+        <p><a href="registrati.html">Se non sei registrato clicca qui</a></p>
+    </div>
+
+    <?php
+    include "../HTML/footer.html";
+    ?>
+</body>
+
+</html>
+
+<?php
+    require_once "databaseclose.php";
 ?>
