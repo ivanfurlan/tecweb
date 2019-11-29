@@ -6,4 +6,4 @@ before_script:
   
 build:
   script:
-    - lftp -e "open ftp.dottmarcodonati.altervista.org; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ -X Relazione/* --reverse --verbose ./ ./; bye"
+    - lftp -e "set ssl:verify-certificate no; open ftp.dottmarcodonati.altervista.org; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ -X Relazione/* --reverse --verbose ./ ./; bye"
