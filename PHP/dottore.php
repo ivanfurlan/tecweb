@@ -52,7 +52,7 @@
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 

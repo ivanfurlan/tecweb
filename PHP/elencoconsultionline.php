@@ -62,7 +62,7 @@ if ($_SESSION['isAdmin'] == false) {
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 

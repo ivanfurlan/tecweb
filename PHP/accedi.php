@@ -57,11 +57,11 @@ if (isset($_SESSION['emailUtente'])) {
                 <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit" />
             </fieldset>
         </form>
-        <p><a href="registrati.html">Se non sei registrato clicca qui</a></p>
+        <p><a href="registrati.php">Se non sei registrato clicca qui</a></p>
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 

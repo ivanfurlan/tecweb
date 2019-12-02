@@ -33,12 +33,12 @@
     <div id="main">
         <h1>Ci dispiace! Non &egrave; stata trovata la pagina che stavi cercando.</h1>
         <p>
-            Controlla di aver inserito il giusto URL. Senn&ograve; torna alla <a href="index.html" xml:lang="en">Home</a>
+            Controlla di aver inserito il giusto URL. Senn&ograve; torna alla <a href="index.php" xml:lang="en">Home</a>
         </p>
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 

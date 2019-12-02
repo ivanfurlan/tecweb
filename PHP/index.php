@@ -45,16 +45,16 @@
             Nello studio di Via Paolotti 2, in provincia di Padova, il <abbr title="Dottor">Dott.</abbr> Marco Donati
             esegue visite specialistiche preoccupandosi della salute del condotto uditivo, nasale e sui disturbi
             dell'equilibrio dovuti a posture scorrette. <br /> Per avere informazioni dettagliate sulle prestazioni
-            offerte si consiglia di visitare la pagina presente nel menù di navigazione, denominata <a href="areamedica.html">Area medica</a>. Il dottore svolge anche un <a href="consultionline.html" title="Pagina consulti online">servizio di consulti online gratuiti</a>, per avere rapida un'opinione
+            offerte si consiglia di visitare la pagina presente nel menù di navigazione, denominata <a href="areamedica.php">Area medica</a>. Il dottore svolge anche un <a href="consultionline.php" title="Pagina consulti online">servizio di consulti online gratuiti</a>, per avere rapida un'opinione
             sullo stato di salute, magari da approfondire con una visita.<br />
             I servizi offerti dallo studio sono in continuo aggiornamento, quindi vi consigliamo di controllare la
-            pagina <a href="notizie.html">Notizie</a> per restare aggiornati e per informazioni su eventuali chiusure
+            pagina <a href="notizie.php">Notizie</a> per restare aggiornati e per informazioni su eventuali chiusure
             eccezionali dello studio.
         </p>
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 

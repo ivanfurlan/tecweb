@@ -17,12 +17,12 @@ $pageName = substr($_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') + 1)
     <a href="javascript:void(0);" id="pulsanteMenuUser" onclick="openCloseMenu('navUser')">
         <img src="../img/user-icon.png" alt="menu login" />
     </a>
-    <a href="index.html" id="logo">
+    <a href="index.php" id="logo">
         <img src="../img/logo.png" alt="Studio medico del dott. Marco Donati" />
     </a>
 
     <?php if ($pageName == "index.php") { ?>
-        <h1><a href="index.html"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>
+        <h1><a href="index.php"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>
     <?php } else { ?>
         <h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>
     <?php } ?>

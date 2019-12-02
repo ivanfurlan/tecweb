@@ -79,7 +79,7 @@ if ($_SESSION['isAdmin'] == true && !isset($_GET['email'])){
     </div>
 
     <?php
-    include "../HTML/footer.html";
+    include "footer.php";
     ?>
 </body>
 
