@@ -43,7 +43,7 @@ include("databaseconnection.php");
             chiedendo una consulenza <span xml:lang="en">online</span>.
         </p>
         <!-- form per registrazione da fare registrati.php -->
-        <form id="formRegistrati" action="../PHP/registrati.php" method="post">
+        <form id="formRegistrati" action="signin.php" method="post">
             <fieldset>
                 <legend class="nascosto">Registrati</legend>
                 <label for="nome">Nome:</label>

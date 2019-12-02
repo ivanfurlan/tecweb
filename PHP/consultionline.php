@@ -4,6 +4,22 @@ session_start();
 if ($_SESSION['isAdmin'] == true && !isset($_GET['email'])){
     header('location: elencoconsultionline.php');
 }
+
+
+if (isset($_POST ['nuovomessaggio'])){
+    $nuovoMessaggio=trim($_POST ['nuovomessaggio']);
+    $email = ($_SESSION['isAdmin'])? $_GET['email'] : $_SESSION['emailUtente'];
+    //PRIMA BISOGNA FARE I CONTROLLI SU TUTTI I CAMPI 
+
+    include ("databaseconnection.php");
+    $query="INSERT INTO `Messaggi` (`EmailUtente`, `TimeInvio`, `Messaggio`, `IsDottore`) VALUES ('$email', CURRENT_TIMESTAMP, '$nuovoMessaggio', ".(($_SESSION['isAdmin'])? '1' : '0') .");";
+    //echo $query;
+    $result=$mysqli->query($query);
+
+    if($result===false){
+        header("location: 500.php");
+    }
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- doctype html -->
@@ -62,7 +78,7 @@ if ($_SESSION['isAdmin'] == true && !isset($_GET['email'])){
                     </div>
                 <?php } ?>
 
-                <form action="consultionline.php" method="post">
+                <form action="consultionline.php<?= ($_SESSION['isAdmin'])? "?email=".$_GET['email'] : ''?>" method="post">
                     <fieldset>
                         <legend class="nascosto">Rispondi</legend>
                         <label for="nuovomessaggio">Scrivi un messaggio<?php echo ($_SESSION['isAdmin'] == true) ? " a $emailChat" : " al Dottore"; ?>: </label>
