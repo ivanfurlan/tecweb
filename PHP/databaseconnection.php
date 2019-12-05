@@ -1,16 +1,12 @@
 <?php
-	$servername = "localhost";
-	$username = "";
-	$password = "";
-	$dbname="dbDottMarcoDonati";
+	require_once "credenzialiDatabase.php";
 	
 	// create connection
-	
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$mysqli = new mysqli($servername_db, $username_db, $password_db, $dbname_db);
 	
 	// check connection
-	
-	if($conn->connect_error) {
-		die("Connection Failed : " . $conn->error);
-	}
+	if($mysqli->connect_error) {
+		header("Location: 500.php");
+    }
 ?>
+

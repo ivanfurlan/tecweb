@@ -1,20 +1,19 @@
 <?php
 session_start();
 
-if (isset($_SESSION['emailUtente'])) {
-    header("location: index.php");
+if ($_SESSION['isAdmin'] == false) {
+    header('location: consultionline.php');
 }
-
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- doctype html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 
 <head>
-    <title>Accedi - Dott. Marco Donati</title>
+    <title>Consulti online - Dott. Marco Donati</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="Acecdi al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
-    <meta name="keywords" content="accedi,accesso,login,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
+    <meta name="description" content="Contatta direttamente il dottore per discutere e risolvere i tuoi problemi. E' necessario registrarsi o accedere al sito." />
+    <meta name="keywords" content="consulti online,chat,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
     <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -36,28 +35,30 @@ if (isset($_SESSION['emailUtente'])) {
 
 </head>
 
-<body onload="setSubmitForJS()">
-
+<body>
     <?php
     include "header.php";
     ?>
 
     <div id="main">
-        <!-- form per accedi da fare accedi.php -->
 
-        <form id="formAccedi" action="../PHP/login.php" method="post">
-            <fieldset>
-                <legend class="nascosto">Accedi</legend>
-                <label for="email" xml:lang="en">Email:</label>
-                <input type="text" name="email" id="email" /><br />
+        <div id="chat">
+            <dl id="contenutoElencoChat">
+                <?php
+                require_once "databaseconnection.php";
 
-                <label for="password" xml:lang="en">Password:</label>
-                <input type="password" name="password" id="password" /><br />
+                $query = "SELECT `EmailUtente` FROM `Messaggi` GROUP BY `EmailUtente`";
+                $result = $mysqli->query($query);
 
-                <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit" />
-            </fieldset>
-        </form>
-        <p><a href="registrati.php">Se non sei registrato clicca qui</a></p>
+                while ($chat = $result->fetch_assoc()) {
+                    ?>
+                    <dt><a href="consultionline.php?email=<?php echo urlencode($chat['EmailUtente']); ?>"><?php echo $chat['EmailUtente']; ?></a></dt>
+                    <dd>L'ultimo messaggio è stato in data e orario: <?php //echo $chat['TimeInvio']; ?></dd>
+                <?php } ?>
+
+            </dl>
+        </div>
+
     </div>
 
     <?php
