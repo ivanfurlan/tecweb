@@ -103,3 +103,41 @@ function validaRegistrati() {
 function setSubmitForJS() {
     document.getElementById("btnSubmit").setAttribute("type", "button");
 }
+
+function controllaDisponibilita() {
+
+    var x = document.getElementById("sceltaOrario");
+    x.classList.remove("nascosto");
+
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    var request = new XMLHttpRequest();
+
+    // Bisogna modificare la richiesca in modo che invii la data e la visita scelte
+    request.open('GET', "controllaDisponibilita.php", true);    // DA MODIFICARE
+
+    request.onload = function () {
+        // Begin accessing JSON data here
+        var orari = JSON.parse(this.response);
+
+        for(i=8; i<=11; i++){
+            stampaOrario(i,orari[i]);
+            console.log(i);
+        }
+        for(i=16; i<=18; i++){
+            stampaOrario(i,orari[i]);
+            console.log(i);
+        }
+    }
+
+    // Send request
+    request.send();
+
+
+}
+
+function stampaOrario(orario, disponibilita){
+    
+    if(disponibilita=="no"){
+        document.getElementById("ore"+orario).setAttribute("disabled", "disabled");
+    }
+}
