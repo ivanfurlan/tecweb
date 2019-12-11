@@ -19,6 +19,7 @@ function getPaginaHTML($pageName)
     $footerHTML = file_get_contents($PATH_HTML . 'footer.html');
     $headerHTML = file_get_contents($PATH_HTML . 'header.html');
 
+    //se la sessione non è aperta la apro
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -89,34 +90,31 @@ function getPaginaHTML($pageName)
     }
 
     //Inserisco i breadcrumbs
+    $breadcrumbs = '';
     if ($pageName == "index.php") { //se index.php il breadcrumbs non ha nessun link
-        $breadcrumbs = '<span xml:lang="en">' . $pageTitle . '</span>';
-    } else if ($pageName == "404.php" || $pageName == "500.php") { //se sono pagine di errore mostro solo il titolo della pagina
-        $breadcrumbs .= $pageTitle;
+        $breadcrumbs .= '<span xml:lang="en">' . $pageTitle . '</span>';
     } else {
-        $breadcrumbs = '<a href="index.php"><span xml:lang="en">Home</span></a> &gt;&gt; ';
-        if ($pageName == "consultionline.php") {
-            //se consultionline.php e sono il dottore devo mostrare l'email della chat
-            if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
-                $breadcrumbs .= '<a href="elencoconsultionline.php">Elenco <span xml:lang="en">Chat</span></a> &gt;&gt; ';
-                $breadcrumbs .= $_GET['email'];
-            } else {
-                $breadcrumbs .= $pageTitle;
-            }
-        } else {
-            //se e' una pagina dell'area medica aggiungo il link alla pagina areamedica.php
-            switch ($pageName) {
-                case "citologianasale.php":
-                case "impedenzometria.php":
-                case "otomicroscopia.php":
-                case "posturografia.php":
-                    $breadcrumbs .= '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
-                    break;
-                default:
-                    break;
-            }
-            $breadcrumbs .= $pageTitle;
+        if ($pageName != "404.php" && $pageName != "500.php") { //se sono pagine di errore non mostro il link ad HOME
+            $breadcrumbs .= '<a href="index.php"><span xml:lang="en">Home</span></a> &gt;&gt; ';
         }
+        //se e' una pagina dell'area medica aggiungo il link alla pagina areamedica.php, o se sono admine sono sui consultionline
+        switch ($pageName) {
+            case "citologianasale.php":
+            case "impedenzometria.php":
+            case "otomicroscopia.php":
+            case "posturografia.php":
+                $breadcrumbs .= '<a href="areamedica.php">Area medica</a> &gt;&gt; ';
+                break;
+            case "consultionline.php":
+                if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                    $breadcrumbs .= '<a href="elencoconsultionline.php">Elenco <span xml:lang="en">Chat</span></a> &gt;&gt; ';
+                    $breadcrumbs .= $_GET['email'];
+                }
+                break;
+            default:
+                break;
+        }
+        $breadcrumbs .= $pageTitle;
     }
     $headerHTML = str_replace('<pageBreadcrumbs />', $breadcrumbs, $headerHTML);
 
@@ -130,6 +128,9 @@ function getPaginaHTML($pageName)
 
     //Tolgo i link ricorsivi e imposto il currentLink
     if ($pageName == "index.php") {
+        $headerHTML = str_replace('<a href="index.php" id="logo">', '<a href="#" id="logo">', $headerHTML);
+        $headerHTML = str_replace('<h1><a href="index.php"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>', '<h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>', $headerHTML);
+
         $headerHTML = str_replace('<li xml:lang="en"><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
     } else {
         $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
