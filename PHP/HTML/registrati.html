@@ -4,8 +4,10 @@
 <head>
     <title>Registrati - Dott. Marco Donati</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="Registrati al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
-    <meta name="keywords" content="registrati,registrazione,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
+    <meta name="description"
+        content="Registrati al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
+    <meta name="keywords"
+        content="registrati,registrazione,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
     <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -28,7 +30,7 @@
 </head>
 
 <body onload="setSubmitForJS()">
-    
+
     <pageHeader />
     <div id="main">
         <h1>Registrati</h1>
@@ -38,7 +40,8 @@
             chiedendo una consulenza <span xml:lang="en">online</span>.
         </p>
         <!-- form per registrazione da fare registrati.php -->
-        <form id="formRegistrati" action="signin.php" method="post">
+        <campiErrati />
+        <form id="formRegistrati" action="registrati.php" method="post">
             <fieldset>
                 <legend class="nascosto">Registrati</legend>
                 <label for="nome">Nome:</label>

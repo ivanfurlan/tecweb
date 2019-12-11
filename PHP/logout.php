@@ -1,8 +1,6 @@
 <?php
 session_start();
+session_unset();
 
-if(isset($_SESSION['emailUtente'])){
-    session_unset();
-}
 header ( "location: index.php" );
 ?>

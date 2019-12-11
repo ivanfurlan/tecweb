@@ -10,7 +10,7 @@
 function getPaginaHTML($pageName)
 {
     //prende solo il nome del file corrente se viene passato tutto il path dalla cartella di root (per esempio con $_SERVER['PHP_SELF'])
-    if(strrpos($pageName, "/")!==FALSE){
+    if (strrpos($pageName, "/") !== FALSE) {
         $pageName = substr($pageName, 1 + strrpos($pageName, "/"));
     }
     $PATH_HTML = "HTML/";
@@ -78,7 +78,10 @@ function getPaginaHTML($pageName)
             $pageTitle = "Accedi";
             break;
         case "elencoconsultionline.php":
-            $pageTitle = "Elenco Chat";
+            $pageTitle = 'Elenco <span xml:lang="en">chat</span>';
+            break;
+        case "visiteprenotate.php":
+            $pageTitle = "Visite prenotate";
             break;
         default:
             $pageTitle = $pageName; //di default nome uguale al nome della pagina
@@ -86,16 +89,16 @@ function getPaginaHTML($pageName)
     }
 
     //Inserisco i breadcrumbs
-    if ($pageName == "index.php") { //se index.php non ha nessun link
+    if ($pageName == "index.php") { //se index.php il breadcrumbs non ha nessun link
         $breadcrumbs = '<span xml:lang="en">' . $pageTitle . '</span>';
-    } else if ($pageName == "404.php" || $pageName == "500.php") {
+    } else if ($pageName == "404.php" || $pageName == "500.php") { //se sono pagine di errore mostro solo il titolo della pagina
         $breadcrumbs .= $pageTitle;
     } else {
         $breadcrumbs = '<a href="index.php"><span xml:lang="en">Home</span></a> &gt;&gt; ';
         if ($pageName == "consultionline.php") {
             //se consultionline.php e sono il dottore devo mostrare l'email della chat
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
-                $breadcrumbs .= '<a href="elencoconsultionline.php">Elenco Chat</a> &gt;&gt; ';
+                $breadcrumbs .= '<a href="elencoconsultionline.php">Elenco <span xml:lang="en">Chat</span></a> &gt;&gt; ';
                 $breadcrumbs .= $_GET['email'];
             } else {
                 $breadcrumbs .= $pageTitle;
@@ -116,6 +119,14 @@ function getPaginaHTML($pageName)
         }
     }
     $headerHTML = str_replace('<pageBreadcrumbs />', $breadcrumbs, $headerHTML);
+
+    //se si è loggati come admin il menù sarà diverso
+    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+        //Elenco chat al posto di Consulti online
+        $headerHTML = str_replace('<li><a href="consultionline.php">Consulti <span xml:lang="en">online</span></a></li>', '<li><a href="elencoconsultionline.php">Elenco <span xml:lang="en">chat</span></a></li>', $headerHTML);
+        //Visite prenotate al posto di Prenota visita
+        $headerHTML = str_replace('<li><a href="prenotavisita.php">Prenota visita</a></li>', '<li><a href="visiteprenotate.php">Visite prenotate</a></li>', $headerHTML);
+    }
 
     //Tolgo i link ricorsivi e imposto il currentLink
     if ($pageName == "index.php") {
