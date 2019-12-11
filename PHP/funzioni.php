@@ -15,8 +15,7 @@ function getPaginaHTML($pageName)
     }
     $PATH_HTML = "HTML/";
 
-    $paginaHTML = file_get_contents("$PATH_HTML" . str_replace(".php", ".html", $pageName));
-
+    $paginaHTML = file_get_contents($PATH_HTML . str_replace(".php", ".html", $pageName));
     $footerHTML = file_get_contents($PATH_HTML . 'footer.html');
     $headerHTML = file_get_contents($PATH_HTML . 'header.html');
 

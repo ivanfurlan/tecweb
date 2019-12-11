@@ -29,12 +29,13 @@
 
 <body>
     <?php
-    include "header.php";
+    include "HTML/header.html";
     ?>
 
     <div id="main">
         <h1>Prenota visita</h1>
         <?php
+        session_start();
         if (isset($_SESSION['emailUtente'])) {
             ?>
             <form action="prenotavisita.php" method="post">
@@ -145,7 +146,7 @@
     </div>
 
     <?php
-    include "footer.php";
+    include "HTML/footer.html";
     ?>
 </body>
 

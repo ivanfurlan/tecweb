@@ -37,7 +37,7 @@ if ($_SESSION['isAdmin'] == false) {
 
 <body>
     <?php
-    include "header.php";
+    include "HTML/header.html";
     ?>
 
     <div id="main">
@@ -62,7 +62,7 @@ if ($_SESSION['isAdmin'] == false) {
     </div>
 
     <?php
-    include "footer.php";
+    include "HTML/footer.html";
     ?>
 </body>
 
