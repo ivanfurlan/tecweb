@@ -108,7 +108,7 @@ function getPaginaHTML($pageName)
             case "consultionline.php":
                 if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
                     $breadcrumbs .= '<a href="elencoconsultionline.php">Elenco <span xml:lang="en">Chat</span></a> &gt;&gt; ';
-                    $breadcrumbs .= $_GET['email'];
+                    $pageTitle = $_GET['email'];
                 }
                 break;
             default:
