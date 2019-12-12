@@ -24,6 +24,18 @@ function showDivs(n) {
     x[slideIndex - 1].style.display = "block";
 }
 
+function changeFocusAccedi(event, campo) {
+    if (event != null && event != undefined && event.which != 13 && event.keyCode != 13) {
+        //se non è stato premuto invio non faccio niente
+        return true;
+    } else if (campo != null && campo != undefined && campo == "email") {
+        //se premo invio nel campo email allora passo al campo password
+        document.getElementById("formAccedi").password.focus();
+        return true;
+    } else
+        return validaAccedi();//se premo invio nel campo password allora fa il submit
+}
+
 function validaAccedi() {
 
     var formAccedi = document.getElementById("formAccedi");
@@ -122,12 +134,12 @@ function controllaDisponibilita() {
         // Begin accessing JSON data here
         var orari = JSON.parse(this.response);
 
-        for(i=8; i<=11; i++){
-            stampaOrario(i,orari[i]);
+        for (i = 8; i <= 11; i++) {
+            stampaOrario(i, orari[i]);
             console.log(i);
         }
-        for(i=16; i<=18; i++){
-            stampaOrario(i,orari[i]);
+        for (i = 16; i <= 18; i++) {
+            stampaOrario(i, orari[i]);
             console.log(i);
         }
     }
@@ -138,9 +150,9 @@ function controllaDisponibilita() {
 
 }
 
-function stampaOrario(orario, disponibilita){
-    
-    if(disponibilita=="no"){
-        document.getElementById("ore"+orario).setAttribute("disabled", "disabled");
+function stampaOrario(orario, disponibilita) {
+
+    if (disponibilita == "no") {
+        document.getElementById("ore" + orario).setAttribute("disabled", "disabled");
     }
 }

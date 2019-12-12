@@ -42,10 +42,10 @@
             <fieldset>
                 <legend class="nascosto">Accedi</legend>
                 <label for="email" xml:lang="en">Email:</label>
-                <input type="text" name="email" id="email" /><br />
+                <input type="text" name="email" id="email" onkeypress="changeFocusAccedi(event,'email')"/><br />
 
                 <label for="password" xml:lang="en">Password:</label>
-                <input type="password" name="password" id="password" /><br />
+                <input type="password" name="password" id="password" onkeypress="changeFocusAccedi(event)"/><br />
 
                 <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit" />
             </fieldset>
