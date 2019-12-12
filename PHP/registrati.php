@@ -1,75 +1,42 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<?php
 
-<head>
-    <title>Registrati - Dott. Marco Donati</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="Registrati al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
-    <meta name="keywords" content="registrati,registrazione,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
-    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+//DA AGGIORNARE CON LA CLASSE DEL DATABASE
 
-    <!-- Desktop -->
-    <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
+$campiErrati = false;
+if (isset($_POST['nome'], $_POST['cognome'], $_POST['email'], $_POST['telefono'], $_POST['password'], $_POST['confermapassword'])) {
+    $email = trim($_POST['email']);
+    $nome = trim($_POST['nome']);
+    $cognome = trim($_POST['cognome']);
+    $telefono = trim($_POST['telefono']);
+    $password = $_POST['password'];
+    $confermaPassword = $_POST['confermapassword'];
 
-    <!-- Mobile -->
-    <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css" media="screen and (max-width: 630px)" />
+    //PRIMA BISOGNA FARE I CONTROLLI SU TUTTI I CAMPI 
 
-    <!-- Print -->
-    <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
+    include("databaseconnection.php");
+    $query = "INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES ('$email', '$nome', '$cognome', '$telefono', '$password');";
+    //echo $query;
+    $result = $mysqli->query($query);
 
-    <!-- Icon -->
-    <link rel="icon" href="../img/logo.png" type="image/gif" />
+    if ($result === true) {
+        session_start();
+        $_SESSION['emailUtente'] = $email;
+        $_SESSIOM['isAdmin'] = false;
+        header("location: index.php");
+    } else {
+        if (strpos($mysqli->error, "Duplicate entry") !== false) {
+            //email già esistente
+            $campiErrati = true;
+        } else {
+            header("location: 500.php?errore=registrazione_utente");
+        }
+    }
+}
 
-    <!-- Javascript -->
-    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
+require_once("funzioni.php");
+$paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 
-</head>
+$campiErrati = ($campiErrati) ? '<span class="erroreCampiForm">Alcuni campi inseriti non rispettano le sintassi corretta o sono vuoti </ span>' : "";
+$paginaHTML = str_replace("<campiErrati />", $campiErrati, $paginaHTML);
 
-<body onload="setSubmitForJS()">
-    <?php
-    include "header.php";
-    ?>
-    <div id="main">
-        <h1>Registrati</h1>
-        <p id="descrizioneForm">
-            Registrati completando con i tuoi dati il modulo sottostante, cos&igrave; potrai prenotare le visite
-            direttamente su questo sito, o inviare un messaggio al <abbr title="Dottor">Dott.</abbr> Marco Donati
-            chiedendo una consulenza <span xml:lang="en">online</span>.
-        </p>
-        <!-- form per registrazione da fare registrati.php -->
-        <form id="formRegistrati" action="signin.php" method="post">
-            <fieldset>
-                <legend class="nascosto">Registrati</legend>
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" /><br />
-
-                <label for="cognome">Cognome:</label>
-                <input type="text" name="cognome" id="cognome" /><br />
-
-                <label for="telefono">Telefono:</label>
-                <input type="text" name="telefono" id="telefono" /> <br />
-
-                <label for="email" xml:lang="en">Email:</label>
-                <input type="text" name="email" id="email" /><br />
-
-                <!--  da fare controllo di due password -->
-                <label for="password" xml:lang="en">Password:</label>
-                <input type="password" name="password" id="password" /><br />
-
-                <label for="confermapassword">Conferma <span xml:lang="en">password</span>:</label><br />
-                <input type="password" name="confermapassword" id="confermapassword" /><br />
-
-                <input type="submit" value="Registrati" onclick="validaRegistrati()" id="btnSubmit" />
-            </fieldset>
-        </form>
-        <p><a href="accedi.php">Se sei gi&agrave; registrato clicca qui</a></p>
-    </div>
-
-    <?php
-    include "footer.php";
-    ?>
-</body>
-
-</html>
+echo $paginaHTML;

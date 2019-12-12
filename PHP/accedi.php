@@ -5,64 +5,38 @@ if (isset($_SESSION['emailUtente'])) {
     header("location: index.php");
 }
 
-?>
+$credenzialiErrate = false;
+if (isset($_POST['email'], $_POST['password']) && $_POST['email'] != "" && $_POST['password'] != "") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+    require_once("dbaccess.php");
+    $oggettoConnessione = new DBAccess();
+    $connessioneOK = $oggettoConnessione->openDBConnection();
 
-<head>
-    <title>Accedi - Dott. Marco Donati</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="Acecdi al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
-    <meta name="keywords" content="accedi,accesso,login,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
-    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    if (!$connessioneOK) {
+        header("location: 500.php?errore=connessione_db");
+    }
+    $emailUtente = $oggettoConnessione->login($email, $password);
+    if ($emailUtente !== false) {
+        // loggatto corettamente
+        $_SESSION['emailUtente'] = $emailUtente;
+        //echo $_SESSION['emailUtente'];
+        if ($_SESSION['emailUtente'] == "admin@admin.com")
+            $_SESSION['isAdmin'] = true;
+        else
+            $_SESSION['isAdmin'] = false;
+        header("location: index.php");
+    } else {
+        // credenziali errate
+        $credenzialiErrate = true;
+    }
+}
 
-    <!-- Desktop -->
-    <link rel="stylesheet" type="text/css" href="../CSS/styledesktop.css" />
+require_once("funzioni.php");
+$paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 
-    <!-- Mobile -->
-    <link rel="stylesheet" type="text/css" href="../CSS/stylemobile.css" media="screen and (max-width: 630px)" />
+$credenzialiErrate = ($credenzialiErrate) ? '<span class="erroreCampiForm">Email o password non corrette </ span>' : "";
+$paginaHTML = str_replace("<credenzialiErrate />", $credenzialiErrate, $paginaHTML);
 
-    <!-- Print -->
-    <link rel="stylesheet" type="text/css" href="../CSS/styleprint.css" media="print" />
-
-    <!-- Icon -->
-    <link rel="icon" href="../img/logo.png" type="image/gif" />
-
-    <!-- Javascript -->
-    <script src="../JS/script.js" type="text/javascript" charset="utf-8"></script>
-
-</head>
-
-<body onload="setSubmitForJS()">
-
-    <?php
-    include "header.php";
-    ?>
-
-    <div id="main">
-        <!-- form per accedi da fare accedi.php -->
-
-        <form id="formAccedi" action="../PHP/login.php" method="post">
-            <fieldset>
-                <legend class="nascosto">Accedi</legend>
-                <label for="email" xml:lang="en">Email:</label>
-                <input type="text" name="email" id="email" /><br />
-
-                <label for="password" xml:lang="en">Password:</label>
-                <input type="password" name="password" id="password" /><br />
-
-                <input type="submit" value="Accedi" onclick="validaAccedi()" id="btnSubmit" />
-            </fieldset>
-        </form>
-        <p><a href="registrati.php">Se non sei registrato clicca qui</a></p>
-    </div>
-
-    <?php
-    include "footer.php";
-    ?>
-</body>
-
-</html>
+echo $paginaHTML;
