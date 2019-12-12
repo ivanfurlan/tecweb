@@ -178,4 +178,4 @@ elseif ($confermapassword != $password) {
 else {
   return true;
 }
-
+}
