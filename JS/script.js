@@ -59,15 +59,18 @@ function validaRegistrati() {
     var cognome = formRegistrati.cognome.value;
     var telefono = formRegistrati.telefono.value;
     var confermapassword = formRegistrati.confermapassword.value;
-    // Espressione regolare dell'email
+    // Espressioni regolari valide
+    var nome_valid = /^[A-Za-z \'-]+$/i;
+    var cognome_valid = /^[A-Za-z \'-]+$/i;
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
     var telefono_valid = /^[0-9]{5,10}$/;
 
-    if ((nome == "") || (nome == "undefined")) {
+
+    if (!nome_valid.test(nome) || (nome == "") || (nome == "undefined")) {
         alert("Devi inserire un nome");
         formRegistrati.nome.focus();
         return false;
-    } else if ((cognome == "") || (cognome == "undefined")) {
+    } else if (!cognome_valid.test(cognome) || (cognome == "") || (cognome == "undefined")) {
         alert("Devi inserire un cognome");
         formRegistrati.cognome.focus();
         return false;

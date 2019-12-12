@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == false) {
+if ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == false)||!isset($_SESSION['isAdmin'])) {
     header('location: consultionline.php');
 }
 

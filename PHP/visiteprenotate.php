@@ -18,6 +18,7 @@ if (!$connessioneOK) {
 
 $result = $oggettoConnessione->ciSonoVisitePrenotate();
 
+$pageContent = '';
 if ($result) {
     $pageContent .=  '<p>Oh, qualcuno ha prenotato una visita, ma ancora non sono in grado di dirchi chi è e quando verrà</p>';
 } else {

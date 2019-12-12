@@ -75,7 +75,7 @@ DROP TABLE IF EXISTS `Notizie`;
 CREATE TABLE `Notizie` (
   `id` int(11) NOT NULL,
   `Data` date DEFAULT NULL,
-  `Titolo` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `Titolo` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
   `Contenuto` mediumtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
