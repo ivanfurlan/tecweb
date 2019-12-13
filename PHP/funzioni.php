@@ -135,6 +135,10 @@ function getPaginaHTML($pageName)
     } else {
         $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
     }
+    if ($pageName == "contatti.php") {
+        $headerHTML = str_replace('xml:lang="en"', 'lang="en"', $headerHTML);
+    }
+
     $paginaHTML = str_replace("<pageFooter />", $footerHTML, $paginaHTML);
     $paginaHTML = str_replace("<pageHeader />", $headerHTML, $paginaHTML);
 
@@ -146,36 +150,39 @@ function getPaginaHTML($pageName)
 
 /* Funzione che ricevute in ingresso le credenziali del form di registrazione, ritorna true sse tutti
 i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispondenti)
+
+Ritorna true se non ci sono errori, altrimenti una stringa contenente gli errori, 
+quindi occhio, bisogna fare il controllo con ===true (tre uguali)
 */
+function controlloCampiDati($nome, $cognome, $telefono, $email, $password, $confermapassword)
+{
+    $listaErrori = '';
 
-function controlloCampiDati($nome,$cognome,$telefono,$email,$password,$confermapassword){
-// verifico che il cognome non contenga caratteri non letterali
-if (!$nome || !preg_match('/^[A-Za-z \'-]+$/i',$nome)) {
-  echo 'Devi inserire un nome valido.';
-}
-// verifico che il nome non contenga caratteri non letterali
-elseif (!$cognome || !preg_match('/^[A-Za-z \'-]+$/i',$cognome)) {
-  echo 'Devi inserire un cognome valido.';
-}
-// verifico che il telefono contenga solo caratteri numerici
-elseif (!$telefono || !preg_match('/^[0-9]{5,10}$/',$telefono)) {
-  echo 'Devi inserire un numero di telefono valido.';
-}
-// verifico se un indirizzo email è valido
-elseif (!$email || !preg_match('/^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/',$email)) {
-  echo 'Devi inserire un indirizzo email valido.';
-}
-// verifico se la password è lunga almeno 6 caratteri
-elseif (!$password || $password.length < 6) {
-  echo 'Devi inserire una password lunga almeno 6 caratteri.';
-}
-/*verifico se la confermapassword è uguale alla password
-(notare che il caso che la confermapassword non sia vuota è gia compreso nel controllo della password)*/
-elseif ($confermapassword != $password) {
-  echo 'La password inserita in conferma password è diversa dalla password';
-}
+    // verifico che il cognome non contenga caratteri non letterali
+    if (!$nome || !preg_match('/^[A-Za-z \'-]+$/i', $nome)) {
+        $listaErrori .= '<li>Devi inserire un nome valido.</li>';
+    }
+    // verifico che il nome non contenga caratteri non letterali
+    if (!$cognome || !preg_match('/^[A-Za-z \'-]+$/i', $cognome)) {
+        $listaErrori .=  '<li>Devi inserire un cognome valido.</li>';
+    }
+    // verifico che il telefono contenga solo caratteri numerici
+    if (!$telefono || !preg_match('/^[0-9]{5,10}$/', $telefono)) {
+        $listaErrori .=  '<li>Devi inserire un numero di telefono valido.</li>';
+    }
+    // verifico se un indirizzo email è valido
+    if (!$email || !preg_match('/^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/', $email)) {
+        $listaErrori .=  '<li>Devi inserire un indirizzo email valido.</li>';
+    }
+    // verifico se la password è lunga almeno 6 caratteri
+    if (!$password || strlen($password) < 6) {
+        $listaErrori .=  '<li>Devi inserire una password lunga almeno 6 caratteri.</li>';
+    }
+    /*verifico se la confermapassword è uguale alla password
+    (notare che il caso che la confermapassword non sia vuota è gia compreso nel controllo della password)*/
+    if ($confermapassword != $password) {
+        $listaErrori .=  '<li>La password inserita in conferma password è diversa dalla password</li>';
+    }
 
-else {
-  return true;
-}
+    return (($listaErrori === '') ? true : $listaErrori); //ritorna true se non ci sono errori, altrimenti la lista degli errori
 }
