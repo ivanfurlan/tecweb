@@ -36,7 +36,7 @@ if (isset($_POST['email'], $_POST['password']) && $_POST['email'] != "" && $_POS
 require_once("funzioni.php");
 $paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 
-$credenzialiErrate = ($credenzialiErrate) ? '<span class="erroreCampiForm">Email o password non corrette </ span>' : "";
+$credenzialiErrate = ($credenzialiErrate) ? '<span class="erroreCampiForm">Email o password non corrette </span>' : "";
 $paginaHTML = str_replace("<credenzialiErrate />", $credenzialiErrate, $paginaHTML);
 
 echo $paginaHTML;
