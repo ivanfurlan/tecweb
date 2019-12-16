@@ -93,7 +93,7 @@ class DBAccess
 
     public function login($email, $password)
     {
-        //$password = sha1($password);
+        $password = sha1($password);
         $query = "SELECT `Email` FROM `Utenti` WHERE `Email`='$email' and `Password`='$password'";
         $queryResult = mysqli_query($this->connection, $query);
         //echo $query;
@@ -102,7 +102,7 @@ class DBAccess
 
     public function registrazioneUtente($email, $nome, $cognome, $telefono, $password)
     {
-        //$password = sha1($password);
+        $password = sha1($password);
         $query = "INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES ('$email', '$nome', '$cognome', '$telefono', '$password');";
         //echo $query;
         $queryResult = mysqli_query($this->connection, $query);

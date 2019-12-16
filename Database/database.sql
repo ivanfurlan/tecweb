@@ -122,7 +122,7 @@ CREATE TABLE `Utenti` (
   `Nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Cognome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Telefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `Password` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+  `Password` varchar(40) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -138,12 +138,21 @@ TRUNCATE TABLE `Utenti`;
 -- Dump dei dati per la tabella `Utenti`
 --
 
+/*
+Password sono in ordine:
+admin
+psw3
+psw1
+psw2
+psw4
+*/
+
 INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES
-('admin@admin.com', 'Marco', 'Donati', '3450178933', 'admin'),
-('enricograzioli@gmail.com', 'Enrico', 'Grazioli', '3460010229', 'psw3'),
-('francescobari@gmail.com', 'Francesco', 'Bari', '3490011234', 'psw1'),
-('samueledegrandi@gmail.com', 'Samuele', 'De Grandi', '3459184440', 'psw2'),
-('sofiabianchi@gmail.com', 'Sofia', 'Bianchi', '3496682884', 'psw4');
+('admin@admin.com', 'Marco', 'Donati', '3450178933', 'add033e22ae348aeb5660fc2140aec35850c4da997min'),
+('enricograzioli@gmail.com', 'Enrico', 'Grazioli', '3460010229', '7b782fe243e6acb05ff22c4550a0f6267eaa0f9f'),
+('francescobari@gmail.com', 'Francesco', 'Bari', '3490011234', 'd4984b53b41267bfe713ffcef01d720e3932c99a'),
+('samueledegrandi@gmail.com', 'Samuele', 'De Grandi', '3459184440', '7b4c1e6894ef5ad8aff3346ef8cc0b49dab6ee2a'),
+('sofiabianchi@gmail.com', 'Sofia', 'Bianchi', '3496682884', '9829340df593a647d3bc712e3c15b45c3d9da426');
 
 -- --------------------------------------------------------
 
