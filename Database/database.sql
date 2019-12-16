@@ -224,7 +224,7 @@ ALTER TABLE `Utenti`
 --
 ALTER TABLE `Visite`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY (`Giorno`,`Ora`),
+  ADD UNIQUE KEY (`Giorno`,`Ora`,`Tipologia`),
   ADD KEY `Visite-Utente` (`EmailUtente`);
 
 --
