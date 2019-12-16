@@ -290,6 +290,19 @@ p {
 }
 
 /*      CSS FORM      */
+.erroreCampiForm li{
+    margin: 0.3em;
+    margin-left: 2em;
+}
+.erroreCampiForm {
+    display: block;
+    padding: 0.5em;
+    background-color: #8B0000;
+    color: white;
+    font-weight: bold;
+    /*CSS3*/
+    border-radius: 10px;
+}
 
 form {
     padding: 0.5em;
@@ -310,8 +323,7 @@ form input[type=text], form input[type=password], form input[type=submit], form 
 
 #descrizioneForm {
     padding: 1em;
-    font-size: 1.2em;
-    margin-bottom: 2em;
+    font-size: 1.1em;
 }
 
 form input[type=submit], form button, form input[type=button] {

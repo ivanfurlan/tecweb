@@ -1,8 +1,9 @@
 <?php
 
-//DA AGGIORNARE CON LA CLASSE DEL DATABASE
+require_once("funzioni.php");
+$paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 
-$campiErrati = false;
+$erroriDaMostrare = ''; //variabile a cui concatenare tutti gli errori
 if (isset($_POST['nome'], $_POST['cognome'], $_POST['email'], $_POST['telefono'], $_POST['password'], $_POST['confermapassword'])) {
     $email = trim($_POST['email']);
     $nome = trim($_POST['nome']);
@@ -11,32 +12,47 @@ if (isset($_POST['nome'], $_POST['cognome'], $_POST['email'], $_POST['telefono']
     $password = $_POST['password'];
     $confermaPassword = $_POST['confermapassword'];
 
-    //PRIMA BISOGNA FARE I CONTROLLI SU TUTTI I CAMPI 
+    $controlloDati = controlloCampiDati($nome, $cognome, $telefono, $email, $password, $confermaPassword);
+    if ($controlloDati === true) {
 
-    include("databaseconnection.php");
-    $query = "INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES ('$email', '$nome', '$cognome', '$telefono', '$password');";
-    //echo $query;
-    $result = $mysqli->query($query);
+        require_once("dbaccess.php");
+        $oggettoConnessione = new DBAccess();
+        $connessioneOK = $oggettoConnessione->openDBConnection();
 
-    if ($result === true) {
-        session_start();
-        $_SESSION['emailUtente'] = $email;
-        $_SESSIOM['isAdmin'] = false;
-        header("location: index.php");
-    } else {
-        if (strpos($mysqli->error, "Duplicate entry") !== false) {
-            //email già esistente
-            $campiErrati = true;
-        } else {
-            header("location: 500.php?errore=registrazione_utente");
+        if (!$connessioneOK) {
+            header("location: 500.php?errore=connessione_db");
         }
+
+        if ($oggettoConnessione->emailGiaEsistente($email)) {
+            $erroriDaMostrare .= '<li>L\'<span xml:lang="en">email</span> è già esistente</li>';
+        } else {
+            $result = $oggettoConnessione->registrazioneUtente($email, $nome, $cognome, $telefono, $password);
+            if ($result) {
+                session_start();
+                $_SESSION['emailUtente'] = $email;
+                $_SESSIOM['isAdmin'] = false;
+                header("location: index.php");
+            } else {
+                header("location: 500.php?errore=registrazione_utente");
+            }
+        }
+    } else {
+        //ci sono degli errori
+        //li inserisco nella varibile che poi stamperò
+        $erroriDaMostrare .= $controlloDati;
     }
 }
 
-require_once("funzioni.php");
-$paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
-
-$campiErrati = ($campiErrati) ? '<span class="erroreCampiForm">Alcuni campi inseriti non rispettano le sintassi corretta o sono vuoti </ span>' : "";
-$paginaHTML = str_replace("<campiErrati />", $campiErrati, $paginaHTML);
+if ($erroriDaMostrare !== '') {
+    $erroriDaMostrare = '<div class="erroreCampiForm"><ul>' . $erroriDaMostrare . '</ul></div>';
+    
+    //torno inserire nel form i dati dell'utente
+    //ho la certezza ogni comando farà un unica sostituzione perché l'id deve esere unico in una pagina HTML
+    $paginaHTML = str_replace('id="nome"', 'id="nome" value="' . $nome . '"', $paginaHTML);
+    $paginaHTML = str_replace('id="cognome"', 'id="conome" value="' . $cognome . '"', $paginaHTML);
+    $paginaHTML = str_replace('id="telefono"', 'id="telefono" value="' . $telefono . '"', $paginaHTML);
+    $paginaHTML = str_replace('id="email"', 'id="email" value="' . $email . '"', $paginaHTML);
+}
+$paginaHTML = str_replace("<erroriDaMostrare />", $erroriDaMostrare, $paginaHTML);
 
 echo $paginaHTML;

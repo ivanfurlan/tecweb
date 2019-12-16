@@ -45,12 +45,12 @@ print_r($_POST);
 print_r($_GET);
 */
 
-if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true && isset($_GET['azione']) && ($_GET['azione'] == 'aggiungi' || $_GET['azione'] == 'modifica')) {
+if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true && isset($_GET['azione']) && ($_GET['azione'] == 'aggiungi' || ($_GET['azione'] == 'modifica' && isset($_GET['notizia']) && $_GET['notizia'] != ''))) {
 
     $azione = ucfirst($_GET['azione']);
     $titoloNotizia = '';
     $contenutoNotizia = '';
-    if ($azione == "Modifica" && isset($_GET['notizia']) && $_GET['notizia'] != '') {
+    if ($azione == "Modifica") {
         $result = $oggettoConnessione->getNotiziaDaModificare($_GET['notizia']);
         //print_r($result);
         $titoloNotizia = $result['Titolo'];
@@ -62,7 +62,7 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true && isset($_GET['
                                     <label for="titolo">Titolo</label>
                                     <input type="text" name="titolo" id="titolo" value="' . htmlentities($titoloNotizia) . '"/>
                                     <label for="contenuto">Testo della notizia: </label>
-                                    <textarea name="contenuto" rows="7" cols="40" title="Contenuto della notizia">' . htmlentities($contenutoNotizia) . ' </textarea>
+                                    <textarea name="contenuto" id="contenuto" rows="7" cols="40" title="Contenuto della notizia">' . htmlentities($contenutoNotizia) . ' </textarea>
                                     <input type="submit" name="azione" value="' . $azione . '" />
                                 </fieldset>
                             </form>';
@@ -92,6 +92,10 @@ if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true && isset($_GET['
         $paginaHTML = str_replace("<listaDelleNotizie />", $stringaNotizie, $paginaHTML);
     } else {
         $stringaNotizie = "<p>Attualmente non sono presenti notizie. Riprova nei giorni seguenti.</p>";
+
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+            $stringaNotizie .= '<p> <a href="notizie.php?azione=aggiungi">Nuova notizia</a> </p>';
+        }
         $paginaHTML = str_replace("<listaDelleNotizie />", $stringaNotizie, $paginaHTML);
     }
 }
