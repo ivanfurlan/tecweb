@@ -138,15 +138,21 @@ class DBAccess
 
     public function modificaNotizia($idNotizia, $titoloNotizia, $contenutoNotizia)
     {
-        echo $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
-        echo $queryResult = mysqli_query($this->connection, $query);
+         $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
+         $queryResult = mysqli_query($this->connection, $query);
         return (mysqli_affected_rows($this->connection) == 1);
     }
 
     public function aggiungiNotizia($titoloNotizia, $contenutoNotizia)
     {
-        echo $query = "INSERT INTO `Notizie` (`Data`, `Titolo`, `Contenuto`) VALUES (CURRENT_DATE(), '" . mysqli_real_escape_string($this->connection, $titoloNotizia) . "', '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "');";
-        echo $queryResult = mysqli_query($this->connection, $query);
+         $query = "INSERT INTO `Notizie` (`Data`, `Titolo`, `Contenuto`) VALUES (CURRENT_DATE(), '" . mysqli_real_escape_string($this->connection, $titoloNotizia) . "', '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "');";
+         $queryResult = mysqli_query($this->connection, $query);
         return (mysqli_affected_rows($this->connection) == 1);
+    }
+    public function controllaDisponibilita($anno, $mese, $giorno, $tipovisita)
+    {
+        $query = "SELECT * FROM `Visite` WHERE `Visite`.`id`=$idNotizia;";
+        $queryResult = mysqli_query($this->connection, $query);
+
     }
 }

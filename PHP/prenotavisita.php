@@ -71,10 +71,13 @@ if (isset($_SESSION['emailUtente'])) {
                             <option value="31">31</option>
                         </select>
                         <br />
-                        <input type="radio" name="tipovisita" id="impedenzometria" value="impedenzometria" checked="checked" /> <label for="impedenzometria">Impedenzometria</label> <br />
-                        <input type="radio" name="tipovisita" id="citologianasale" value="citologianasale" /> <label for="citologianasale">Citologia nasale</label><br />
-                        <input type="radio" name="tipovisita" id="otomicroscopia" value="otomicroscopia" /> <label for="otomicroscopia">Otomicroscopia</label><br />
-                        <input type="radio" name="tipovisita" id="posturografia" value="posturografia" /> <label for="posturografia">Posturografia</label><br />
+                        <label for="tipovisita">Visita:</label>
+                        <select name="tipovisita" id="tipovisita">
+                            <option value="impedenzometria" selected="selected">Impedenzometria</option>
+                            <option value="citologianasale" >Citologia Nasale</option>
+                            <option value="otomicroscopia" >Otomicroscopia</option>
+                            <option value="posturografia">Posturografia</option>  
+                        </select>
 
                         <button type="button" onclick="controllaDisponibilita()">Controlla disponibilit&agrave;</button>
                     </fieldset>

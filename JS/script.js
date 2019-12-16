@@ -123,16 +123,22 @@ function controllaDisponibilita() {
 
     var x = document.getElementById("sceltaOrario");
     x.classList.remove("nascosto");
-
+    var giorno= document.getElementById("giorno").value;
+    var anno= document.getElementById("anno").value;
+    var mese= document.getElementById("mese").value;
+    var tipovisita= document.getElementById("tipovisita").value;
+    
     // Create a request variable and assign a new XMLHttpRequest object to it.
     var request = new XMLHttpRequest();
 
     // Bisogna modificare la richiesca in modo che invii la data e la visita scelte
-    request.open('GET', "controllaDisponibilita.php", true);    // DA MODIFICARE
-
+    request.open('POST', "controllaDisponibilita.php", true);    // DA MODIFICARE
+    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    var params='giorno='+giorno+'&mese='+mese+'&anno='+anno+'&visita='+tipovisita;
     request.onload = function () {
         // Begin accessing JSON data here
-        var orari = JSON.parse(this.response);
+       
+       var orari = JSON.parse(this.response);
 
         for (i = 8; i <= 11; i++) {
             stampaOrario(i, orari[i]);
@@ -145,7 +151,7 @@ function controllaDisponibilita() {
     }
 
     // Send request
-    request.send();
+    request.send(params);
 
 
 }
