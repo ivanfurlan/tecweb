@@ -120,45 +120,63 @@ function setSubmitForJS() {
 }
 
 function controllaDisponibilita() {
+    document.getElementById("sceltaGiornoVisita").setAttribute("onChange", "nascondiOrari()")
+    resetOrario();
+    var formSceltaOrario = document.getElementById("sceltaOrario");
+    var giorno = document.getElementById("giorno").value;
+    var mese = document.getElementById("mese").value;
+    var anno = document.getElementById("anno").value;
+    var tipoVisita = document.getElementById("tipovisita").value;
 
-    var x = document.getElementById("sceltaOrario");
-    x.classList.remove("nascosto");
-    var giorno= document.getElementById("giorno").value;
-    var anno= document.getElementById("anno").value;
-    var mese= document.getElementById("mese").value;
-    var tipovisita= document.getElementById("tipovisita").value;
-    
-    // Create a request variable and assign a new XMLHttpRequest object to it.
     var request = new XMLHttpRequest();
 
-    // Bisogna modificare la richiesca in modo che invii la data e la visita scelte
-    request.open('POST', "controllaDisponibilita.php", true);    // DA MODIFICARE
-    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    var params='giorno='+giorno+'&mese='+mese+'&anno='+anno+'&visita='+tipovisita;
+    request.open('POST', "controllaDisponibilita.php", true);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    var params = 'giorno=' + giorno + '&mese=' + mese + '&anno=' + anno + '&tipovisita=' + tipoVisita;
     request.onload = function () {
-        // Begin accessing JSON data here
-       
-       var orari = JSON.parse(this.response);
+        //console.log(this.response);
 
-        for (i = 8; i <= 11; i++) {
-            stampaOrario(i, orari[i]);
-            console.log(i);
-        }
-        for (i = 16; i <= 18; i++) {
-            stampaOrario(i, orari[i]);
-            console.log(i);
+        var orari = JSON.parse(this.response);
+
+        try {
+            orari.forEach(orario => {
+                stampaOrario(orario['ora'], orario['disponibilita']);
+                console.log(orario);
+            });
+        } catch (e) {
+            // Se entra qua è perché da errore che non esiste la funzione "array.forEach()", 
+            // il che è normale perché può essere che la pagina non restituisca niente se non ci sono visite prenotate. 
+            // Non riesco a fare in alro modo se non con un try chatch. Ho provato con if(orari){ ... } ma non va
+
+            console.log(e);
         }
     }
 
     // Send request
     request.send(params);
+    formSceltaOrario.classList.remove("nascosto");
+}
 
+function resetOrario(orario, disponibilita) {
+    var orari = document.getElementsByName("orario");
+    orari.forEach(orario => {
+        orario.checked = false;
+        if (orario.hasAttribute("disabled")) {
+            orario.removeAttribute("disabled");
+        }
+    })
 
 }
 
 function stampaOrario(orario, disponibilita) {
-
-    if (disponibilita == "no") {
+    if (disponibilita == false) {
         document.getElementById("ore" + orario).setAttribute("disabled", "disabled");
     }
+}
+
+function nascondiOrari(orario, disponibilita) {
+    var formSceltaOrario = document.getElementById("sceltaOrario");
+    formSceltaOrario.removeAttribute("onChange");
+    formSceltaOrario.classList.add("nascosto");
+
 }

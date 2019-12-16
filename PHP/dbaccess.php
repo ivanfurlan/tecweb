@@ -138,21 +138,41 @@ class DBAccess
 
     public function modificaNotizia($idNotizia, $titoloNotizia, $contenutoNotizia)
     {
-         $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
-         $queryResult = mysqli_query($this->connection, $query);
+        $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
+        $queryResult = mysqli_query($this->connection, $query);
         return (mysqli_affected_rows($this->connection) == 1);
     }
 
     public function aggiungiNotizia($titoloNotizia, $contenutoNotizia)
     {
-         $query = "INSERT INTO `Notizie` (`Data`, `Titolo`, `Contenuto`) VALUES (CURRENT_DATE(), '" . mysqli_real_escape_string($this->connection, $titoloNotizia) . "', '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "');";
-         $queryResult = mysqli_query($this->connection, $query);
+        $query = "INSERT INTO `Notizie` (`Data`, `Titolo`, `Contenuto`) VALUES (CURRENT_DATE(), '" . mysqli_real_escape_string($this->connection, $titoloNotizia) . "', '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "');";
+        $queryResult = mysqli_query($this->connection, $query);
         return (mysqli_affected_rows($this->connection) == 1);
     }
-    public function controllaDisponibilita($anno, $mese, $giorno, $tipovisita)
-    {
-        $query = "SELECT * FROM `Visite` WHERE `Visite`.`id`=$idNotizia;";
-        $queryResult = mysqli_query($this->connection, $query);
 
+    public function controllaDisponibilita($giorno, $mese, $anno, $tipoVisita)
+    {
+        $data = "$anno-$mese-$giorno";
+        $query = "SELECT HOUR(`Ora`) AS `Ora` FROM `Visite` WHERE `Giorno`='$data' AND `Tipologia`='$tipoVisita';";
+        $queryResult = mysqli_query($this->connection, $query);
+        if (mysqli_num_rows($queryResult) == 0) {
+            return NULL;
+        } else {
+            $result = array();
+
+            while ($row = mysqli_fetch_assoc($queryResult)) {
+                $result[] = ['ora' => $row['Ora'], 'disponibilita' => false];
+            }
+
+            return $result;
+        }
+    }
+
+    public function prenotaVisita($emailUtente, $giorno, $mese, $anno, $ora, $tipoVisita)
+    {
+        $data = "$anno-$mese-$giorno";
+        $query = "INSERT INTO `Visite` (`Giorno`, `Ora`, `Tipologia`, `EmailUtente`) VALUES ('$data','$ora','$tipoVisita','$emailUtente');";
+        $queryResult = mysqli_query($this->connection, $query);
+        return (mysqli_affected_rows($this->connection) == 1);
     }
 }

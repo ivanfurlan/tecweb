@@ -3,15 +3,36 @@ session_start();
 if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
     header('location: visiteprenotate.php');
 }
+
+require_once("dbaccess.php");
+$oggettoConnessione = new DBAccess();
+$connessioneOK = $oggettoConnessione->openDBConnection();
+
+if (!$connessioneOK) {
+    header("location: 500.php?errore=connessione_db");
+}
+
+//print_r($_POST);
+if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['anno'], $_POST['tipovisita'], $_POST['orario']) && $_POST['orario'] != '') {
+    $result = $oggettoConnessione->prenotaVisita($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['anno'], $_POST['orario'], $_POST['tipovisita']);
+    if (!$result) {
+        header("location: 500.php?errore=inserimento_nuova_visita");
+    } else {
+        //per cancellare variabili post così l'utente può aggiornre la pagina senza ricevere errori
+        header("location: prenotavisita.php");
+    }
+}
+
 require_once("funzioni.php");
 $paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 
 $pageContent = "";
+$visitePrenotate = "";
 if (isset($_SESSION['emailUtente'])) {
     $pageContent .= '
             <form action="prenotavisita.php" method="post">
                 <div class="colonna1">
-                    <fieldset>
+                    <fieldset id="sceltaGiornoVisita">
                         <legend>Scegli il giorno e il tipo di visita</legend>
 
                         <label for="anno">Anno:</label>
@@ -73,13 +94,13 @@ if (isset($_SESSION['emailUtente'])) {
                         <br />
                         <label for="tipovisita">Visita:</label>
                         <select name="tipovisita" id="tipovisita">
-                            <option value="impedenzometria" selected="selected">Impedenzometria</option>
-                            <option value="citologianasale" >Citologia Nasale</option>
-                            <option value="otomicroscopia" >Otomicroscopia</option>
-                            <option value="posturografia">Posturografia</option>  
+                            <option value="Impedenzometria" selected="selected">Impedenzometria</option>
+                            <option value="Citologianasale" >Citologia Nasale</option>
+                            <option value="Otomicroscopia" >Otomicroscopia</option>
+                            <option value="Posturografia">Posturografia</option>  
                         </select>
 
-                        <button type="button" onclick="controllaDisponibilita()">Controlla disponibilit&agrave;</button>
+                        <button type="button" onclick="controllaDisponibilita()">Mostra orari disponibili</button>
                     </fieldset>
                 </div>
                 <!--da fare in modo che quando Click Controlla disponibilit&agrave viene fuori questa form -->
@@ -87,25 +108,25 @@ if (isset($_SESSION['emailUtente'])) {
                     <fieldset id="sceltaOrario" class="nascosto">
                         <legend>Scegli l&rsquo;orario della visita</legend>
 
-                        <input type="radio" name="orario" id="ore8" value="8:00" />
+                        <input type="radio" name="orario" id="ore8" value="08:00:00" />
                         <label for="ore8">Ore 8:00-9:00</label>
 
-                        <input type="radio" name="orario" id="ore9" value="9:00" />
+                        <input type="radio" name="orario" id="ore9" value="09:00:00" />
                         <label for="ore9">Ore 9:00-10:00</label>
 
-                        <input type="radio" name="orario" id="ore10" value="10:00" />
+                        <input type="radio" name="orario" id="ore10" value="10:00:00" />
                         <label for="ore10">Ore 10:00-11:00</label>
 
-                        <input type="radio" name="orario" id="ore11" value="11:00" />
+                        <input type="radio" name="orario" id="ore11" value="11:00:00" />
                         <label for="ore11">Ore 11:00-12:00</label>
 
-                        <input type="radio" name="orario" id="ore16" value="16:00" />
+                        <input type="radio" name="orario" id="ore16" value="16:00:00" />
                         <label for="ore16">Ore 16:00-17:00</label>
 
-                        <input type="radio" name="orario" id="ore17" value="17:00" />
+                        <input type="radio" name="orario" id="ore17" value="17:00:00" />
                         <label for="ore17">Ore 17:00-18:00</label>
 
-                        <input type="radio" name="orario" id="ore18" value="18:00" />
+                        <input type="radio" name="orario" id="ore18" value="18:00:00" />
                         <label for="ore18">Ore 18:00-19:00</label>
 
                         <input type="submit" value="Prenota visita" />
@@ -113,6 +134,19 @@ if (isset($_SESSION['emailUtente'])) {
 
                 </div>
             </form>';
+    
+    $visitePrenotate .= '<h1>Le mie visite future</h1>';
+    //da fare ciclo per visite future (da fare anche relativa funzione in dbaccess.php)
+    $visitePrenotate .= '<ul class="elencoPuntato">
+                            <li>Il giorno '.$data.' alle ore '.$ora.' avrai una visita di '.$tipoVisita.' presso il nostro studio.</li>
+                        </ul>';
+
+
+    $visitePrenotate .= '<h1>Le mie visite passate</h1>';
+    //da fare ciclo per visite passate (da fare anche relativa funzione in dbaccess.php)
+    $visitePrenotate .= '<ul class="elencoPuntato">
+                            <li>Il giorno '.$data.' alle ore '.$ora.' sei stato ad una visita di '.$tipoVisita.' presso il nostro studio.</li>
+                        </ul>';
 } else {
     $pageContent .= '
                 <p><a href="accedi.php" title="Pagina per accedere">Effettua il login</a>, oppure <a href="registrati.php" title="Pagina per registrarsi">registrati</a>, per poter prenotare una visita con il Dottor Marco Donati in uno degli orari ancora disponibili.
@@ -121,5 +155,6 @@ if (isset($_SESSION['emailUtente'])) {
 }
 
 $paginaHTML = str_replace("<pageContent />", $pageContent, $paginaHTML);
+$paginaHTML = str_replace("<visitePrenotate />", $visitePrenotate, $paginaHTML);
 
 echo $paginaHTML;

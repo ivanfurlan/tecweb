@@ -144,6 +144,7 @@ admin
 psw3
 psw1
 psw2
+123456
 psw4
 */
 
@@ -167,7 +168,8 @@ INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES
 DROP TABLE IF EXISTS `Visite`;
 CREATE TABLE `Visite` (
   `id` int(11) NOT NULL,
-  `GiornoOra` datetime NOT NULL,
+  `Giorno` date NOT NULL,
+  `Ora` time NOT NULL,
   `Tipologia` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `EmailUtente` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -187,11 +189,13 @@ TRUNCATE TABLE `Visite`;
 -- Dump dei dati per la tabella `Visite`
 --
 
-INSERT INTO `Visite` (`id`, `GiornoOra`, `Tipologia`, `EmailUtente`) VALUES
-(1, '2020-04-13 08:00:00', 'Posturografia', 'francescobari@gmail.com'),
-(2, '2019-10-13 09:00:00', 'Otomicroscopia', 'samueledegrandi@gmail.com'),
-(3, '2020-01-17 00:00:00', 'Impedenzometria', 'francescobari@gmail.com'),
-(4, '2020-02-20 18:00:00', 'Posturografia', 'sofiabianchi@gmail.com');
+INSERT INTO `Visite` (`id`, `Giorno`,`Ora`, `Tipologia`, `EmailUtente`) VALUES
+(1, '2020-04-13','08:00:00', 'Posturografia', 'francescobari@gmail.com'),
+(2, '2019-10-13','09:00:00', 'Otomicroscopia', 'samueledegrandi@gmail.com'),
+(3, '2020-01-17','17:00:00', 'Impedenzometria', 'francescobari@gmail.com'),
+(4, '2019-01-01','18:00:00', 'Impedenzometria', 'sofiabianchi@gmail.com'),
+(5, '2019-01-01','16:00:00', 'Impedenzometria', 'sofiabianchi@gmail.com'),
+(6, '2019-01-01','11:00:00', 'Impedenzometria', 'sofiabianchi@gmail.com');
 
 --
 -- Indici per le tabelle scaricate
@@ -220,7 +224,7 @@ ALTER TABLE `Utenti`
 --
 ALTER TABLE `Visite`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `GiornoOra` (`GiornoOra`),
+  ADD UNIQUE KEY (`Giorno`,`Ora`),
   ADD KEY `Visite-Utente` (`EmailUtente`);
 
 --

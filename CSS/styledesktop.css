@@ -9,6 +9,10 @@
     margin: 0em;
 }
 
+.elencoPuntato{
+    padding-left: 3em;
+}
+
 .nascosto{
     display: none;
 }
