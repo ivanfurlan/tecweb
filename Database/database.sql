@@ -148,10 +148,11 @@ psw4
 */
 
 INSERT INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES
-('admin@admin.com', 'Marco', 'Donati', '3450178933', 'add033e22ae348aeb5660fc2140aec35850c4da997min'),
+('admin@admin.com', 'Marco', 'Donati', '3450178933', 'D033E22AE348AEB5660FC2140AEC35850C4DA997'),
 ('enricograzioli@gmail.com', 'Enrico', 'Grazioli', '3460010229', '7b782fe243e6acb05ff22c4550a0f6267eaa0f9f'),
 ('francescobari@gmail.com', 'Francesco', 'Bari', '3490011234', 'd4984b53b41267bfe713ffcef01d720e3932c99a'),
 ('samueledegrandi@gmail.com', 'Samuele', 'De Grandi', '3459184440', '7b4c1e6894ef5ad8aff3346ef8cc0b49dab6ee2a'),
+('ivanfurlan98@gmail.com', 'Ivan', 'Furlan', '3496682884', '7C4A8D09CA3762AF61E59520943DC26494F8941B'),
 ('sofiabianchi@gmail.com', 'Sofia', 'Bianchi', '3496682884', '9829340df593a647d3bc712e3c15b45c3d9da426');
 
 -- --------------------------------------------------------
