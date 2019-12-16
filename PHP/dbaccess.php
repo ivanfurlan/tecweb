@@ -47,7 +47,7 @@ class DBAccess
 
     public function inserisciMessaggioChat($email, $nuovoMessaggio, $isAdmin)
     {
-        $query = "INSERT INTO `Messaggi` (`EmailUtente`, `TimeInvio`, `Messaggio`, `IsDottore`) VALUES ('$email', CURRENT_TIMESTAMP, '$nuovoMessaggio', $isAdmin);";
+        $query = "INSERT INTO `Messaggi` (`EmailUtente`, `TimeInvio`, `Messaggio`, `IsDottore`) VALUES ('$email', CURRENT_TIMESTAMP, '" . mysqli_real_escape_string($this->connection, $nuovoMessaggio) . "', $isAdmin);";
         return mysqli_query($this->connection, $query);
     }
 
