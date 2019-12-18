@@ -156,8 +156,6 @@ function getPaginaHTML($pageName)
 }
 
 
-
-
 /* Funzione che ricevute in ingresso le credenziali del form di registrazione, ritorna true sse tutti
 i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispondenti), 
 altrimenti una stringa contenente gli errori. */
@@ -194,4 +192,10 @@ function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $passw
     }
 
     return (($listaErrori === '') ? true : $listaErrori); //ritorna true se non ci sono errori, altrimenti la lista degli errori
+}
+
+function dataGiaPassata($giorno, $mese, $anno)
+{
+    //ritorna true anche se la data è == oggi
+    return (mktime(0, 0, 0, $mese, $giorno, $anno) <= mktime(0, 0, 0, date("m"), date("d"), date("Y")));
 }

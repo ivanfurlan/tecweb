@@ -206,6 +206,17 @@ class DBAccess
         }
     }
 
+    //controllo che un orario sia disponibile - Funzione chiamata da PHP prima di inserire
+    public function dataOraVisitaDisponibile($giorno, $mese, $anno, $ora)
+    {
+        $data = "$anno-$mese-$giorno";
+        $query = "SELECT false FROM `Visite` WHERE `Giorno`='$data' AND `Ora`='$ora'; ";
+        $queryResult = mysqli_query($this->connection, $query);
+
+        //true se disponibile, false altrimenti
+        return (mysqli_num_rows($queryResult) == 0);
+    }
+
     //return true se la visita è stata prenotata, false altrimenti
     public function prenotaVisita($emailUtente, $giorno, $mese, $anno, $ora, $tipoVisita)
     {

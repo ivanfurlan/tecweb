@@ -67,7 +67,7 @@ if (isset($_SESSION['isAdmin'],$_GET['azione']) && $_SESSION['isAdmin'] == true 
         $titoloNotizia = $result['Titolo'];
         $contenutoNotizia = $result['Contenuto'];
     }
-    //inserisco il form, preimpostando i value se si sta efettuando una modifica (altrimenti le varibili essendo vuote non inseriranno niente)
+    //inserisco il form, preimpostando i value se si sta effettuando una modifica (altrimenti le varibili essendo vuote non inseriranno niente)
     $stringaFormNotizia .= '<form action="notizie.php' . (($azione == "Modifica")?'?notizia='.$_GET['notizia']:'') . '" method="post">
                                 <fieldset>
                                     <legend class="nascosto">' . $azione . ' notizia</legend>

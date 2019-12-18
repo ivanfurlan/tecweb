@@ -116,23 +116,51 @@ function validaRegistrati() {
 }
 
 function setSubmitForJS() {
+    //viene eseguita solo se c'è javascript
+
+    //questa funzione fa si che a chi ha js attivo vengano fatti i controlli sui campi prima di inviare la forma,
+    //mentre chi non ha js attivo non viene eseguita questa funzoine e quindi gli viene lasciata la pagina così com'è, ma comunque utilizzabile
     document.getElementById("btnSubmit").setAttribute("type", "button");
 }
 
+function setPrenotaVisitaForJS(){
+    //viene eseguita solo se c'è javascript
+
+    //questa funzione fa si che a chi ha js attivo venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina php per controllare la disponibilità),
+    //mentre chi non ha js attivo non viene eseguita questa funzoine e quindi gli viene lasciata la pagina così com'è impostata in html e quindi comunque utilizzabile.
+    document.getElementById("btnControllaDisponibilita").classList.remove("nascosto");
+    document.getElementById("sceltaOrario").classList.add("nascosto");
+}
+
+primaControlloDisponibilita = true;
 function controllaDisponibilita() {
-    document.getElementById("sceltaGiornoVisita").setAttribute("onChange", "nascondiOrari()")
+    //dopo la prima volta che controllo la disponibilità degli orari imposto che se si va a modificare la data allora mi torna nascondere gli orari disponibili, 
+    //così da non rendere possibile che gli orari disponibili a schermo non si riferiscano alla data impostata
+    if (primaControlloDisponibilita) {
+        var idData = ['giorno', 'mese', 'anno'];
+        idData.forEach(id => {
+            //non chiamo la funzione controllaDisponibilita() per non dare l'illusione che il sito non funzionasse se gli orari disponibili non cambianno tra le due date inserite, quindi ho preferito nascondere gli orari
+            document.getElementById(''+id).setAttribute("onChange", "nascondiOrari()");
+        });
+        primaControlloDisponibilita = false;
+    }
+
+    //metto tutti gli orari come disponibili prima di fare la richiesta di quelli non disponibili
     resetOrario();
+
     var formSceltaOrario = document.getElementById("sceltaOrario");
     var giorno = document.getElementById("giorno").value;
     var mese = document.getElementById("mese").value;
     var anno = document.getElementById("anno").value;
     var tipoVisita = document.getElementById("tipovisita").value;
 
+    //preparo la richiesta
     var request = new XMLHttpRequest();
 
     request.open('POST', "controllaDisponibilita.php", true);
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     var params = 'giorno=' + giorno + '&mese=' + mese + '&anno=' + anno + '&tipovisita=' + tipoVisita;
+    //funzione che viene chiamata una volta inviata la richiesta
     request.onload = function () {
         //console.log(this.response);
 
@@ -140,7 +168,7 @@ function controllaDisponibilita() {
 
         try {
             orari.forEach(orario => {
-                stampaOrario(orario['ora'], orario['disponibilita']);
+                impostaOrario(orario['ora'], orario['disponibilita']);
                 console.log(orario);
             });
         } catch (e) {
@@ -152,12 +180,15 @@ function controllaDisponibilita() {
         }
     }
 
-    // Send request
+    // Invio la richiesta alla pagina php
     request.send(params);
+
+    //rendo visibile il secondo pezzo del form
     formSceltaOrario.classList.remove("nascosto");
 }
 
 function resetOrario(orario, disponibilita) {
+    //tolgo l'attributo disabled a tutti gli orari che dovessero avercelo
     var orari = document.getElementsByName("orario");
     orari.forEach(orario => {
         orario.checked = false;
@@ -168,15 +199,16 @@ function resetOrario(orario, disponibilita) {
 
 }
 
-function stampaOrario(orario, disponibilita) {
+function impostaOrario(orario, disponibilita) {
+    //imposto l'orario come non disponibile se disponibilita==false
     if (disponibilita == false) {
         document.getElementById("ore" + orario).setAttribute("disabled", "disabled");
     }
 }
 
 function nascondiOrari(orario, disponibilita) {
+    //nascondo tutti gli orari
     var formSceltaOrario = document.getElementById("sceltaOrario");
-    formSceltaOrario.removeAttribute("onChange");
     formSceltaOrario.classList.add("nascosto");
 
 }
