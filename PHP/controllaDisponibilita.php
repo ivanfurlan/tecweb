@@ -10,7 +10,17 @@ if (!$connessioneOK) {
     header("location: 500.php?errore=connessione_db");
 }
 
-$result = $oggettoConnessione->controllaDisponibilita($_POST['giorno'], $_POST['mese'], $_POST['anno'], $_POST['tipovisita']);
+//se non ci sono variabili impostate ritorno un 404 (per esempio se uno prova ad acedere alla pagina da browser)
+if (!isset($_POST['giorno'], $_POST['mese'], $_POST['anno'])) {
+    header("location: 404.php");
+}
+
+//non serve controllare che la data sia corretta, perché questa pagina viene chiamata SOLTANTO da javascript,
+//quindi se viene chiamata vuol dire che javascript è attivo ed ha già fatto i controlli
+
+//Anche venisse chiamata con una data non corretta in altri modi, non ci sarebbero problemi, verrebbero solo date informazioni vecchie, o nessuna informazione se la data è semanticamente sbagliata (al massimo un errore)
+
+$result = $oggettoConnessione->controllaDisponibilita($_POST['giorno'], $_POST['mese'], $_POST['anno']);
 
 header('Content-type: text/javascript');
 if ($result !== NULL) {

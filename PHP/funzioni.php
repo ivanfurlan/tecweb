@@ -1,5 +1,15 @@
 <?php
 
+if (strpos($_SERVER['PHP_SELF'], 'funzioni.php') !== false) {
+    //se uno prova ad accedere a questa pagina da browser ritorno un 404, come se la pagina non esistesse
+    header("location: 404.php");
+}
+
+//mostro errori PHP
+//da rimuovere o commentare quando si consegna
+//ini_set('display_errors','On');
+//error_reporting(E_ALL);
+
 /* Funzione che ricevuto in ingresso la pagina corrente recupera il file HTML e successivamente:
     - ci inserisce HEADER e FOOTER
     - mostra il pulsante esci se si è loggati
@@ -149,11 +159,10 @@ function getPaginaHTML($pageName)
 
 
 /* Funzione che ricevute in ingresso le credenziali del form di registrazione, ritorna true sse tutti
-i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispondenti)
+i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispondenti), 
+altrimenti una stringa contenente gli errori. */
 
-Ritorna true se non ci sono errori, altrimenti una stringa contenente gli errori, 
-quindi occhio, bisogna fare il controllo con ===true (tre uguali)
-*/
+//Occhio, bisogna fare il controllo con ===true (tre uguali), perché if(controlloCampiDatiRegistrati(...) ) darà sempre true essendo la stringa ritornata valutata true (siccome non è vuota e contiene gli errori)
 function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $password, $confermapassword)
 {
     $listaErrori = '';
