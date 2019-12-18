@@ -154,7 +154,7 @@ i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispo
 Ritorna true se non ci sono errori, altrimenti una stringa contenente gli errori, 
 quindi occhio, bisogna fare il controllo con ===true (tre uguali)
 */
-function controlloCampiDati($nome, $cognome, $telefono, $email, $password, $confermapassword)
+function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $password, $confermapassword)
 {
     $listaErrori = '';
 

@@ -1,8 +1,11 @@
 <?php
+//includo le credenziali
 require_once("credenzialiDatabase.php");
 
+//classe che gestisce tutte le comuhnicazioni con il database
 class DBAccess
-{
+{   
+    //imposto le credenziali inserite sul file
     const HOST_DB = servername_db;
     const USERNAME = username_db;
     const PASSWORD = password_db;
@@ -10,13 +13,15 @@ class DBAccess
 
     public $connection = NULL;
 
+    //distruttore della classe che chiude la connessione
     function __destruct()
-    {
+    {  
         if ($this->connection) {
             mysqli_close($this->connection);
         }
     }
 
+    //apro la connessione
     public function openDBConnection()
     {
         $this->connection = mysqli_connect(static::HOST_DB, static::USERNAME, static::PASSWORD, static::DATABASE_NAME);
@@ -27,14 +32,18 @@ class DBAccess
             return true;
     }
 
+    //ritorna la lista delle notizie, o null se non ce ne sono
     public function getNotizie()
     {
         $query = "SELECT * FROM `Notizie` ORDER BY `Data` DESC;";
         $queryResult = mysqli_query($this->connection, $query);
 
         if (mysqli_num_rows($queryResult) == 0) {
+            //non ci sono notizie
             return NULL;
         } else {
+            //ci sono notizie
+            //creo array da ritornare
             $result = array();
 
             while ($row = mysqli_fetch_assoc($queryResult)) {
@@ -45,19 +54,23 @@ class DBAccess
         }
     }
 
+    //inserisco un messaggio nella chat di consulti online
     public function inserisciMessaggioChat($email, $nuovoMessaggio, $isAdmin)
     {
         $query = "INSERT INTO `Messaggi` (`EmailUtente`, `TimeInvio`, `Messaggio`, `IsDottore`) VALUES ('$email', CURRENT_TIMESTAMP, '" . mysqli_real_escape_string($this->connection, $nuovoMessaggio) . "', $isAdmin);";
         return mysqli_query($this->connection, $query);
     }
 
+    //restituisce la lista dei messaggi della chat consultionline, o null se non ci sono mesasggi
     public function getMessaggiChat($emailChat)
     {
         $query = "SELECT * FROM `Messaggi` WHERE `EmailUtente` = '$emailChat' ORDER BY `TimeInvio` ASC";
         $queryResult = mysqli_query($this->connection, $query);
         if (mysqli_num_rows($queryResult) == 0) {
+            //non ci sono messaggi
             return NULL;
         } else {
+            //creo l'array da restituire con tutti i messaggi della chat
             $result = array();
 
             while ($row = mysqli_fetch_assoc($queryResult)) {
@@ -68,13 +81,16 @@ class DBAccess
         }
     }
 
+    //chiamabile solo se si e' admin. Restituisce la lista delle chat, o null se non ce ne sono
     public function getChatList()
     {
         $query = "SELECT `EmailUtente`, MAX(`TimeInvio`) AS `TimeInvio` FROM `Messaggi` GROUP BY `EmailUtente` ORDER BY `TimeInvio` DESC";
         $queryResult = mysqli_query($this->connection, $query);
         if (mysqli_num_rows($queryResult) == 0) {
+            //non ci sono utenti che hanno iniziato una chat
             return NULL;
         } else {
+            //qualcuno ha iniziato una chat, quindi restituisco un array con le chat
             $result = array();
 
             while ($row = mysqli_fetch_assoc($queryResult)) {
@@ -85,6 +101,8 @@ class DBAccess
         }
     }
 
+    //true o false se qualcuno ha prenotato una visita
+    //DA MODIFICARE MAGARI METTENDO COME PARAMETRI UNA DATA (tipo se ci sono visite oggi, o da oggi in poi )
     public function ciSonoVisitePrenotate()
     {
         $query = "SELECT * FROM `Visite`;";
