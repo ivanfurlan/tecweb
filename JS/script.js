@@ -154,6 +154,30 @@ function controllaDisponibilita() {
     var anno = document.getElementById("anno").value;
     var tipoVisita = document.getElementById("tipovisita").value;
 
+    // controllo se la data scelta e' corretta o no 
+    var check= isValidDate(giorno+'/'+mese+'/'+anno);
+    // alert(check);
+
+    // se check =false -> data non corretta 
+    if(!check)  {
+        alert('La data scelta non corretto!!');
+        return false;
+    }
+
+    var dataCorrente = new Date();
+    var dataScelto = new Date();
+     
+    // impostare la data scelta 
+    dataScelto.setFullYear (anno);
+    dataScelto.setMonth (mese-1); // perche' indice parte da 0 a 11 
+    dataScelto.setDate (giorno);
+
+    // controllo se la data e' gia passato o no 
+    if(dataScelto<=dataCorrente){
+        alert('Scegli un giorno futuro');
+        return false;
+    }
+     
     //preparo la richiesta
     var request = new XMLHttpRequest();
 
