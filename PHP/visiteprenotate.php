@@ -23,9 +23,15 @@ $result = $oggettoConnessione->ciSonoVisitePrenotate();
 $pageContent = '';
 if ($result) {
     //ci sono visite prenotate
-
-    //DA FARE
-    $pageContent .=  '<p>Oh, qualcuno ha prenotato una visita, ma ancora non sono in grado di dirchi chi è e quando verrà</p>';
+    $pageContent .= '<h2>Visite di oggi</h2><ul class="elencoPuntato">';
+    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("o"));
+    $pageContent .= '</ul>';
+    $pageContent .= '<h2>Visite nei prossimi 7 giorni</h2><ul class="elencoPuntato">';
+    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("f7"));
+    $pageContent .= '</ul>';
+    $pageContent .= '<h2>Ultime 20 visite passate</h2><ul class="elencoPuntato">';
+    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p"));
+    $pageContent .= '</ul>';
 } else {
     //non ci sono visite prenotate
     $pageContent .=  '<p>Al momento nessuno ha prenotato una visita</p>';

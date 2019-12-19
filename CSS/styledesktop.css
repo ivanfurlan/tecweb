@@ -9,6 +9,10 @@
     margin: 0em;
 }
 
+.grassetto{
+    font-weight: bold;
+}
+
 .elencoPuntato{
     padding-left: 3em;
 }

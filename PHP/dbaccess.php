@@ -8,7 +8,7 @@ if (strpos($_SERVER['PHP_SELF'], 'dbaccess') !== false) {
 }
 //classe che gestisce tutte le comuhnicazioni con il database
 class DBAccess
-{   
+{
     //imposto le credenziali inserite sul file
     const HOST_DB = servername_db;
     const USERNAME = username_db;
@@ -19,7 +19,7 @@ class DBAccess
 
     //distruttore della classe che chiude la connessione
     function __destruct()
-    {  
+    {
         if ($this->connection) {
             mysqli_close($this->connection);
         }
@@ -36,6 +36,17 @@ class DBAccess
             return true;
     }
 
+    private function returnAsArray($queryResult)
+    {
+        $result = array();
+
+        while ($row = mysqli_fetch_assoc($queryResult)) {
+            array_push($result, $row);
+        }
+
+        return $result;
+    }
+
     //ritorna la lista delle notizie, o null se non ce ne sono
     public function getNotizie()
     {
@@ -48,13 +59,7 @@ class DBAccess
         } else {
             //ci sono notizie
             //creo array da ritornare
-            $result = array();
-
-            while ($row = mysqli_fetch_assoc($queryResult)) {
-                array_push($result, $row);
-            }
-
-            return $result;
+            return $this->returnAsArray($queryResult);
         }
     }
 
@@ -75,13 +80,8 @@ class DBAccess
             return NULL;
         } else {
             //creo l'array da restituire con tutti i messaggi della chat
-            $result = array();
 
-            while ($row = mysqli_fetch_assoc($queryResult)) {
-                array_push($result, $row);
-            }
-
-            return $result;
+            return $this->returnAsArray($queryResult);
         }
     }
 
@@ -95,22 +95,9 @@ class DBAccess
             return NULL;
         } else {
             //qualcuno ha iniziato una chat, quindi restituisco un array con le chat
-            $result = array();
 
-            while ($row = mysqli_fetch_assoc($queryResult)) {
-                array_push($result, $row);
-            }
-
-            return $result;
+            return $this->returnAsArray($queryResult);
         }
-    }
-
-    //true o false se qualcuno ha prenotato una visita
-    //DA MODIFICARE MAGARI METTENDO COME PARAMETRI UNA DATA (tipo se ci sono visite oggi, o da oggi in poi )
-    public function ciSonoVisitePrenotate()
-    {
-        $query = "SELECT * FROM `Visite`;";
-        return (mysqli_num_rows(mysqli_query($this->connection, $query)) > 0);
     }
 
     //se login avviene con successo ritorna l'email dell'utente, altrimenti false
@@ -183,6 +170,14 @@ class DBAccess
         return (mysqli_affected_rows($this->connection) == 1);
     }
 
+    //true o false se qualcuno ha prenotato una visita
+    //DA MODIFICARE MAGARI METTENDO COME PARAMETRI UNA DATA (tipo se ci sono visite oggi, o da oggi in poi )
+    public function ciSonoVisitePrenotate()
+    {
+        $query = "SELECT * FROM `Visite`;";
+        return (mysqli_num_rows(mysqli_query($this->connection, $query)) > 0);
+    }
+
     //ritorna la lista delle prenotazioni per la data selezionata, null se non dovessero esserci
     public function controllaDisponibilita($giorno, $mese, $anno)
     {
@@ -224,5 +219,63 @@ class DBAccess
         $query = "INSERT INTO `Visite` (`Giorno`, `Ora`, `Tipologia`, `EmailUtente`) VALUES ('$data','$ora','$tipoVisita','$emailUtente');";
         $queryResult = mysqli_query($this->connection, $query);
         return (mysqli_affected_rows($this->connection) == 1);
+    }
+
+    //ritorna tutte le visite prenotate
+    //se viene passata un email, solo quelle di quel account
+    public function getListaVisitePrenotate($email = "")
+    {
+        $query = "SELECT * FROM `Visite` V,`Utenti` U WHERE V.`EmailUtente`=U.`Email` " . (($email !== "") ? "AND V.`EmailUtente`='$email'" : "") . " ORDER BY V.`Giorno`,V.`Ora`;";
+        $queryResult = mysqli_query($this->connection, $query);
+
+        if (mysqli_num_rows($queryResult) == 0) {
+            return NULL;
+        } else {
+            return $this->returnAsArray($queryResult);
+        }
+    }
+
+    //ritorna tutte le visite prenotate in un determinato periodo, di default quelle di oggi e quelle future
+    //se viene passata un email, solo quelle di quel account
+    public function getListaVisitePrenotatePeriodo($periodo, $email = "")
+    {
+        $segno = "";
+        switch ($periodo) {
+            case "oggi":
+            case "o":
+                $segno = "=";
+                break;
+            case "future":
+            case "f":
+            case "f7": //visite nei prossimi 7 giorni
+                $segno = ">";
+                break;
+            case "passate":
+            case "p":
+                $segno = "<";
+                break;
+            case "oggiEFuture":
+            case "of":
+            case "of7": //visite oggi e nei prossimi 7 giorni
+                $segno = ">=";
+                break;
+            default:
+                $segno = ">=";
+                break;
+        }
+
+        $query = "SELECT * FROM `Visite` V,`Utenti` U WHERE V.`EmailUtente` = U.`Email` AND V.`Giorno` $segno CURRENT_DATE() " .
+            (($periodo === "f7" || $periodo === "of7") ? " AND V.`Giorno` <= CURRENT_DATE()+7 " : "") .
+            (($email !== "") ? " AND V.`EmailUtente` = '$email' " : "") .
+            " ORDER BY V.`Giorno`,V.`Ora`" .
+            (($segno === "<") ? "LIMIT 20" : "") .
+            ";";
+        $queryResult = mysqli_query($this->connection, $query);
+
+        if (mysqli_num_rows($queryResult) == 0) {
+            return NULL;
+        } else {
+            return $this->returnAsArray($queryResult);
+        }
     }
 }

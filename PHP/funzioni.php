@@ -7,7 +7,7 @@ if (strpos($_SERVER['PHP_SELF'], 'funzioni.php') !== false) {
 
 //mostro errori PHP
 //da rimuovere o commentare quando si consegna
-//ini_set('display_errors','On');
+//ini_set('display_errors', 'On');
 //error_reporting(E_ALL);
 
 /* Funzione che ricevuto in ingresso la pagina corrente recupera il file HTML e successivamente:
@@ -198,4 +198,13 @@ function dataGiaPassata($giorno, $mese, $anno)
 {
     //ritorna true anche se la data è == oggi
     return (mktime(0, 0, 0, $mese, $giorno, $anno) <= mktime(0, 0, 0, date("m"), date("d"), date("Y")));
+}
+
+function preparaHTMLListaVisite($arrayVisite)
+{
+    $result = '';
+    foreach ($arrayVisite as $visita) {
+        $result .= '<li>Visita di ' . $visita['Tipologia'] . ' in data <span class="grassetto">' . $visita['Giorno'] . '  ' . $visita['Ora'] . '</span> da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')</li>';
+    }
+    return $result;
 }
