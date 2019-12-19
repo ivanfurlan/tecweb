@@ -17,7 +17,7 @@ if (!$connessioneOK) {
 require_once("funzioni.php");
 $paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
 $erroriDaMostrare = '';
-
+//print_r($_POST);
 //se si sono ricevuti i parametri per inserire una nuova visita
 if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['anno'], $_POST['tipovisita'])) {
     //devo inserire una nuova visita come prenotata
@@ -32,7 +32,7 @@ if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['an
     } elseif (dataGiaPassata($giorno, $mese, $anno)) {
         //la data è antecedente alla data corrente
         $erroriDaMostrare .= "<li>La data scelta non può essere già passata. Selezionare una data futura.</li>";
-    } elseif (!(isset($_POST['orario']) && !$_POST['orario'])) {
+    } elseif (!isset($_POST['orario']) || (isset($_POST['orario']) && $_POST['orario'] == false)) {
         //non è stato impostato un orario
         $erroriDaMostrare .= "<li>Nessun orario selezinoato. Selezionato un orario</li>";
     } elseif (!$oggettoConnessione->dataOraVisitaDisponibile($giorno, $mese, $anno, $_POST['orario'])) {
