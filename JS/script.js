@@ -123,7 +123,7 @@ function setSubmitForJS() {
     document.getElementById("btnSubmit").setAttribute("type", "button");
 }
 
-function setPrenotaVisitaForJS(){
+function setPrenotaVisitaForJS() {
     //viene eseguita solo se c'è javascript
 
     //questa funzione fa si che a chi ha js attivo venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina php per controllare la disponibilità),
@@ -131,6 +131,14 @@ function setPrenotaVisitaForJS(){
     document.getElementById("btnControllaDisponibilita").classList.remove("nascosto");
     document.getElementById("sceltaOrario").classList.add("nascosto");
 }
+
+// Expect input as d/m/y
+function isValidDate(s) {
+    var bits = s.split('/');
+    var d = new Date(bits[2], bits[1] - 1, bits[0]);
+    return d && (d.getMonth() + 1) == bits[1];
+}
+
 
 primaControlloDisponibilita = true;
 function controllaDisponibilita() {
@@ -140,7 +148,7 @@ function controllaDisponibilita() {
         var idData = ['giorno', 'mese', 'anno'];
         idData.forEach(id => {
             //non chiamo la funzione controllaDisponibilita() per non dare l'illusione che il sito non funzionasse se gli orari disponibili non cambianno tra le due date inserite, quindi ho preferito nascondere gli orari
-            document.getElementById(''+id).setAttribute("onChange", "nascondiOrari()");
+            document.getElementById('' + id).setAttribute("onChange", "nascondiOrari()");
         });
         primaControlloDisponibilita = false;
     }
@@ -155,29 +163,29 @@ function controllaDisponibilita() {
     var tipoVisita = document.getElementById("tipovisita").value;
 
     // controllo se la data scelta e' corretta o no 
-    var check= isValidDate(giorno+'/'+mese+'/'+anno);
+    var check = isValidDate(giorno + '/' + mese + '/' + anno);
     // alert(check);
 
     // se check =false -> data non corretta 
-    if(!check)  {
+    if (!check) {
         alert('La data scelta non corretto!!');
         return false;
     }
 
     var dataCorrente = new Date();
     var dataScelto = new Date();
-     
+
     // impostare la data scelta 
-    dataScelto.setFullYear (anno);
-    dataScelto.setMonth (mese-1); // perche' indice parte da 0 a 11 
-    dataScelto.setDate (giorno);
+    dataScelto.setFullYear(anno);
+    dataScelto.setMonth(mese - 1); // perche' indice parte da 0 a 11 
+    dataScelto.setDate(giorno);
 
     // controllo se la data e' gia passato o no 
-    if(dataScelto<=dataCorrente){
+    if (dataScelto <= dataCorrente) {
         alert('Scegli un giorno futuro');
         return false;
     }
-     
+
     //preparo la richiesta
     var request = new XMLHttpRequest();
 
