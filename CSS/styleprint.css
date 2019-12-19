@@ -26,6 +26,10 @@ font-size:90%;
 color: #5e5e64;
 }
 
+#header h1 a:link, #header h1 a:visited{
+   color: #5e5e64;
+}
+
 
 a:link{
     color: #5e5e64;
