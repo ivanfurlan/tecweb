@@ -16,6 +16,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+a:visited {
+    color: #5e5e64;
+}
+
+a:hover {
+    color:#5e5e64;
+}
+
 .skipLink {
     display: none;
 }
