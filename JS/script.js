@@ -130,6 +130,7 @@ function setPrenotaVisitaForJS() {
     //mentre chi non ha js attivo non viene eseguita questa funzoine e quindi gli viene lasciata la pagina così com'è impostata in html e quindi comunque utilizzabile.
     document.getElementById("btnControllaDisponibilita").classList.remove("nascosto");
     document.getElementById("sceltaOrario").classList.add("nascosto");
+    document.getElementById("btnSubmit").setAttribute("type", "button");
 }
 
 // Expect input as d/m/y
@@ -243,4 +244,21 @@ function nascondiOrari(orario, disponibilita) {
     var formSceltaOrario = document.getElementById("sceltaOrario");
     formSceltaOrario.classList.add("nascosto");
 
+}
+function controlloOrario() {
+    var formPrenotaVisita = document.getElementById("formPrenotaVisita");
+    var orario=document.getElementsByName('orario');
+    var selezionato=0;
+    orario.forEach(x=>{
+        if(x.checked){
+            ++selezionato;
+        }
+    } );
+    
+    if(selezionato==0){
+        alert('Scegli un orario');
+        return false;
+    }
+    formPrenotaVisita.submit();
+    
 }
