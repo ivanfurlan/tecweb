@@ -17,11 +17,15 @@ if (!$connessioneOK) {
     header("location: 500.php?errore=connessione_db");
 }
 
+$erroriDaMostrare='';
+//se devo inserire un nuovo messaggio
 if (isset($_POST['nuovomessaggio'], $_SESSION['emailUtente'])) {
     //si e' loggati e si sta inserendo un nuovo messaggio nella chat
     if (trim($_POST['nuovomessaggio']) != '') {
         //se il messaggio non e' vuoto
-        $nuovoMessaggio = trim($_POST['nuovomessaggio']);
+
+        //rimuovo gli spazi prima e dopo e sostituisco eventuali < e >
+        $nuovoMessaggio = str_replace("<","&lt",str_replace(">","&gt;",trim($_POST['nuovomessaggio'])));
         //se e' l'admin la mail che caratterizza la chat e' l'email del paziente (passata con get provenendo daelencoconsultionline.php) e non la sua.
         $email = ($_SESSION['isAdmin']) ? $_GET['email'] : $_SESSION['emailUtente'];
 
@@ -35,7 +39,7 @@ if (isset($_POST['nuovomessaggio'], $_SESSION['emailUtente'])) {
         }
     }else{
         //errore messaggio vuoto
-        //DA FARE
+        $erroriDaMostrare.="<li>Impossibile inserire un messaggio vuoto o con soli spazi.</li>";
     }
 }
 
@@ -77,7 +81,12 @@ if (isset($_SESSION['emailUtente'])) {
     //non si e' ancora fatto il login, quindi mostro un messaggio per spiegare la pagina ed invitare ad loggarsi
     $mainContent = '<p><a href="accedi.php" title="Pagina per accedere">Effettua il login</a>, oppure <a href="registrati.php" title="Pagina per registrarsi">registrati</a>, per poter chiedere direttamente al <abbr title="dottor">Dott.</abbr> Marco Donati una consulenza online e potergli porre le tue domande direttamente da questa pagina.</p>';
 }
+if ($erroriDaMostrare !== '') {
+    //se ci sono degli errori da stampare, preparo la stringa dentro ad un div
+    $erroriDaMostrare = '<div class="erroreCampiForm"><ul>' . $erroriDaMostrare . '</ul></div>';
+}
 
+$paginaHTML = str_replace("<erroriDaMostrare />", $erroriDaMostrare, $paginaHTML);
 $paginaHTML = str_replace("<pageContent />", $mainContent, $paginaHTML);
 
 echo $paginaHTML;

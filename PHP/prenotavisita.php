@@ -53,9 +53,12 @@ if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['an
 $pageContent = "";
 $visitePrenotate = "";
 //controllo se è stato fatto il login
+$data='';
+$ora='';
+$tipoVisita='';
 if (isset($_SESSION['emailUtente'])) {
     //utente loggato. Do la possibilità di prenotare una visita e di visualizzzare quelle già prenotate
-    $pageContent .= file_get_contents('HTML/prenotavisita_form.html');;
+    $pageContent .= file_get_contents('HTML/prenotavisita_form.html');
 
     $visitePrenotate .= '<h1>Le mie visite future</h1>';
     //DA FARE ciclo per visite future (da fare anche relativa funzione in dbaccess.php)
