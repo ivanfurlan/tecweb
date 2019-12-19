@@ -24,13 +24,16 @@ $pageContent = '';
 if ($result) {
     //ci sono visite prenotate
     $pageContent .= '<h2>Visite di oggi</h2><ul class="elencoPuntato">';
-    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("o"));
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("o"));
+    $pageContent.= ($temp)?$temp:"<li>Non sono presenti visite prenotate per oggi</li>";
     $pageContent .= '</ul>';
     $pageContent .= '<h2>Visite nei prossimi 7 giorni</h2><ul class="elencoPuntato">';
-    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("f7"));
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("f7"));
+    $pageContent.= ($temp)?$temp:"<li>Non sono presenti visite prenotate per i prossimi 7 giorni</li>";
     $pageContent .= '</ul>';
     $pageContent .= '<h2>Ultime 20 visite passate</h2><ul class="elencoPuntato">';
-    $pageContent .= preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p"));
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p"));
+    $pageContent.= ($temp)?$temp:"<li>Non sono presenti visite passate</li>";
     $pageContent .= '</ul>';
 } else {
     //non ci sono visite prenotate

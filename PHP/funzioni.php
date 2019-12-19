@@ -202,6 +202,9 @@ function dataGiaPassata($giorno, $mese, $anno)
 
 function preparaHTMLListaVisite($arrayVisite)
 {
+    if(!$arrayVisite){
+        return NULL;
+    }
     $result = '';
     foreach ($arrayVisite as $visita) {
         $result .= '<li>Visita di ' . $visita['Tipologia'] . ' in data <span class="grassetto">' . $visita['Giorno'] . '  ' . $visita['Ora'] . '</span> da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')</li>';
