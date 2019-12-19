@@ -53,24 +53,20 @@ if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['an
 $pageContent = "";
 $visitePrenotate = "";
 //controllo se è stato fatto il login
-$data='';
-$ora='';
-$tipoVisita='';
+
 if (isset($_SESSION['emailUtente'])) {
     //utente loggato. Do la possibilità di prenotare una visita e di visualizzzare quelle già prenotate
     $pageContent .= file_get_contents('HTML/prenotavisita_form.html');
 
-    $visitePrenotate .= '<h1>Le mie visite future</h1>';
-    //DA FARE ciclo per visite future (da fare anche relativa funzione in dbaccess.php)
-    $visitePrenotate .= '<ul class="elencoPuntato">
-                            <li>Il giorno ' . $data . ' alle ore ' . $ora . ' avrai una visita di ' . $tipoVisita . ' presso il nostro studio.</li>
-                        </ul>';
+    $visitePrenotate .= '<h2>Le mie visite future</h2>';
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("of",$_SESSION['emailUtente']));
+    $visitePrenotate.= ($temp)?$temp:"<li>Non sono presenti visite prenotate per oggi o nei giorni futuri</li>";
+    $visitePrenotate .= '</ul>';
 
-    $visitePrenotate .= '<h1>Le mie visite passate</h1>';
-    //DA FARE ciclo per visite passate (da fare anche relativa funzione in dbaccess.php)
-    $visitePrenotate .= '<ul class="elencoPuntato">
-                            <li>Il giorno ' . $data . ' alle ore ' . $ora . ' sei stato ad una visita di ' . $tipoVisita . ' presso il nostro studio.</li>
-                        </ul>';
+    $visitePrenotate .= '<h2>Le mie ultiime 20 visite passate</h2>';
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p",$_SESSION['emailUtente']));
+    $visitePrenotate.= ($temp)?$temp:"<li>Non sono presenti visite passate</li>";
+    $visitePrenotate .= '</ul>';
 } else {
     //Non è stato effettuato l'acecsso
     $pageContent .= '

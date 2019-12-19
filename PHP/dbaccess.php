@@ -104,10 +104,10 @@ class DBAccess
     public function login($email, $password)
     {
         $password = sha1($password);
-        $query = "SELECT `Email` FROM `Utenti` WHERE `Email`='$email' and `Password`='$password'";
+        $query = "SELECT `Email`,`Nome`,`Cognome` FROM `Utenti` WHERE `Email`='$email' and `Password`='$password'";
         $queryResult = mysqli_query($this->connection, $query);
         //echo $query;
-        return (mysqli_num_rows($queryResult) == 1) ? mysqli_fetch_assoc($queryResult)['Email'] : false;
+        return (mysqli_num_rows($queryResult) == 1) ? mysqli_fetch_assoc($queryResult): false;
     }
 
     //ritorna true se la registrazione è andata a buon fine, false altrimenti

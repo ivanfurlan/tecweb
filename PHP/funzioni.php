@@ -36,6 +36,7 @@ function getPaginaHTML($pageName)
 
     //Se loggato mostro il pulsante esci
     if (isset($_SESSION['emailUtente'])) {
+        $headerHTML = str_replace("<salutoUtenteLoggato />", "Ciao ".$_SESSION['nomeUtente']." ".$_SESSION['cognomeUtente'].", ", $headerHTML);
         $headerHTML = str_replace('<li><a href="registrati.php">Registrati</a></li>', '', $headerHTML);
         $headerHTML = str_replace('<li><a href="accedi.php">Accedi</a></li>', '<li><a href="logout.php">Esci</a></li>', $headerHTML);
     }

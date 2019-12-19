@@ -21,10 +21,12 @@ if (isset($_POST['email'], $_POST['password']) && $_POST['email'] != "" && $_POS
         //connessione al db non e' andata a buon fine
         header("location: 500.php?errore=connessione_db");
     }
-    $emailUtente = $oggettoConnessione->login($email, $password);
-    if ($emailUtente !== false) {
+    $utente = $oggettoConnessione->login($email, $password);
+    if ($utente !== false) {
         // loggatto corettamente
-        $_SESSION['emailUtente'] = $emailUtente;
+        $_SESSION['emailUtente'] = $utente['Email'];
+        $_SESSION['nomeUtente'] = $utente['Nome'];
+        $_SESSION['cognomeUtente'] = $utente['Cognome'];
         //echo $_SESSION['emailUtente'];
 
         //salvo se si e' l'admin

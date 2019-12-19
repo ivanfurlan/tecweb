@@ -35,6 +35,8 @@ if (isset($_POST['nome'], $_POST['cognome'], $_POST['email'], $_POST['telefono']
                 //se la registrazione va a buon fine faccio gia' il login
                 session_start();
                 $_SESSION['emailUtente'] = $email;
+                $_SESSION['nomeUtente'] = $nome;
+                $_SESSION['cognomeUtente'] = $cognome;
                 $_SESSIOM['isAdmin'] = false;
                 header("location: index.php");
             } else {
