@@ -61,12 +61,12 @@ if (isset($_SESSION['emailUtente'])) {
     //utente loggato. Do la possibilità di prenotare una visita e di visualizzzare quelle già prenotate
     $pageContent .= file_get_contents('HTML/prenotavisita_form.html');
 
-    $visitePrenotate .= '<h2>Le mie visite future</h2>';
+    $visitePrenotate .= '<h2>Le mie visite future</h2><ul class="elencoPuntato">';
     $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("of", $_SESSION['emailUtente']));
     $visitePrenotate .= ($temp) ? $temp : "<li>Non sono presenti visite prenotate per oggi o nei giorni futuri</li>";
     $visitePrenotate .= '</ul>';
 
-    $visitePrenotate .= '<h2>Le mie ultiime 20 visite passate</h2>';
+    $visitePrenotate .= '<h2>Le mie ultiime 20 visite passate</h2><ul class="elencoPuntato">';
     $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p", $_SESSION['emailUtente']));
     $visitePrenotate .= ($temp) ? $temp : "<li>Non sono presenti visite passate</li>";
     $visitePrenotate .= '</ul>';

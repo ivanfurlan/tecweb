@@ -36,9 +36,12 @@ function getPaginaHTML($pageName)
 
     //Se loggato mostro il pulsante esci
     if (isset($_SESSION['emailUtente'])) {
-        $headerHTML = str_replace("<salutoUtenteLoggato />", "Ciao ".$_SESSION['nomeUtente']." ".$_SESSION['cognomeUtente'].", ", $headerHTML);
+        $headerHTML = str_replace("<salutoUtenteLoggato />", "Ciao " . $_SESSION['nomeUtente'] . " " . $_SESSION['cognomeUtente'] . ", ", $headerHTML);
         $headerHTML = str_replace('<li><a href="registrati.php">Registrati</a></li>', '', $headerHTML);
         $headerHTML = str_replace('<li><a href="accedi.php">Accedi</a></li>', '<li><a href="logout.php">Esci</a></li>', $headerHTML);
+    } else {
+        //se non loggato cancello il tag
+        $headerHTML = str_replace("<salutoUtenteLoggato />", "", $headerHTML);
     }
 
     //Setto il titolo della pagina
@@ -143,6 +146,8 @@ function getPaginaHTML($pageName)
         $headerHTML = str_replace('<h1><a href="index.php"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>', '<h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>', $headerHTML);
 
         $headerHTML = str_replace('<li xml:lang="en"><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
+    } elseif ($pageName == "areamedica.php") {
+        $headerHTML = str_replace('<li id="navAreaMedica"><a href="' . $pageName . '">' . $pageTitle . '</a>', '<li id="navAreaMedica" class="currentLink">' . $pageTitle, $headerHTML);
     } else {
         $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
     }
@@ -203,7 +208,7 @@ function dataGiaPassata($giorno, $mese, $anno)
 
 function preparaHTMLListaVisite($arrayVisite)
 {
-    if(!$arrayVisite){
+    if (!$arrayVisite) {
         return NULL;
     }
     $result = '';

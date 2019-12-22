@@ -224,6 +224,7 @@ p {
     background-color: #192168;
     color: white;
     padding: 1em 0.5em;
+    cursor: default;
     /*min-width: 5.5em;*/
     /*font-weight: bold;*/
 }
@@ -465,6 +466,12 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
     float: right;
 }
 
+.testoMessaggioChat{
+    /* Se il mesasggio è più lungo, anziché essere mostrato tutto con hoverflow auto c'è lo scroll del singolo messaggio*/
+    max-height: 20em;
+    overflow: auto;
+}
+
 /*      CSS SPECIFICO CONTATTI.HTML       */
 
 #mappaGoogle {
@@ -494,11 +501,8 @@ form input[type="radio"][name="orario"][disabled="disabled"] {
 /*      CSS INDEX.HTML       */
 
 .imgSlider {
-    display: none;
-}
-
-.imgSlider:first-child {
-    display: block;
+    /*Questa classe serve per far si che in js si possa "prendere" tutte le immagine dello slider.*/
+    max-width: 100%;
 }
 
 #leftButton, #rightButton {

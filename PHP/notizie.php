@@ -98,7 +98,7 @@ if (isset($_SESSION['isAdmin'],$_GET['azione']) && $_SESSION['isAdmin'] == true 
 
             //se è l'admin mostro i pulsanti per modificare o eliminare una notizia
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
-                $stringaNotizie .= '<p> <a href="notizie.php?azione=modifica&notizia=' . $news['id'] . '">Modifica</a> - <a href="notizie.php?azione=elimina&notizia=' . $news['id'] . '">Elimina</a>';
+                $stringaNotizie .= '<p> <a href="notizie.php?azione=modifica&notizia=' . $news['id'] . '">Modifica</a> - <a href="notizie.php?azione=elimina&notizia=' . $news['id'] . '">Elimina</a></p>';
             }
             $stringaNotizie .= '</div>';
         }

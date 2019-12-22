@@ -24,8 +24,8 @@ if (isset($_POST['nuovomessaggio'], $_SESSION['emailUtente'])) {
     if (trim($_POST['nuovomessaggio']) != '') {
         //se il messaggio non e' vuoto
 
-        //rimuovo gli spazi prima e dopo e sostituisco eventuali < e >
-        $nuovoMessaggio = str_replace("<","&lt",str_replace(">","&gt;",trim($_POST['nuovomessaggio'])));
+        //rimuovo gli spazi prima e dopo e sostituisco eventuali <, >, e &
+        $nuovoMessaggio = str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",trim($_POST['nuovomessaggio']))));
         //se e' l'admin la mail che caratterizza la chat e' l'email del paziente (passata con get provenendo daelencoconsultionline.php) e non la sua.
         $email = ($_SESSION['isAdmin']) ? $_GET['email'] : $_SESSION['emailUtente'];
 
@@ -61,7 +61,7 @@ if (isset($_SESSION['emailUtente'])) {
                                     <span class="email">' . (($messaggio['IsDottore']) ? "Dottor Marco Donati" : $messaggio['EmailUtente']) . '</span>
                                     <span class="orario">' . $messaggio['TimeInvio'] . '</span>
                                 </div>
-                                <p>' . $messaggio['Messaggio'] . '</p>
+                                <p class="testoMessaggioChat">' . $messaggio['Messaggio'] . '</p>
                             </div>';
         }
     } else {
@@ -73,7 +73,7 @@ if (isset($_SESSION['emailUtente'])) {
                         <fieldset>
                             <legend class="nascosto">Rispondi</legend>
                             <label for="nuovomessaggio">Scrivi un messaggio' . (($_SESSION['isAdmin'] == true) ? " a $emailChat" : " al Dottore") . ': </label>
-                            <textarea name="nuovomessaggio" id="nuovomessaggio" rows="7" cols="40" title="Messaggio di risposta"> </textarea>
+                            <textarea name="nuovomessaggio" id="nuovomessaggio" rows="7" cols="40" title="Messaggio di risposta"></textarea>
                             <input type="submit" value="' . (($_SESSION['isAdmin'] == true) ? "Rispondi" : "Invia") . '" />
                         </fieldset>
                     </form>';

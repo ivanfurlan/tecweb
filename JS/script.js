@@ -16,12 +16,17 @@ function plusDivs(n) {
 function showDivs(n) {
     var i;
     var x = document.getElementsByClassName("imgSlider");
-    if (n > x.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = x.length }
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+
+    if (n > x.length) {
+        slideIndex = 1
     }
-    x[slideIndex - 1].style.display = "block";
+    if (n < 1) {
+        slideIndex = x.length
+    }
+    for (i = 0; i < x.length; i++) {
+        x[i].classList.add("nascosto");
+    }
+    x[slideIndex - 1].classList.remove("nascosto");
 }
 
 function changeFocusAccedi(event, campo) {
@@ -169,20 +174,15 @@ function controllaDisponibilita() {
 
     // se check =false -> data non corretta 
     if (!check) {
-        alert('La data scelta non corretto!!');
+        alert('La data scelta non corretta!!');
         return false;
     }
 
     var dataCorrente = new Date();
-    var dataScelto = new Date();
-
-    // impostare la data scelta 
-    dataScelto.setFullYear(anno);
-    dataScelto.setMonth(mese - 1); // perche' indice parte da 0 a 11 
-    dataScelto.setDate(giorno);
+    var dataScelta = new Date(anno + '/' + mese + '/' + giorno);
 
     // controllo se la data e' gia passato o no 
-    if (dataScelto <= dataCorrente) {
+    if (dataScelta <= dataCorrente) {
         alert('Scegli un giorno futuro');
         return false;
     }
@@ -247,18 +247,18 @@ function nascondiOrari(orario, disponibilita) {
 }
 function controlloOrario() {
     var formPrenotaVisita = document.getElementById("formPrenotaVisita");
-    var orario=document.getElementsByName('orario');
-    var selezionato=0;
-    orario.forEach(x=>{
-        if(x.checked){
+    var orario = document.getElementsByName('orario');
+    var selezionato = 0;
+    orario.forEach(x => {
+        if (x.checked) {
             ++selezionato;
         }
-    } );
-    
-    if(selezionato==0){
+    });
+
+    if (selezionato == 0) {
         alert('Scegli un orario');
         return false;
     }
     formPrenotaVisita.submit();
-    
+
 }
