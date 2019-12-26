@@ -2,7 +2,7 @@
 \label{frontend}
 
 \subsection{HTML}
-Si è deciso di usare xHTML 1.0 per garantire il supporto da tutti i tipi di web browser.
+Si è deciso di usare xHTML 1.0 per garantire il supporto a tutti i tipi di web browser.
 La parte di codifica in xHTML 1.0 ha posto le basi della struttura del sito ed è stata completata, nella sua interezza, come prima cosa.
 Questa è stata templatizzata il più possibile per garantirne un riutilizzo efficace. Infatti sono stati creati in prima istanza l’header e il footer, così da poterli utilizzare in ogni pagina, e successivamente sono state creati ad hoc i contenuti di tutte le pagine.
 Si è deciso di utilizzare HTML 5 solo per l'utilizzo della mappa interattiva Google Maps tramite il tag \textit{iframe}.
@@ -12,7 +12,7 @@ Strumento fondamentale per validare la correttezza del codice xHTML 1.0 e HTML 5
 Da notare il fatto che le funzionalità HTML 5 sono state implementate per ultime, in maniera tale da preservare le funzionalità principali del sito nel caso in cui si utilizzi un browser che non supporta la suddetta versione di HTML. Questa caratteristica permette al nostro sito di “degradare elegantemente”.
 \\
 \\
-Da menzionare il fatto che si è presa la decisione di definire il current link come classe e non come id, per evitare un conflitto con l’id delll’area medica precedentemente definito.
+Da menzionare il fatto che si è presa la decisione di definire il current link come classe e non come id, per evitare un conflitto con l’id dell’area medica precedentemente definito.
 
 \subsection{CSS}
 Fin da subito si è deciso di progettare 3 fogli di stile separati, rispettivamente: 
@@ -29,8 +29,8 @@ Scelte degne di nota sono state:
 \item Il logo, ritenuto molto importante in quanto associato dai clienti con lo studio, è stato inserito all’interno dell’HTML e poi modificato successivamente in CSS;
 \item Tutte le immagini sono state adattate alla pagina usando il CSS.
 \item Si è deciso di utilizzare una impostazione a due colonne per la maggior parte delle pagine;
-\item Abbiamo differenziato l’uso di bold su CSS e strong/em in HTML, permettendo così il giusto funzionamento della lettura attraverso lo screen reader, sia la correttezza grafica del testo.
-\item Per far si che con la riduzione della grandezza della pagina, le immagini del footer non occupino troppo spazio, abbiamo usato \textit{@media (max-width: 906px)}
+\item Abbiamo differenziato l’uso di bold su CSS e strong/em in HTML, permettendo così il giusto funzionamento della lettura attraverso lo screen reader, sia la correttezza grafica del testo;
+\item Per far si che con la riduzione della grandezza della pagina, le immagini del footer non occupino troppo spazio, abbiamo usato \textit{@media (max-width: 906px)}.
 \end{itemize}
 
 \subsubsection{CSS mobile}
@@ -41,19 +41,19 @@ Le modifiche che abbiamo effettuato per l’adattamento alla versione mobile son
 \item Sono stati pensati 2 differenti punti di rottura:
 \begin{enumerate}
 \item Il primo a 630px orizzontali sancisce l’effettivo passaggio alla versione mobile;
-\item Il secondo a 500px orizzontali prevede l’adattamento del logo e del titolo che vengono ridotti di circa il 50\%. In questo caso, anche il titolo che precedentemente non poteva essere cliccato, diventa cliccabile per sopperire alla poca superficie offerta dal logo rimpicciolito.
+\item Il secondo a 500px orizzontali prevede l’adattamento del logo e del titolo che vengono ridotti di circa il 50\%. In questo caso, anche il titolo che precedentemente non poteva essere cliccato, diventa cliccabile per sopperire alla poca superficie occupata dal logo rimpicciolito.
 \end{enumerate}
 \end{itemize}
 
 \subsubsection{CSS stampa}
 Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a lezione:
 \begin{enumerate}
-\item I link sono stati colorati in grigio (5e5e64) (per garantire una stampa full b/w) e l’indirizzo URL è stato esplicitato;
+\item I link sono stati colorati in grigio (\#5e5e64) (per garantire una stampa full b/w) e l’indirizzo URL è stato esplicitato;
 \item Le breadcrumbs sono state rimosse;
 \item Il menù di navigazione è stato rimosso;
-\item La mappa di Google Maps è stata rimossa dalla stampa, poichè non è ritenuta utile in quanto immagine statica;
-\item La disposizione dei form della pagina prenota visita è stata cambiata per esser visualizzata meglio su carta;
-\item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (esempio Consulti Online-Dott Marco Donati per la pagina consultionline.html) per dare più contesto;
+\item La mappa di Google Maps è stata rimossa dalla stampa, poiché non è ritenuta utile come immagine statica;
+\item La disposizione dei form della pagina Prenota Visita è stata cambiata per esser visualizzata meglio su carta;
+\item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (esempio Consulti \textit{Online-Dott. Marco Donati} per la pagina \textit{consultionline.html}) per dare più contesto;
 \item L'id del logo è stato definito sull'ancora piuttosto che sull'immagine affinché nel CSS di stampa, alla richiesta di mostrare l’indirizzo web dei link, l’indirizzo del logo non venga mostrato.
 \end{enumerate}
 
@@ -61,10 +61,10 @@ Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a le
 Per garantire la compatibiltà con browser datati:
 \begin{itemize}
 \item All’interno dei form sono stati usati \textit{type text} per le email e il \textit{type number} per i numeri telefonici, scegliendo quindi di non utilizzare \textit{type email} e \textit{type tel};
-\item \textit{sticky} viene messa in coda al codice come tutte le altre funzioni CSS3,  così che, se la pagina venisse aperta da un browser che non supporta CSS3 la funzionalità della pagina non verrebbe compromessa, semplicemente le funzioni CSS3 opzionali non sarebbero mostrate. Questo vale anche per proprietà come \textit{border-radius}, \textit{box-sizing};
-\item Non usando CSS3 non è possibile fare radio button colorati, quindi un user di IE8 o precedenti vedrà solo dei pallini senza colore. Questo però non inficerà sulla usabilità perché i radio button cliccabili saranno comunque distingubili da quelli non cliccabili;
-\item Come detto in precedenza §\ref{frontend:css} abbiamo usato \textit{@media flex}, questa usa CSS3 ma pur non essendo supportata non degrada in modo particolare il sito. Anzi è solo una questione puramente estetica;
-\item Per quanto riguarda la mappa di Google Maps, per utilizzarne la funzionalità  non abbiamo avuto scelta se non usare funzioni HTML 5, che quindi risultano errate in un validatore xHTML 1.0 Strict. (Come è stato detto a lezione);
+\item \textit{sticky} viene messa in coda al codice come tutte le altre funzioni CSS3,  così che, se la pagina venisse aperta da un browser che non supporta CSS3 la funzionalità della pagina non verrebbe compromessa; semplicemente le funzioni CSS3 opzionali non sarebbero mostrate. Questo vale anche per proprietà come \textit{border-radius}, \textit{box-sizing};
+\item Non usando CSS3 non è possibile fare radio button colorati, quindi un user di IE8 o precedenti vedrà solo dei pallini senza colore. Questo però non inficerà sulla usabilità perché i radio button cliccabili saranno comunque distinguibili da quelli non cliccabili;
+\item Come detto in precedenza in §\ref{frontend:css} abbiamo usato \textit{@media flex}, questa proprietà CSS3, pur non essendo supportata dai vecchi browser, non degrada in modo particolare il sito. Anzi è solo una questione puramente estetica;
+\item Per quanto riguarda la mappa di Google Maps, per utilizzarne la funzionalità non abbiamo avuto scelta se non usare funzioni HTML 5, che quindi risultano errate in un validatore xHTML 1.0 Strict. (Come è stato detto a lezione);
 Quindi nella pagina contatti, il documento è stato dichiarato come HTML 5, unica eccezione del nostro sito.
 \end{itemize}
 
