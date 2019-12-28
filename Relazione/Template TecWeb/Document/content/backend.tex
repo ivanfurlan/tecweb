@@ -1,0 +1,24 @@
+\section{Implementazione lato back-end}
+\subsection{JavaScript}
+Per il comportamento di alcune pagine del sito, lato client, è stato utilizzato uno script JavaScript, comprendente diverse funzioni. È stato scelto di limitare al massimo l’utilizzo di queste funzionalità, in quanto non è possibile fare nessuna assunzione sulla disponibilità di questa tecnologia. Il sito infatti rimane completamente navigabile e utilizzabile nel caso in cui JavaScript venga disabilitato o non sia comunque disponibile. Sono state quindi fornite tutte le alternative, lato server, attraverso PHP (unica alternativa in questo senso è rappresentata dallo slideshow, che degrada elegantemente mostrando solo una immagine statica).
+Da mobile si presuppone ovvimante JavaScript attivo. \\
+
+Le principali funzioni che abbiamo implementato (tutte contenute all’interno di un unico file) sono state:
+\begin{itemize}
+\item \textbf{validaAccedi()} : questa funzione controlla che tutti i campi immessi nel form specifico per l'accesso al sito siano corretti;
+\item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
+\item \textbf{setSubmitForJS()} : viene eseguita solo se c'è javascript; questa funzione fa si che, per chi abbia JavaScript attivo, vengano fatti i controlli sui campi prima di inviare il form, mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e venga lasciata la pagina così com'è, comunque utilizzabile;
+\item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
+questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
+\item \textbf{isValidDate(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
+\item \textbf{controllaDisponibilita()} : funzione che nasconde gli orari se non si riferiscono più al giorno selezionato, in caso di cambio data da parte dell'utente;
+\item \textbf{openCloseMenu(menu)} : funzione per chiudere e aprire i menù a tendina nella versione mobile del sito;
+\item \textbf{plusDivs(n)} : funzione per far scorrere lo slideshow;
+\item \textbf{showDivs(n)} : funzione per mostrare le diverse immagini dello slideshow;
+\item \textbf{changeFocusAccedi(event, campo)}: funzione che, al premere del tasto invio una volta che è stata inserita la email nel form per accedere al sito, passa il focus sul campo password, senza inviare direttamente il form. \\
+
+
+\subsection{PHP}
+
+
+\end{itemize}
