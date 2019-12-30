@@ -69,12 +69,12 @@ if (isset($_SESSION['emailUtente'])) {
         $mainContent .= '<p>Non hai ancora scritto nessun messaggio. Approfitta di questo servizio per chiedere al dottor Marco Donati le tue domande!</p>';
     }
     //inserisco il form per inviare un nuovo mesasggio
-    $mainContent .= '<form action="consultionline.php' . (($_SESSION['isAdmin']) ? "?email=" . $_GET['email'] : '') . '" method="post">
+    $mainContent .= '<form action="consultionline.php' . (($_SESSION['isAdmin']) ? "?email=" . $_GET['email'] : '') . '" method="post" id="formConsultiOnline">
                         <fieldset>
                             <legend class="nascosto">Rispondi</legend>
                             <label for="nuovomessaggio">Scrivi un messaggio' . (($_SESSION['isAdmin'] == true) ? " a $emailChat" : " al Dottore") . ': </label>
                             <textarea name="nuovomessaggio" id="nuovomessaggio" rows="7" cols="40" title="Messaggio di risposta"></textarea>
-                            <input type="submit" value="' . (($_SESSION['isAdmin'] == true) ? "Rispondi" : "Invia") . '" />
+                            <input type="submit" value="' . (($_SESSION['isAdmin'] == true) ? "Rispondi" : "Invia") . '" onclick="validaConsultiOnline()" id="btnSubmit" />
                         </fieldset>
                     </form>';
 } else {

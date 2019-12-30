@@ -69,6 +69,28 @@ function mostraErroriPrimaDiElemento(listaErrori, elementoHTML) {
     }
 }
 
+function validaConsultiOnline(){
+    var formChat = document.getElementById("formConsultiOnline");
+    var nuovomessaggio = formChat.nuovomessaggio.value.trim();
+    formChat.nuovomessaggio.value=nuovomessaggio; //elimino eventuali spazi prima e dopo
+    var erroriHTML = '';
+
+    if ((nuovomessaggio == "") || (nuovomessaggio == "undefined")) {
+        if (erroriHTML == "") {
+            formChat.nuovomessaggio.focus();
+        }
+        erroriHTML += '<li>Devi inserire un messaggio non vuoto.</li>';
+    }
+
+    if (erroriHTML == "") {
+        formChat.submit();
+        return true;
+    } else {
+        mostraErroriPrimaDiElemento(erroriHTML, formChat);
+        return false;
+    }
+}
+
 function validaAccedi() {
 
     var formAccedi = document.getElementById("formAccedi");
@@ -179,7 +201,9 @@ function setSubmitForJS() {
 
     //questa funzione fa si che a chi ha js attivo vengano fatti i controlli sui campi prima di inviare la forma,
     //mentre chi non ha js attivo non viene eseguita questa funzoine e quindi gli viene lasciata la pagina così com'è, ma comunque utilizzabile
-    document.getElementById("btnSubmit").setAttribute("type", "button");
+    var tmp = document.getElementById("btnSubmit");
+    if (tmp)
+        tmp.setAttribute("type", "button");
 }
 
 function setPrenotaVisitaForJS() {
@@ -230,7 +254,6 @@ function controllaDisponibilita() {
     // controllo se la data scelta e' corretta o no 
     var check = isValidDate(giorno + '/' + mese + '/' + anno);
     var erroriHTML = "";
-    // alert(check);
 
     // se check =false -> data non corretta 
     if (!check) {
@@ -251,7 +274,7 @@ function controllaDisponibilita() {
 
     //elimino eventuali errori presenti
     mostraErroriPrimaDiElemento("", document.getElementById("formPrenotaVisita"));
-    
+
     //preparo la richiesta
     var request = new XMLHttpRequest();
 
