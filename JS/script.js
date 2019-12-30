@@ -363,6 +363,9 @@ function nascondiOrari(orario, disponibilita) {
     //nascondo tutti gli orari
     var formSceltaOrario = document.getElementById("sceltaOrario");
     formSceltaOrario.classList.add("nascosto");
+    
+    //elimino eventuali errori presenti
+    mostraErroriPrimaDiElemento("", document.getElementById("formPrenotaVisita"));
 
 }
 function controlloOrario() {

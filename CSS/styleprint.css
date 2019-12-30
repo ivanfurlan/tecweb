@@ -64,6 +64,7 @@ form input[type=text], form input[type=password], form input[type=submit], form 
 
 .messaggioUtente, .messaggioDottore {
     border: 1px solid #cbcccf;
+    page-break-inside: avoid;
 }
 
 .testoMessaggioChat {
