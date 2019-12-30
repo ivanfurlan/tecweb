@@ -42,12 +42,24 @@ function changeFocusAccedi(event, campo) {
 }
 
 function mostraErroriPrimaDiElemento(listaErrori, elementoHTML) {
+    var divErrori = document.getElementById("listaErroriForm");
+
+    //se non ci sono errori elimino il div, e se già non esistesse non faccio niente
+    if (!listaErrori) {
+        if (divErrori) {
+            divErrori.remove();
+        }
+        return;
+    }
+
+    //inserisce un div con la lista degli errori passata come paramentro appena prima all'elemento passato come parametro
     listaErrori = '<ul>' + listaErrori + '</ul>';
 
-    var divErrori = document.getElementById("listaErroriForm");
+    //controllo se la lista esiste già. Se sì la aggiorno con la lista passata
     if (divErrori) {
         divErrori.innerHTML = listaErrori;
     } else {
+        //non esiste la lista, quindi la creo dentro un div
         tempDivErrori = document.createElement("div");
         tempDivErrori.classList.add("erroreCampiForm");
         tempDivErrori.id = "listaErroriForm";
@@ -86,7 +98,7 @@ function validaAccedi() {
         formAccedi.submit();
         return true;
     } else {
-        mostraErroriPrimaDiElemento(erroriHTML,formAccedi);
+        mostraErroriPrimaDiElemento(erroriHTML, formAccedi);
         return false;
     }
 }
@@ -157,7 +169,7 @@ function validaRegistrati() {
         formRegistrati.submit();
         return true;
     } else {
-        mostraErroriPrimaDiElemento(erroriHTML,formRegistrati);
+        mostraErroriPrimaDiElemento(erroriHTML, formRegistrati);
         return false;
     }
 }
@@ -182,8 +194,13 @@ function setPrenotaVisitaForJS() {
 
 // Expect input as d/m/y
 function isValidDate(s) {
+    //creo un aggari con giorno, mese e anno
     var bits = s.split('/');
+    //creo una data con i valori dentro l'array
     var d = new Date(bits[2], bits[1] - 1, bits[0]);
+
+    //controllo che la data non sia false, e soprattutto che il mese ricevuto come parametro sia uguale a quello della data creata. 
+    //se per esempio la data passata è 31/09/2020 la data che in realtà verrà creata sarà 01/10/2020, quindi inserendo una data che non esiste i mesi non combacieranno e quindi restituirà false
     return d && (d.getMonth() + 1) == bits[1];
 }
 
@@ -212,11 +229,13 @@ function controllaDisponibilita() {
 
     // controllo se la data scelta e' corretta o no 
     var check = isValidDate(giorno + '/' + mese + '/' + anno);
+    var erroriHTML = "";
     // alert(check);
 
     // se check =false -> data non corretta 
     if (!check) {
-        alert('La data scelta non è una data valida!');
+        erroriHTML += '<li>La data scelta non è una data valida.</li>';
+        mostraErroriPrimaDiElemento(erroriHTML, document.getElementById("formPrenotaVisita"));
         return false;
     }
 
@@ -225,10 +244,14 @@ function controllaDisponibilita() {
 
     // controllo se la data e' gia passato o no 
     if (dataScelta <= dataCorrente) {
-        alert('La data scelta non può essere passata');
+        erroriHTML += '<li>La data scelta non può essere passata.</li>';
+        mostraErroriPrimaDiElemento(erroriHTML, document.getElementById("formPrenotaVisita"));
         return false;
     }
 
+    //elimino eventuali errori presenti
+    mostraErroriPrimaDiElemento("", document.getElementById("formPrenotaVisita"));
+    
     //preparo la richiesta
     var request = new XMLHttpRequest();
 
@@ -251,7 +274,7 @@ function controllaDisponibilita() {
             // il che è normale perché può essere che la pagina non restituisca niente se non ci sono visite prenotate. 
             // Non riesco a fare in alro modo se non con un try chatch. Ho provato con if(orari){ ... } ma non va
 
-            console.log(e);
+            //console.log(e);
         }
     }
 
@@ -291,6 +314,9 @@ function controlloOrario() {
     var formPrenotaVisita = document.getElementById("formPrenotaVisita");
     var orario = document.getElementsByName('orario');
     var selezionato = 0;
+
+    var erroriHTML = '';
+
     orario.forEach(x => {
         if (x.checked) {
             ++selezionato;
@@ -298,7 +324,8 @@ function controlloOrario() {
     });
 
     if (selezionato == 0) {
-        alert('Scegli un orario');
+        erroriHTML += '<li>Scegli un orario tra quelli disponibili.</li>';
+        mostraErroriPrimaDiElemento(erroriHTML, formPrenotaVisita);
         return false;
     }
     formPrenotaVisita.submit();
