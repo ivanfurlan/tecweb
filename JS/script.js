@@ -41,6 +41,22 @@ function changeFocusAccedi(event, campo) {
         return validaAccedi();//se premo invio nel campo password allora fa il submit
 }
 
+function mostraErroriPrimaDiElemento(listaErrori, elementoHTML) {
+    listaErrori = '<ul>' + listaErrori + '</ul>';
+
+    var divErrori = document.getElementById("listaErroriForm");
+    if (divErrori) {
+        divErrori.innerHTML = listaErrori;
+    } else {
+        tempDivErrori = document.createElement("div");
+        tempDivErrori.classList.add("erroreCampiForm");
+        tempDivErrori.id = "listaErroriForm";
+
+        tempDivErrori.innerHTML = listaErrori;
+        elementoHTML.parentNode.insertBefore(tempDivErrori, elementoHTML);
+    }
+}
+
 function validaAccedi() {
 
     var formAccedi = document.getElementById("formAccedi");
@@ -51,17 +67,27 @@ function validaAccedi() {
     // Espressione regolare dell'email
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
 
+    var erroriHTML = "";
+
     if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
-        alert("Devi inserire un indirizzo email corretto");
-        formAccedi.email.focus();
-        return false;
-    } else if ((password == "") || (password == "undefined")) {
-        alert("Inserisci una password");
-        formAccedi.password.focus();
-        return false;
-    } else {
-        //formAccedi.action = "../PHP/login.php";
+        if (erroriHTML == "") {
+            formAccedi.email.focus();
+        }
+        erroriHTML += '<li>Devi inserire un indirizzo email valido.</li>';
+    }
+    if ((password == "") || (password == "undefined")) {
+        if (erroriHTML == "") {
+            formAccedi.password.focus();
+        }
+        erroriHTML += '<li>Devi inserire una password.</li>';
+    }
+
+    if (erroriHTML == "") {
         formAccedi.submit();
+        return true;
+    } else {
+        mostraErroriPrimaDiElemento(erroriHTML,formAccedi);
+        return false;
     }
 }
 
@@ -128,23 +154,10 @@ function validaRegistrati() {
     }
 
     if (erroriHTML == "") {
-        //formRegistrati.action = "../PHP/registrati.php";
         formRegistrati.submit();
         return true;
     } else {
-        erroriHTML = '<ul>' + erroriHTML + '</ul>';
-
-        var divErrori = document.getElementById("listaErroriForm");
-        if (divErrori) {
-            divErrori.innerHTML = erroriHTML;
-        } else {
-            tempDivErrori = document.createElement("div");
-            tempDivErrori.classList.add("erroreCampiForm");
-            tempDivErrori.id = "listaErroriForm";
-
-            tempDivErrori.innerHTML = erroriHTML;
-            formRegistrati.parentNode.insertBefore(tempDivErrori, formRegistrati);
-        }
+        mostraErroriPrimaDiElemento(erroriHTML,formRegistrati);
         return false;
     }
 }
