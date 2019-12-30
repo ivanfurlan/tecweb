@@ -82,41 +82,70 @@ function validaRegistrati() {
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
     var telefono_valid = /^[0-9]{5,10}$/;
 
+    var erroriHTML = "";
 
     if (!nome_valid.test(nome) || (nome == "") || (nome == "undefined")) {
-        alert("Devi inserire un nome");
-        formRegistrati.nome.focus();
-        return false;
-    } else if (!cognome_valid.test(cognome) || (cognome == "") || (cognome == "undefined")) {
-        alert("Devi inserire un cognome");
-        formRegistrati.cognome.focus();
-        return false;
-    } else if (!telefono_valid.test(telefono) || (isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
-        alert("Devi inserire il numero di telefono");
-        formRegistrati.telefono.value = "";
-        formRegistrati.telefono.focus();
-        return false;
-    } else if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
-        alert("Devi inserire un indirizzo email corretto");
-        formRegistrati.email.focus();
-        return false;
-    } else if (password.length < 6 || (password == "") || (password == "undefined")) {
-        alert("Scegli una password, minimo 6 caratteri");
-        formRegistrati.password.focus();
-        return false;
-    } else if ((confermapassword == "") || (confermapassword == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.nome.focus();
+        }
+        erroriHTML += '<li>Devi inserire un nome valido.</li>';
+    }
+    if (!cognome_valid.test(cognome) || (cognome == "") || (cognome == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.cognome.focus();
+        }
+        erroriHTML += '<li>Devi inserire un cognome valido.</li>';
+    }
+    if (!telefono_valid.test(telefono) || (isNaN(telefono)) || (telefono == "") || (telefono == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.telefono.focus();
+        }
+        erroriHTML += '<li>Devi inserire un numero di telefono valido.</li>';
+    }
+    if (!email_valid.test(email) || (email == "") || (email == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.email.focus();
+        }
+        erroriHTML += '<li>Devi inserire un indirizzo email valido.</li>';
+    }
+    if (password.length < 6 || (password == "") || (password == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.password.focus();
+        }
+        erroriHTML += '<li>Devi inserire una password lunga almeno 6 caratteri.</li>';
+    }
+    if ((confermapassword == "") || (confermapassword == "undefined")) {
+        if (erroriHTML == "") {
+            formRegistrati.confermapassword.focus();
+        }
         //Effettua il controllo sul campo CONFERMA PASSWORD
-        alert("Devi confermare la password");
-        formRegistrati.confermapassword.focus();
-        return false;
+        erroriHTML += '<li>Devi confermare la password riscrivendola uguale</li>';
     } else if (password != confermapassword) {
-        alert("La password inserita in conferma password e' diversa dalla password");
-        formRegistrati.confermapassword.value = "";
-        formRegistrati.confermapassword.focus();
-        return false;
-    } else {
+        if (erroriHTML == "") {
+            formRegistrati.confermapassword.focus();
+        }
+        erroriHTML += '<li>La password inserita in conferma password è diversa dalla password</li>';
+    }
+
+    if (erroriHTML == "") {
         //formRegistrati.action = "../PHP/registrati.php";
         formRegistrati.submit();
+        return true;
+    } else {
+        erroriHTML = '<ul>' + erroriHTML + '</ul>';
+
+        var divErrori = document.getElementById("listaErroriForm");
+        if (divErrori) {
+            divErrori.innerHTML = erroriHTML;
+        } else {
+            tempDivErrori = document.createElement("div");
+            tempDivErrori.classList.add("erroreCampiForm");
+            tempDivErrori.id = "listaErroriForm";
+
+            tempDivErrori.innerHTML = erroriHTML;
+            formRegistrati.parentNode.insertBefore(tempDivErrori, formRegistrati);
+        }
+        return false;
     }
 }
 
