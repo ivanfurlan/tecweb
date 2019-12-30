@@ -129,7 +129,7 @@ function validaAccedi() {
     var email = formAccedi.email.value = formAccedi.email.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
     var password = formAccedi.password.value;
     // Espressione regolare dell'email
-    var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+    var email_valid = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9-]{2,}[\.]{1})+([a-zA-Z0-9]{2,})+$/;
 
     var erroriHTML = "";
 
@@ -169,7 +169,7 @@ function validaRegistrati() {
     // Espressioni regolari valide
     var nome_valid = /^[A-Za-z \'-]{2,}$/i;
     var cognome_valid = /^[A-Za-z \'-]{2,}$/i;
-    var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
+    var email_valid = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9-]{2,}[\.]{1})+([a-zA-Z0-9]{2,})+$/;
     var telefono_valid = /^([+]{1}[0-9]{1,3})?([0-9]{5,10})$/;
 
     var erroriHTML = "";
@@ -363,7 +363,7 @@ function nascondiOrari(orario, disponibilita) {
     //nascondo tutti gli orari
     var formSceltaOrario = document.getElementById("sceltaOrario");
     formSceltaOrario.classList.add("nascosto");
-    
+
     //elimino eventuali errori presenti
     mostraErroriPrimaDiElemento("", document.getElementById("formPrenotaVisita"));
 

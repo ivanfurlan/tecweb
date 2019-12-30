@@ -189,7 +189,7 @@ function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $passw
         $listaErrori .=  '<li>Devi inserire un numero di telefono valido.</li>';
     }
     // verifico se un indirizzo email è valido
-    if (!$email || !preg_match('/^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/', $email)) {
+    if (!$email || !preg_match('/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9-]{2,}[\.]{1})+([a-zA-Z0-9]{2,})+$/', $email)) {
         $listaErrori .=  '<li>Devi inserire un indirizzo email valido.</li>';
     }
     // verifico se la password è lunga almeno 6 caratteri
