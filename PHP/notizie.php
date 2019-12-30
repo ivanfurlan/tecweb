@@ -27,7 +27,7 @@ if (isset($_SESSION['isAdmin'], $_GET['azione'], $_GET['notizia']) && $_SESSION[
 
 //modificare una notizia
 if (isset($_SESSION['isAdmin'], $_POST['azione'], $_GET['notizia'], $_POST['titolo'], $_POST['contenuto']) && $_SESSION['isAdmin'] == true && $_POST['azione'] == 'Modifica' && $_GET['notizia'] != '') {
-    if (!$oggettoConnessione->modificaNotizia($_GET['notizia'], $_POST['titolo'], $_POST['contenuto'])) {
+    if (!$oggettoConnessione->modificaNotizia($_GET['notizia'], trim($_POST['titolo']), trim($_POST['contenuto']))) {
         //si è verificato un errore
         header("location: 500.php?errore=modifica_notizia");
     } else {
@@ -39,7 +39,7 @@ if (isset($_SESSION['isAdmin'], $_POST['azione'], $_GET['notizia'], $_POST['tito
 
 //aggiungi una notizia
 if (isset($_SESSION['isAdmin'], $_POST['azione'], $_POST['titolo'], $_POST['contenuto']) && $_SESSION['isAdmin'] == true && $_POST['azione'] == 'Aggiungi') {
-    if (!$oggettoConnessione->aggiungiNotizia($_POST['titolo'], $_POST['contenuto'])) {
+    if (!$oggettoConnessione->aggiungiNotizia(trim($_POST['titolo']), trim($_POST['contenuto']))) {
         //si è verificato un errore
         header("location: 500.php?errore=aggiungi_notizia");
     } else {
@@ -55,7 +55,7 @@ print_r($_GET);
 */
 
 //controllo se si è ricevuto la richiesta di modificare o aggiungere una notizia. Se sì mostro il form per svolgere l'operazione
-if (isset($_SESSION['isAdmin'],$_GET['azione']) && $_SESSION['isAdmin'] == true && ($_GET['azione'] == 'aggiungi' || ($_GET['azione'] == 'modifica' && isset($_GET['notizia']) && $_GET['notizia'] != ''))) {
+if (isset($_SESSION['isAdmin'], $_GET['azione']) && $_SESSION['isAdmin'] == true && ($_GET['azione'] == 'aggiungi' || ($_GET['azione'] == 'modifica' && isset($_GET['notizia']) && $_GET['notizia'] != ''))) {
     //si vuole modificare o aggiungere una notizia
     $azione = ucfirst($_GET['azione']);
     $titoloNotizia = '';
@@ -68,14 +68,14 @@ if (isset($_SESSION['isAdmin'],$_GET['azione']) && $_SESSION['isAdmin'] == true 
         $contenutoNotizia = $result['Contenuto'];
     }
     //inserisco il form, preimpostando i value se si sta effettuando una modifica (altrimenti le varibili essendo vuote non inseriranno niente)
-    $stringaFormNotizia .= '<form action="notizie.php' . (($azione == "Modifica")?'?notizia='.$_GET['notizia']:'') . '" method="post">
+    $stringaFormNotizia = '<form action="notizie.php' . (($azione == "Modifica") ? '?notizia=' . $_GET['notizia'] : '') . '" method="post" id="formNotizia">
                                 <fieldset>
                                     <legend class="nascosto">' . $azione . ' notizia</legend>
                                     <label for="titolo">Titolo</label>
                                     <input type="text" name="titolo" id="titolo" value="' . htmlentities($titoloNotizia) . '"/>
                                     <label for="contenuto">Testo della notizia: </label>
-                                    <textarea name="contenuto" id="contenuto" rows="7" cols="40" title="Contenuto della notizia">' . htmlentities($contenutoNotizia) . ' </textarea>
-                                    <input type="submit" name="azione" value="' . $azione . '" />
+                                    <textarea name="contenuto" id="contenuto" rows="7" cols="40" title="Contenuto della notizia">' . htmlentities($contenutoNotizia) . '</textarea>
+                                    <input type="submit" name="azione" value="' . $azione . '" onclick="validaNotizia()" id="btnSubmit" />
                                 </fieldset>
                             </form>';
 

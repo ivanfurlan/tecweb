@@ -69,10 +69,40 @@ function mostraErroriPrimaDiElemento(listaErrori, elementoHTML) {
     }
 }
 
-function validaConsultiOnline(){
+function validaNotizia() {
+    var formNotizia = document.getElementById("formNotizia");
+    var titolo = formNotizia.titolo.value.trim();
+    var contenuto = formNotizia.contenuto.value.trim();
+    var erroriHTML = '';
+
+    if ((titolo == "") || (titolo == "undefined")) {
+        if (erroriHTML == "") {
+            formNotizia.titolo.focus();
+        }
+        erroriHTML += '<li>Devi inserire un titolo non vuoto.</li>';
+    }
+
+    if ((contenuto == "") || (contenuto == "undefined")) {
+        if (erroriHTML == "") {
+            formNotizia.contenuto.focus();
+        }
+        erroriHTML += '<li>Devi inserire un contenuto non vuoto.</li>';
+    }
+
+    if (erroriHTML == "") {
+        document.getElementById("btnSubmit").setAttribute("type","submit");
+        formNotizia.submit();
+        return true;
+    } else {
+        mostraErroriPrimaDiElemento(erroriHTML, formNotizia);
+        return false;
+    }
+}
+
+function validaConsultiOnline() {
     var formChat = document.getElementById("formConsultiOnline");
-    var nuovomessaggio = formChat.nuovomessaggio.value.trim();
-    formChat.nuovomessaggio.value=nuovomessaggio; //elimino eventuali spazi prima e dopo
+    var nuovomessaggio = formChat.nuovomessaggio.value = formChat.nuovomessaggio.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
+
     var erroriHTML = '';
 
     if ((nuovomessaggio == "") || (nuovomessaggio == "undefined")) {
@@ -96,7 +126,7 @@ function validaAccedi() {
     var formAccedi = document.getElementById("formAccedi");
 
     // Variabili associate ai campi del modulo
-    var email = formAccedi.email.value;
+    var email = formAccedi.email.value = formAccedi.email.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
     var password = formAccedi.password.value;
     // Espressione regolare dell'email
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
@@ -130,17 +160,17 @@ function validaRegistrati() {
     var formRegistrati = document.getElementById("formRegistrati");
 
     // Variabili associate ai campi del modulo
-    var email = formRegistrati.email.value;
+    var email = formRegistrati.email.value = formRegistrati.email.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
     var password = formRegistrati.password.value;
-    var nome = formRegistrati.nome.value;
-    var cognome = formRegistrati.cognome.value;
-    var telefono = formRegistrati.telefono.value;
+    var nome = formRegistrati.nome.value = formRegistrati.nome.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
+    var cognome = formRegistrati.cognome.value = formRegistrati.cognome.value.trim(); //elimino eventuali spazi prima e dopo e aggiorno il campo
+    var telefono = formRegistrati.telefono.value = formRegistrati.telefono.value.replace(/ /g, '');
     var confermapassword = formRegistrati.confermapassword.value;
     // Espressioni regolari valide
-    var nome_valid = /^[A-Za-z \'-]+$/i;
-    var cognome_valid = /^[A-Za-z \'-]+$/i;
+    var nome_valid = /^[A-Za-z \'-]{2,}$/i;
+    var cognome_valid = /^[A-Za-z \'-]{2,}$/i;
     var email_valid = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
-    var telefono_valid = /^[0-9]{5,10}$/;
+    var telefono_valid = /^([+]{1}[0-9]{1,3})?([0-9]{5,10})$/;
 
     var erroriHTML = "";
 
@@ -202,8 +232,10 @@ function setSubmitForJS() {
     //questa funzione fa si che a chi ha js attivo vengano fatti i controlli sui campi prima di inviare la forma,
     //mentre chi non ha js attivo non viene eseguita questa funzoine e quindi gli viene lasciata la pagina così com'è, ma comunque utilizzabile
     var tmp = document.getElementById("btnSubmit");
-    if (tmp)
+    //se l'elemento esiste lo cambio in bottone, altrimenti non faccio niente (potrebbe essere che il PHP non abbia inserito il form nella visualizzazione corrente)
+    if (tmp) {
         tmp.setAttribute("type", "button");
+    }
 }
 
 function setPrenotaVisitaForJS() {

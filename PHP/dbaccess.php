@@ -158,7 +158,7 @@ class DBAccess
         //la data viene aggioirnata ad oggi, giorno della modifica
         $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
         $queryResult = mysqli_query($this->connection, $query);
-        return (mysqli_affected_rows($this->connection) == 1);
+        return ($queryResult && mysqli_affected_rows($this->connection) <= 1)?true:false;
     }
 
     //ritorna true se la notizia è stata aggiunta, false altrimnti

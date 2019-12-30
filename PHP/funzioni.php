@@ -177,15 +177,15 @@ function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $passw
     $listaErrori = '';
 
     // verifico che il cognome non contenga caratteri non letterali
-    if (!$nome || !preg_match('/^[A-Za-z \'-]+$/i', $nome)) {
+    if (!$nome || !preg_match('/^[A-Za-z \'-]{2,}$/i', $nome)) {
         $listaErrori .= '<li>Devi inserire un nome valido.</li>';
     }
     // verifico che il nome non contenga caratteri non letterali
-    if (!$cognome || !preg_match('/^[A-Za-z \'-]+$/i', $cognome)) {
+    if (!$cognome || !preg_match('/^[A-Za-z \'-]{2,}$/i', $cognome)) {
         $listaErrori .=  '<li>Devi inserire un cognome valido.</li>';
     }
     // verifico che il telefono contenga solo caratteri numerici
-    if (!$telefono || !preg_match('/^[0-9]{5,10}$/', $telefono)) {
+    if (!$telefono || !preg_match('/^([+]{1}[0-9]{1,3})?([0-9]{5,10})$/', $telefono)) {
         $listaErrori .=  '<li>Devi inserire un numero di telefono valido.</li>';
     }
     // verifico se un indirizzo email è valido
