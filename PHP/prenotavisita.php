@@ -62,12 +62,12 @@ if (isset($_SESSION['emailUtente'])) {
     $pageContent .= file_get_contents('HTML/prenotavisita_form.html');
 
     $visitePrenotate .= '<h2>Le mie visite future</h2><ul class="elencoPuntato">';
-    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("of", $_SESSION['emailUtente']));
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("of", $_SESSION['emailUtente'], false));
     $visitePrenotate .= ($temp) ? $temp : "<li>Non sono presenti visite prenotate per oggi o nei giorni futuri</li>";
     $visitePrenotate .= '</ul>';
 
     $visitePrenotate .= '<h2>Le mie ultime 20 visite passate</h2><ul class="elencoPuntato">';
-    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p", $_SESSION['emailUtente']));
+    $temp = preparaHTMLListaVisite($oggettoConnessione->getListaVisitePrenotatePeriodo("p", $_SESSION['emailUtente'], false));
     $visitePrenotate .= ($temp) ? $temp : "<li>Non sono presenti visite passate</li>";
     $visitePrenotate .= '</ul>';
 } else {

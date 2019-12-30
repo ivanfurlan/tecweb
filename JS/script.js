@@ -174,7 +174,7 @@ function controllaDisponibilita() {
 
     // se check =false -> data non corretta 
     if (!check) {
-        alert('La data scelta non corretta!!');
+        alert('La data scelta non è una data valida!');
         return false;
     }
 
@@ -183,7 +183,7 @@ function controllaDisponibilita() {
 
     // controllo se la data e' gia passato o no 
     if (dataScelta <= dataCorrente) {
-        alert('Scegli un giorno futuro');
+        alert('La data scelta non può essere passata');
         return false;
     }
 

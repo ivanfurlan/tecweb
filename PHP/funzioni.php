@@ -36,7 +36,12 @@ function getPaginaHTML($pageName)
 
     //Se loggato mostro il pulsante esci
     if (isset($_SESSION['emailUtente'])) {
-        $headerHTML = str_replace("<salutoUtenteLoggato />", "Ciao " . $_SESSION['nomeUtente'] . " " . $_SESSION['cognomeUtente'] . ", ", $headerHTML);
+        //se admin mostro il saluto al dottore, altrimenti il saluto all'utente con nomee cognome
+        if ($_SESSION['isAdmin']) {
+            $headerHTML = str_replace("<salutoUtenteLoggato />", "Buongiorno Dottore, ", $headerHTML);
+        } else {
+            $headerHTML = str_replace("<salutoUtenteLoggato />", "Ciao " . $_SESSION['nomeUtente'] . " " . $_SESSION['cognomeUtente'] . ", ", $headerHTML);
+        }
         $headerHTML = str_replace('<li><a href="registrati.php">Registrati</a></li>', '', $headerHTML);
         $headerHTML = str_replace('<li><a href="accedi.php">Accedi</a></li>', '<li><a href="logout.php">Esci</a></li>', $headerHTML);
     } else {
@@ -213,7 +218,7 @@ function preparaHTMLListaVisite($arrayVisite)
     }
     $result = '';
     foreach ($arrayVisite as $visita) {
-        $result .= '<li>Visita di ' . $visita['Tipologia'] . ' in data <span class="grassetto">' . $visita['Giorno'] . '  ' . $visita['Ora'] . '</span> da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')</li>';
+        $result .= '<li>Visita di <span class="grassetto">' . $visita['Tipologia'] . '</span> in data <span class="grassetto">' . $visita['Giorno'] . '</span> alle <span class="grassetto">' . $visita['Ora'] . '</span>' . ((isset($visita['Nome'], $visita['Cognome'], $visita['Email'])) ? ' da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')</li>' : "");
     }
     return $result;
 }

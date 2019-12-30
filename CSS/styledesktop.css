@@ -15,6 +15,7 @@
 
 .elencoPuntato{
     padding-left: 3em;
+    padding-bottom: 1em;
 }
 
 .nascosto{
@@ -353,6 +354,7 @@ form fieldset {
 
 form legend {
     padding-bottom: 1em;
+    font-size: 1.1em;
 }
 
 form select {

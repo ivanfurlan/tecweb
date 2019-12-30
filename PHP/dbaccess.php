@@ -107,7 +107,7 @@ class DBAccess
         $query = "SELECT `Email`,`Nome`,`Cognome` FROM `Utenti` WHERE `Email`='$email' and `Password`='$password'";
         $queryResult = mysqli_query($this->connection, $query);
         //echo $query;
-        return (mysqli_num_rows($queryResult) == 1) ? mysqli_fetch_assoc($queryResult): false;
+        return (mysqli_num_rows($queryResult) == 1) ? mysqli_fetch_assoc($queryResult) : false;
     }
 
     //ritorna true se la registrazione è andata a buon fine, false altrimenti
@@ -223,7 +223,7 @@ class DBAccess
 
     //ritorna tutte le visite prenotate
     //se viene passata un email, solo quelle di quel account
-    public function getListaVisitePrenotate($email = "")
+    /*public function getListaVisitePrenotate($email = "")
     {
         $query = "SELECT * FROM `Visite` V,`Utenti` U WHERE V.`EmailUtente`=U.`Email` " . (($email !== "") ? "AND V.`EmailUtente`='$email'" : "") . " ORDER BY V.`Giorno`,V.`Ora`;";
         $queryResult = mysqli_query($this->connection, $query);
@@ -233,11 +233,11 @@ class DBAccess
         } else {
             return $this->returnAsArray($queryResult);
         }
-    }
+    }*/
 
     //ritorna tutte le visite prenotate in un determinato periodo, di default quelle di oggi e quelle future
     //se viene passata un email, solo quelle di quel account
-    public function getListaVisitePrenotatePeriodo($periodo, $email = "")
+    public function getListaVisitePrenotatePeriodo($periodo, $email = "", $getNomeUtente = true)
     {
         $segno = "";
         switch ($periodo) {
@@ -264,7 +264,9 @@ class DBAccess
                 break;
         }
 
-        $query = "SELECT * FROM `Visite` V,`Utenti` U WHERE V.`EmailUtente` = U.`Email` AND V.`Giorno` $segno CURRENT_DATE() " .
+        $query = "SELECT V.`Id`, V.`Giorno`, V.`Ora`, V.`Tipologia`" .
+            (($getNomeUtente) ? ", U.`Email`, U.`Nome`, U.`Cognome`" : "") .
+            "FROM `Visite` V,`Utenti` U WHERE V.`EmailUtente` = U.`Email` AND V.`Giorno` $segno CURRENT_DATE() " .
             (($periodo === "f7" || $periodo === "of7") ? " AND V.`Giorno` <= CURRENT_DATE()+7 " : "") .
             (($email !== "") ? " AND V.`EmailUtente` = '$email' " : "") .
             " ORDER BY V.`Giorno`,V.`Ora`" .
