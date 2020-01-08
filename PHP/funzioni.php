@@ -1,14 +1,14 @@
 <?php
 
 if (strpos($_SERVER['PHP_SELF'], 'funzioni.php') !== false) {
-    //se uno prova ad accedere a questa pagina da browser ritorno un 404, come se la pagina non esistesse
+    // se uno prova ad accedere a questa pagina da browser ritorno un 404, come se la pagina non esistesse
     header("location: 404.php");
 }
 
-//mostro errori PHP
-//da rimuovere o commentare quando si consegna
-//ini_set('display_errors', 'On');
-//error_reporting(E_ALL);
+// mostro errori PHP
+// da rimuovere o commentare quando si consegna
+// ini_set('display_errors', 'On');
+// error_reporting(E_ALL);
 
 /* Funzione che ricevuto in ingresso la pagina corrente recupera il file HTML e successivamente:
     - ci inserisce HEADER e FOOTER
@@ -19,7 +19,7 @@ if (strpos($_SERVER['PHP_SELF'], 'funzioni.php') !== false) {
     */
 function getPaginaHTML($pageName)
 {
-    //prende solo il nome del file corrente se viene passato tutto il path dalla cartella di root (per esempio con $_SERVER['PHP_SELF'])
+    // prende solo il nome del file corrente se viene passato tutto il path dalla cartella di root (per esempio con $_SERVER['PHP_SELF'])
     if (strrpos($pageName, "/") !== FALSE) {
         $pageName = substr($pageName, 1 + strrpos($pageName, "/"));
     }
@@ -29,14 +29,14 @@ function getPaginaHTML($pageName)
     $footerHTML = file_get_contents($PATH_HTML . 'footer.html');
     $headerHTML = file_get_contents($PATH_HTML . 'header.html');
 
-    //se la sessione non è aperta la apro
+    // se la sessione non è aperta la apro
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
-    //Se loggato mostro il pulsante esci
+    // Se loggato mostro il pulsante esci
     if (isset($_SESSION['emailUtente'])) {
-        //se admin mostro il saluto al dottore, altrimenti il saluto all'utente con nomee cognome
+        // se admin mostro il saluto al dottore, altrimenti il saluto all'utente con nomee cognome
         if ($_SESSION['isAdmin']) {
             $headerHTML = str_replace("<salutoUtenteLoggato />", "Buongiorno Dottore, ", $headerHTML);
         } else {
@@ -45,11 +45,11 @@ function getPaginaHTML($pageName)
         $headerHTML = str_replace('<li><a href="registrati.php">Registrati</a></li>', '', $headerHTML);
         $headerHTML = str_replace('<li><a href="accedi.php">Accedi</a></li>', '<li><a href="logout.php">Esci</a></li>', $headerHTML);
     } else {
-        //se non loggato cancello il tag
+        // se non loggato cancello il tag
         $headerHTML = str_replace("<salutoUtenteLoggato />", "", $headerHTML);
     }
 
-    //Setto il titolo della pagina
+    // Setto il titolo della pagina
     $pageTitle = "";
     switch ($pageName) {
         case "404.php":
@@ -104,19 +104,19 @@ function getPaginaHTML($pageName)
             $pageTitle = "Visite prenotate";
             break;
         default:
-            $pageTitle = $pageName; //di default nome uguale al nome della pagina
+            $pageTitle = $pageName; // di default nome uguale al nome della pagina
             break;
     }
 
-    //Inserisco i breadcrumbs
+    // Inserisco i breadcrumbs
     $breadcrumbs = '';
-    if ($pageName == "index.php") { //se index.php il breadcrumbs non ha nessun link
+    if ($pageName == "index.php") { // se index.php il breadcrumbs non ha nessun link
         $breadcrumbs .= '<span xml:lang="en">' . $pageTitle . '</span>';
     } else {
-        if ($pageName != "404.php" && $pageName != "500.php") { //se sono pagine di errore non mostro il link ad HOME
+        if ($pageName != "404.php" && $pageName != "500.php") { // se sono pagine di errore non mostro il link ad HOME
             $breadcrumbs .= '<a href="index.php"><span xml:lang="en">Home</span></a> &gt;&gt; ';
         }
-        //se e' una pagina dell'area medica aggiungo il link alla pagina areamedica.php, o se sono admine sono sui consultionline
+        // se e' una pagina dell'area medica aggiungo il link alla pagina areamedica.php, o se sono admin e sono sui consultionline mostro la chat, o se admin e modifico o aggiungo notizie
         switch ($pageName) {
             case "citologianasale.php":
             case "impedenzometria.php":
@@ -130,6 +130,18 @@ function getPaginaHTML($pageName)
                     $pageTitle = $_GET['email'];
                 }
                 break;
+            case "notizie.php":
+                if (isset($_SESSION['isAdmin'], $_GET['azione']) && $_SESSION['isAdmin']) {
+                    //sono admin
+                    if ($_GET['azione'] == "aggiungi") {
+                        $breadcrumbs .= '<a href="notizie.php">Notizie</a>  &gt;&gt; ';
+                        $pageTitle = 'Aggiungi notizia';
+                    } elseif ($_GET['azione'] == "modifica" && isset($_GET['notizia'])) {
+                        $breadcrumbs .= '<a href="notizie.php">Notizie</a>  &gt;&gt; ';
+                        $pageTitle = 'Modifica notizia n:'.$_GET['notizia'];
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -137,15 +149,15 @@ function getPaginaHTML($pageName)
     }
     $headerHTML = str_replace('<pageBreadcrumbs />', $breadcrumbs, $headerHTML);
 
-    //se si è loggati come admin il menù sarà diverso
+    // se si è loggati come admin il menù sarà diverso
     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
-        //Elenco chat al posto di Consulti online
+        // Elenco chat al posto di Consulti online
         $headerHTML = str_replace('<li><a href="consultionline.php">Consulti <span xml:lang="en">online</span></a></li>', '<li><a href="elencoconsultionline.php">Elenco <span xml:lang="en">chat</span></a></li>', $headerHTML);
-        //Visite prenotate al posto di Prenota visita
+        // Visite prenotate al posto di Prenota visita
         $headerHTML = str_replace('<li><a href="prenotavisita.php">Prenota visita</a></li>', '<li><a href="visiteprenotate.php">Visite prenotate</a></li>', $headerHTML);
     }
 
-    //Tolgo i link ricorsivi e imposto il currentLink
+    // Tolgo i link ricorsivi e imposto il currentLink
     if ($pageName == "index.php") {
         $headerHTML = str_replace('<a href="index.php" id="logo">', '<a href="#" id="logo">', $headerHTML);
         $headerHTML = str_replace('<h1><a href="index.php"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>', '<h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>', $headerHTML);
@@ -153,7 +165,7 @@ function getPaginaHTML($pageName)
         $headerHTML = str_replace('<li xml:lang="en"><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
     } elseif ($pageName == "areamedica.php") {
         $headerHTML = str_replace('<li id="navAreaMedica"><a href="' . $pageName . '">' . $pageTitle . '</a>', '<li id="navAreaMedica" class="currentLink">' . $pageTitle, $headerHTML);
-    } else {
+    } elseif (!($pageName == "notizie.php" && isset($_SESSION['isAdmin'], $_GET['azione']) && $_SESSION['isAdmin'] && ($_GET['azione'] == "aggiungi" || $_GET['azione'] == "modifica"))) { // Non metto il currentLink se sto modificando o aggiungendo una notizia e sono admin
         $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
     }
     if ($pageName == "contatti.php") {
@@ -171,7 +183,7 @@ function getPaginaHTML($pageName)
 i dati sono stati compilati correttamente (non vuoti e conformi alle RE corrispondenti), 
 altrimenti una stringa contenente gli errori. */
 
-//Occhio, bisogna fare il controllo con ===true (tre uguali), perché if(controlloCampiDatiRegistrati(...) ) darà sempre true essendo la stringa ritornata valutata true (siccome non è vuota e contiene gli errori)
+// Occhio, bisogna fare il controllo con ===true (tre uguali), perché if(controlloCampiDatiRegistrati(...) ) darà sempre true essendo la stringa ritornata valutata true (siccome non è vuota e contiene gli errori)
 function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $password, $confermapassword)
 {
     $listaErrori = '';
@@ -202,12 +214,12 @@ function controlloCampiDatiRegistrati($nome, $cognome, $telefono, $email, $passw
         $listaErrori .=  '<li>La password inserita in conferma password è diversa dalla password</li>';
     }
 
-    return (($listaErrori === '') ? true : $listaErrori); //ritorna true se non ci sono errori, altrimenti la lista degli errori
+    return (($listaErrori === '') ? true : $listaErrori); // ritorna true se non ci sono errori, altrimenti la lista degli errori
 }
 
 function dataGiaPassata($giorno, $mese, $anno)
 {
-    //ritorna true anche se la data è == oggi
+    // ritorna true anche se la data è == oggi
     return (mktime(0, 0, 0, $mese, $giorno, $anno) <= mktime(0, 0, 0, date("m"), date("d"), date("Y")));
 }
 

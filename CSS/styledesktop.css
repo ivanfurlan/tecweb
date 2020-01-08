@@ -87,6 +87,7 @@ img {
 #logo img {
     display: block;
     float: left;
+    border: none; /* Aggiunto sennò su IE8 mostrava un bordo intorno all'immagine */
     width: 5em;
     height: 5em;
     margin: 1em;
@@ -154,6 +155,7 @@ p {
 }
 
 #nav li {
+    background-color: #2E5894; /* Aggiunto anche qua sennò su IE8 non mostra lo sfondo blu */
     float: left;
     min-width: 5.5em;
 }
@@ -203,6 +205,7 @@ p {
 }
 
 #navAreaMedica ul li {
+    background-color: #192168; /* Aggiunto anche qua sennò su IE8 non mostra lo sfondo blu */
     color: white;
     text-decoration: none;
     display: block;
@@ -307,6 +310,7 @@ p {
 .erroreCampiForm {
     display: block;
     padding: 0.5em;
+    margin-bottom: 0.7em;
     background-color: #8B0000;
     color: white;
     font-weight: bold;
@@ -318,6 +322,9 @@ form {
     padding: 0.5em;
     /*CSS3*/
     border-radius: 0.5em;
+}
+form label{
+    font-size: 1.2em;
 }
 
 form input[type=text], form input[type=password], form input[type=submit], form input[type=button], form select, form textarea, form button {
@@ -337,11 +344,11 @@ form input[type=text], form input[type=password], form input[type=submit], form 
 }
 
 form input[type=submit], form button, form input[type=button] {
+    font-size: 1.1em;
     background-color: #2E5894;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 1.1em;
 }
 
 form input[type=submit]:hover, form button:hover, form input[type=button]:hover {

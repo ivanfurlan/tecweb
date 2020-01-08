@@ -1,4 +1,4 @@
-<form action="prenotavisita.php" id="formPrenotaVisita" method="post">
+<form action="prenotavisita.php" id="formPrenotaVisita" method="post" onsubmit="return controlloOrario()">
     <div class="colonna1">
         <fieldset id="sceltaGiornoVisita">
             <legend>Scegli il giorno e il tipo di visita</legend>
@@ -72,7 +72,7 @@
             <button type="button" id="btnControllaDisponibilita" class="nascosto" onclick="controllaDisponibilita()">Mostra orari disponibili</button>
         </fieldset>
     </div>
-    <!--da fare in modo che quando Click Controlla disponibilit&agrave viene fuori questa form -->
+    
     <div class="colonna2">
         <fieldset id="sceltaOrario">
             <legend>Scegli l&rsquo;orario della visita</legend>
@@ -98,7 +98,7 @@
             <input type="radio" name="orario" id="ore18" value="18:00:00" />
             <label for="ore18">Ore 18:00-19:00</label>
 
-            <input type="submit" onclick="controlloOrario()" id="btnSubmit"  value="Prenota visita" />
+            <input type="submit" value="Prenota visita" />
         </fieldset>
 
     </div>

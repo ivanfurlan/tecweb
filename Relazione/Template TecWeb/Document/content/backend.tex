@@ -7,10 +7,9 @@ Le principali funzioni che abbiamo implementato (tutte contenute all’interno d
 \begin{itemize}
 \item \textbf{validaAccedi()} : questa funzione controlla che tutti i campi immessi nel form specifico per l'accesso al sito siano corretti;
 \item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
-\item \textbf{setSubmitForJS()} : viene eseguita solo se c'è javascript; questa funzione fa si che, per chi abbia JavaScript attivo, vengano fatti i controlli sui campi prima di inviare il form, mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e venga lasciata la pagina così com'è, comunque utilizzabile;
 \item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
 questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
-\item \textbf{isValidDate(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
+\item \textbf{dataValida(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
 \item \textbf{controllaDisponibilita()} : funzione che nasconde gli orari se non si riferiscono più al giorno selezionato, in caso di cambio data da parte dell'utente;
 \item \textbf{openCloseMenu(menu)} : funzione per chiudere e aprire i menù a tendina nella versione mobile del sito;
 \item \textbf{plusDivs(n)} : funzione per far scorrere lo slideshow;
