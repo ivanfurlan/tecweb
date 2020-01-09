@@ -32,7 +32,9 @@ a:link:after, a:visited:after {
     font-size: 90%;
 }
 
-
+div #logo:link:after, div #logo:visited:after{
+    content: none;
+}
 
 p {
     word-spacing: 2.5px;
