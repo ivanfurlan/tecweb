@@ -28,6 +28,10 @@ function getPaginaHTML($pageName)
     $paginaHTML = file_get_contents($PATH_HTML . str_replace(".php", ".html", $pageName));
     $footerHTML = file_get_contents($PATH_HTML . 'footer.html');
     $headerHTML = file_get_contents($PATH_HTML . 'header.html');
+    $head_linksHTML = file_get_contents($PATH_HTML . 'head_links.html');
+
+    // Aggiungo i link ai vari file (CSS e Javascript)
+    $paginaHTML = str_replace("<headLinks />", $head_linksHTML, $paginaHTML);
 
     // se la sessione non è aperta la apro
     if (session_status() == PHP_SESSION_NONE) {
@@ -230,7 +234,7 @@ function preparaHTMLListaVisite($arrayVisite)
     }
     $result = '';
     foreach ($arrayVisite as $visita) {
-        $result .= '<li>Visita di <span class="grassetto">' . $visita['Tipologia'] . '</span> in data <span class="grassetto">' . $visita['Giorno'] . '</span> alle <span class="grassetto">' . $visita['Ora'] . '</span>' . ((isset($visita['Nome'], $visita['Cognome'], $visita['Email'])) ? ' da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')</li>' : "");
+        $result .= '<li>Visita di <span class="grassetto">' . $visita['Tipologia'] . '</span> in data <span class="grassetto">' . $visita['Giorno'] . '</span> alle <span class="grassetto">' . $visita['Ora'] . '</span>' . ((isset($visita['Nome'], $visita['Cognome'], $visita['Email'])) ? ' da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')' : "").'</li>';
     }
     return $result;
 }
