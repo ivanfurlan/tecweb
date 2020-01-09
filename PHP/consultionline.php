@@ -25,7 +25,7 @@ if (isset($_POST['nuovomessaggio'], $_SESSION['emailUtente'])) {
         // se il messaggio non e' vuoto
 
         // rimuovo gli spazi prima e dopo e sostituisco eventuali <, >, e &
-        $nuovoMessaggio = str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",trim($_POST['nuovomessaggio']))));
+        $nuovoMessaggio = str_replace("\n","<br />",str_replace("<","&lt;",str_replace(">","&gt;",str_replace("&","&amp;",trim($_POST['nuovomessaggio'])))));
         // se e' l'admin la mail che caratterizza la chat e' l'email del paziente (passata con get provenendo daelencoconsultionline.php) e non la sua.
         $email = ($_SESSION['isAdmin']) ? $_GET['email'] : $_SESSION['emailUtente'];
 

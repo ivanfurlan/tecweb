@@ -90,7 +90,7 @@ function checkNome(input, messaggioErrore = "") {
 }
 
 function checkTestoLibero(input, messaggioErrore = "") {
-    var patt = new RegExp('^[A-Za-z \'-]{2,}$');
+    var patt = new RegExp('.{2,}');
     var mess = (messaggioErrore == "") ? "Devi inserire un testo valido." : messaggioErrore;
     input.value = input.value.trim(); // Elimino eventuali spazi prima e dopo
     return checkInputUtente(input, patt, mess);
