@@ -32,7 +32,7 @@ a:link:after, a:visited:after {
     font-size: 90%;
 }
 
-div #logo:link:after, div #logo:visited:after{
+div#header h1 a:link:after, div#header h1 a:visited:after{
     content: none;
 }
 
