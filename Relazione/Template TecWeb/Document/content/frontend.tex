@@ -45,6 +45,13 @@ Le modifiche che abbiamo effettuato per l’adattamento alla versione mobile son
 \end{enumerate}
 \end{itemize}
 
+\begin{center}
+\includegraphics[width=12cm]{../img/mobile}
+\end{center}
+\captionof{figure}{Esempio di una pagina mobile, in questo caso \textit{Notizie}}
+
+\bigskip
+
 \subsubsection{CSS stampa}
 Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a lezione:
 \begin{enumerate}
@@ -54,8 +61,33 @@ Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a le
 \item La mappa di Google Maps è stata rimossa dalla stampa, poiché non è ritenuta utile come immagine statica;
 \item La disposizione dei form della pagina Prenota Visita è stata cambiata per esser visualizzata meglio su carta;
 \item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (esempio Consulti \textit{Online-Dott. Marco Donati} per la pagina \textit{consultionline.html}) per dare più contesto;
-\item L'id del logo è stato definito sull'ancora piuttosto che sull'immagine affinché nel CSS di stampa, alla richiesta di mostrare l’indirizzo web dei link, l’indirizzo del logo non venga mostrato.
+\item L'id del logo è stato definito sull'ancora piuttosto che sull'immagine affinché nel CSS di stampa, alla richiesta di mostrare l’indirizzo web dei link, l’indirizzo del logo non venga mostrato. \\
 \end{enumerate}
+
+\begin{center}
+\includegraphics[width=12cm]{../img/stampa.pdf}
+\end{center}
+\captionof{figure}{Esempio di una pagina di stampa, in questo caso \textit{Notizie}}
+
+\bigskip
+
+\subsection{JavaScript}
+Per il comportamento di alcune pagine del sito, lato client, è stato utilizzato uno script JavaScript, comprendente diverse funzioni. È stato scelto di limitare al massimo l’utilizzo di queste funzionalità, in quanto non è possibile fare nessuna assunzione sulla disponibilità di questa tecnologia. Il sito infatti rimane completamente navigabile e utilizzabile nel caso in cui JavaScript venga disabilitato o non sia comunque disponibile. Sono state quindi fornite tutte le alternative, lato server, attraverso PHP (unica alternativa in questo senso è rappresentata dallo slideshow, che degrada elegantemente mostrando solo una immagine statica).
+Da mobile si presuppone ovvimante JavaScript attivo. \\
+
+Le principali funzioni che abbiamo implementato (tutte contenute all’interno di un unico file) sono state:
+\begin{itemize}
+\item \textbf{validaAccedi()} : questa funzione controlla che tutti i campi immessi nel form specifico per l'accesso al sito siano corretti;
+\item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
+\item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
+questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
+\item \textbf{dataValida(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
+\item \textbf{controllaDisponibilita()} : funzione che nasconde gli orari se non si riferiscono più al giorno selezionato, in caso di cambio data da parte dell'utente;
+\item \textbf{openCloseMenu(menu)} : funzione per chiudere e aprire i menù a tendina nella versione mobile del sito;
+\item \textbf{plusDivs(n)} : funzione per far scorrere lo slideshow;
+\item \textbf{showDivs(n)} : funzione per mostrare le diverse immagini dello slideshow;
+\item \textbf{changeFocusAccedi(event, campo)}: funzione che, al premere del tasto invio una volta che è stata inserita la email nel form per accedere al sito, passa il focus sul campo password, senza inviare direttamente il form. \\
+\end{itemize}
 
 \subsection{Compatibilità con browser datati}
 Per garantire la compatibiltà con browser datati:

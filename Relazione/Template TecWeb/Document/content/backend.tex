@@ -1,23 +1,55 @@
 \section{Implementazione lato back-end}
-\subsection{JavaScript}
-Per il comportamento di alcune pagine del sito, lato client, è stato utilizzato uno script JavaScript, comprendente diverse funzioni. È stato scelto di limitare al massimo l’utilizzo di queste funzionalità, in quanto non è possibile fare nessuna assunzione sulla disponibilità di questa tecnologia. Il sito infatti rimane completamente navigabile e utilizzabile nel caso in cui JavaScript venga disabilitato o non sia comunque disponibile. Sono state quindi fornite tutte le alternative, lato server, attraverso PHP (unica alternativa in questo senso è rappresentata dallo slideshow, che degrada elegantemente mostrando solo una immagine statica).
-Da mobile si presuppone ovvimante JavaScript attivo. \\
-
-Le principali funzioni che abbiamo implementato (tutte contenute all’interno di un unico file) sono state:
-\begin{itemize}
-\item \textbf{validaAccedi()} : questa funzione controlla che tutti i campi immessi nel form specifico per l'accesso al sito siano corretti;
-\item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
-\item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
-questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
-\item \textbf{dataValida(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
-\item \textbf{controllaDisponibilita()} : funzione che nasconde gli orari se non si riferiscono più al giorno selezionato, in caso di cambio data da parte dell'utente;
-\item \textbf{openCloseMenu(menu)} : funzione per chiudere e aprire i menù a tendina nella versione mobile del sito;
-\item \textbf{plusDivs(n)} : funzione per far scorrere lo slideshow;
-\item \textbf{showDivs(n)} : funzione per mostrare le diverse immagini dello slideshow;
-\item \textbf{changeFocusAccedi(event, campo)}: funzione che, al premere del tasto invio una volta che è stata inserita la email nel form per accedere al sito, passa il focus sul campo password, senza inviare direttamente il form. \\
-
 
 \subsection{PHP}
+Il comportamento del sito dal lato server è gestito da file PHP, i quali sostituiscono completamente il JavaScript nell'eventualità che sia disabilitato o non disponibile. I file PHP interagiscono con il database, forniscono sessioni di utilizzo per utenti loggati (incluso l'admin) e caratterizzano il comportamento generale delle pagine. Le funzioni più utilizzate e generali sono state definite in un file a parte \textit{funzioni.php}, mentre i file specifici per ogni pagina contengono le funzioni di utilità a loro associati. 
 
-
+Descriviamo quindi le funzioni di maggiori importanza contenute in \textit{funzioni.php}:
+\begin{itemize}
+\item \textbf{getPaginaHTML(pageName)}: Funzione che ha ricevuto in ingresso la pagina corrente, recupera il file HTML corrispondente e successivamente:
+\begin{itemize}
+\item ci inserisce Header e Footer;
+\item mostra il pulsante Esci se si è loggati;
+\item elimina i link ricorsivi.
 \end{itemize}
+Una volta eseguiti questi passaggi ritorna una stringa contenente la pagina HTML, senza eventuale contenuto dinamico all'interno del main (che sarà da gestire poi nella relativa pagina).
+\item \textbf{controlloCampiDatiRegistrati(nome, cognome, telefono, email, password, confermapassword)}: Funzione che, ricevute in ingresso le credenziali del form di registrazione, ritorna true se e solo se tutti i dati sono stati compilati correttamente (non vuoti e conformi alle espressioni regolari a loro corrispondenti), altrimenti ritorna una stringa contenente gli errori relativi ai campi compilati erroneamente. \\
+\end{itemize}
+
+
+Descriviamo inoltre le funzioni degne di nota relative alla connessione con il database contenute in \textit{dbaccess.php}:
+\begin{itemize}
+\item \textbf{destruct()}: chiude la sessione corrente, cancellando tutte le variabili ad essa associata;
+\item \textbf{openDBConnection()}: apre la connessione con il database;
+\item \textbf{login(email, password)}: se il login avviene con successo ritorna l'email dell'utente, altrimenti ritorna false;
+\item \textbf{registrazioneUtente(email, nome, cognome, telefono, password)}: ritorna true se la registrazione è andata a buon fine, altrimenti ritorna false.
+\end{itemize}
+
+
+Infine, descriviamo le scelte implementative degne di nota relative alle singole pagine: \\
+
+\textbf{registrati.php} \\
+Nel contesto dell'inserimento errato delle credenziali, la pagina, una volta ricevute, tramite form le informazioni da inviare al database, notifica gli errori relativi all'inserimento dei campi errati, mantenendo però le informazioni corrette, precedentemente inserite dall'utente. Questo per evitare all'utente di dover reinserire nuovamente tutte le informazioni. \\ \\
+
+\textbf{accedi.php} \\
+Per quanto riguarda questa pagina, la funzionalità descritta nel paragrafo precedente non è stata implementata. Questo per non dare troppe informazioni ad un eventuale utente malevolo, relativo al campo immesso erroneamente. Infatti, se noi mostrassimo quale campo sbagliato si è sbagliato, lasciando quello corretto, daremmo delle informazioni che potrebbero essere usate in modo malintenzionato. \\ \\
+
+\textbf{controllaDisponibila.php} \\
+Questa pagina serve solo per stampare un file in formato JSON che viene utilizzato come API da JavaScript in \textit{prenotavisita.php}. Se non dovessero esserci variabili impostate, si viene reindirizzati alla pagina 404 (per esempio se si dovesse provare ad accedere alla pagina copiando un URL).
+Non serve controllare che la data sia corretta, perché questa pagina viene chiamata soltanto da JavaScript, che quindi dovrà essere attivo (e deve aver già fatto i controlli).
+Se JavaScript non dovesse essere attivo i controlli saranno semplicemente fatti lato server tramite PHP quando verrà inviata la richiesta. \\ \\
+
+\textbf{prenotavisita.php} \& \textbf{consultionline.php} \\
+Se non si è loggati, il sito lo riconosce e invita il visitatore ad effettuare l'accesso oppure a compiere la registrazione. Tutto questo è stato implementato tramite PHP. \\ \\
+
+\textbf{notizie.php} \\
+Il form relativo all'inserimento e alla modifica di una notizia è lo stesso, cambia solo il valore del pulsante \textit{submit}, che controlla l'id per compiere l'azione corrispondente. \\ \\
+
+
+Una ultima precisazione in merito alle pagine contenenti form: è presente un tag \textit{<erroriDaMostrare />} che, nel caso ci siano errori, viene sostituito con gli errori che devono essere mostrati, relativi alla singola pagina, mentre se non ce ne sono viene semplicemente sostituito dalla stringa vuota.
+
+
+
+
+
+
+
