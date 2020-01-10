@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (isset($_SESSION['emailUtente'])) {
+    // l'utente e' gia' loggato non mostro la pagina registrati, ma lo rimando all'index
+    header("location: index.php");
+}
 
 require_once("funzioni.php");
 $paginaHTML = getPaginaHTML($_SERVER["PHP_SELF"]);
