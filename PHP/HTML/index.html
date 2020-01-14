@@ -19,7 +19,9 @@
     <pageHeader />
 
     <div id="main">
-
+        <div class="skipLink">
+            <a href="#contenuto">Salta lo <span xml:lang="en">slider delle immagini</span></a>
+        </div>
         <img src="../img/studio2.jpg" class="imgSlider" alt="Sala d'attesa dello studio" />
         <img src="../img/studio3.jpg" class="nascosto imgSlider"
             alt="Dottore che effettua una Citologia nasale su un paziente" />
@@ -28,7 +30,7 @@
         <button id="leftButton" onclick="plusDivs(-1)">&#10094;</button>
         <button id="rightButton" onclick="plusDivs(1)">&#10095;</button>
 
-        <p>
+        <p id="contenuto">
             Nello studio di Via Paolotti 2, in provincia di Padova, il <abbr title="Dottor">Dott.</abbr> Marco Donati
             esegue visite specialistiche preoccupandosi della salute del condotto uditivo, nasale e sui disturbi
             dell'equilibrio dovuti a posture scorrette. <br /> Per avere informazioni dettagliate sulle prestazioni
