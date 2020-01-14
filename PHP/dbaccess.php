@@ -100,7 +100,7 @@ class DBAccess
         }
     }
 
-    // se login avviene con successo ritorna l'email dell'utente, altrimenti false
+    // se login avviene con successo ritorna i dati dell'utente, altrimenti false
     public function login($email, $password)
     {
         $password = sha1($password);
@@ -158,7 +158,7 @@ class DBAccess
         // la data viene aggioirnata ad oggi, giorno della modifica
         $query = "UPDATE `Notizie` SET `Titolo` = ' " . mysqli_real_escape_string($this->connection, $titoloNotizia) . "',`Data` =  CURRENT_DATE(),`Contenuto` = '" . mysqli_real_escape_string($this->connection, $contenutoNotizia) . "'  WHERE `Notizie`.`id` = $idNotizia;";
         $queryResult = mysqli_query($this->connection, $query);
-        return ($queryResult && mysqli_affected_rows($this->connection) <= 1)?true:false;
+        return ($queryResult && mysqli_affected_rows($this->connection) <= 1) ? true : false;
     }
 
     // ritorna true se la notizia è stata aggiunta, false altrimnti
@@ -252,6 +252,7 @@ class DBAccess
                 break;
             case "passate":
             case "p":
+            case "20p":   //  ultime 20 visite passate
                 $segno = "<";
                 break;
             case "oggiEFuture":

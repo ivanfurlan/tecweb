@@ -29,19 +29,19 @@ Scelte degne di nota sono state:
 \item Il logo, ritenuto molto importante in quanto associato dai clienti con lo studio, è stato inserito all’interno dell’HTML e poi modificato successivamente in CSS;
 \item Tutte le immagini sono state adattate alla pagina usando il CSS (dimensione e posizionamento);
 \item Si è deciso di utilizzare una impostazione a due colonne per la maggior parte delle pagine;
-\item Abbiamo differenziato l’uso di bold su CSS e strong/em in HTML, permettendo così il giusto funzionamento della lettura attraverso lo screen reader, sia la correttezza grafica del testo;
-\item Per far si che con la riduzione della grandezza della pagina, le immagini del footer non occupino troppo spazio, abbiamo usato \textit{@media (max-width: 906px)}.
+\item Abbiamo creato una classe .grassetto in CSS e non utilizzato strong/em in HTML, permettendo così il giusto funzionamento della lettura attraverso lo screen reader, sia la correttezza grafica del testo;
+\item Per far si che con la riduzione della grandezza della pagina, le immagini del footer non occupino troppo spazio, abbiamo creato un punto di rottura usando le media queries \textit{@media (max-width: 906px)} per nasconderle sotto una certa dimensione della pagina.
 \end{itemize}
 
 \subsubsection{CSS mobile}
 Le modifiche che abbiamo effettuato per l’adattamento alla versione mobile sono state:
 \begin{itemize}
-\item L’accesso/registrazione utente sono stati condensati in una singola icona, posta in alto a sinistra, la quale, se cliccata, mostra un piccolo menù a tendina che permette di scegliere se accedere o registrarsi;
-\item Il menù di navigazione invece è stato implementato tramite un menù ad hamburger, il quale, al click, diventa un menù a tendina che occupa buona parte dello schermo ma senza nascondere completamente il contenuto della pagina;
+\item L’accesso/registrazione utente sono stati condensati in una singola icona, posta in alto a sinistra, la quale, se cliccata, mostra un piccolo menù a tendina che permette di scegliere se accedere o registrarsi. L'icona è posta a sinistra, quindi tecnicamente scomoda da raggiungere con il pollice, in quanto viene utilizzata soltanto per effettuare il login, o registrarsi. Una volta effettuato l'accesso però l'utende tenderà a restare collegato con il proprio account, ed ad utilizzare principalmente il menu di navigazione, spiegato nel punto successivo;
+\item Il menù di navigazione invece è stato implementato tramite un menù ad hamburger in alto a destra, quindi comodo da raggiungere con il pollice. Questo pulsante, al click, diventa un menù a tendina che occupa buona parte dello schermo ma senza nascondere completamente il contenuto della pagina;
 \item Sono stati pensati 2 differenti punti di rottura:
 \begin{enumerate}
 \item Il primo a 630px orizzontali sancisce l’effettivo passaggio alla versione mobile;
-\item Il secondo a 500px orizzontali prevede l’adattamento del logo e del titolo che vengono ridotti di circa il 50\%. In questo caso, anche il titolo che precedentemente non poteva essere cliccato, diventa cliccabile per sopperire alla poca superficie occupata dal logo rimpicciolito.
+\item Il secondo a 500px orizzontali prevede l’adattamento del logo e del titolo che vengono ridotti di circa il 50\%. Per questo fin da subito abbiamo reso anche il titolo del sito cliccabile, così da sopperire alla poca superficie occupata dal logo rimpicciolito.
 \end{enumerate}
 \end{itemize}
 
@@ -58,7 +58,7 @@ Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a le
 \item I link sono stati colorati in grigio (\#5E5E64) (per garantire una stampa full b/w) e l’indirizzo URL è stato esplicitato;
 \item Il menù di navigazione è stato rimosso;
 \item La mappa di Google Maps è stata rimossa dalla stampa, poiché non è ritenuta utile come immagine statica;
-\item La disposizione dei form della pagina Prenota Visita è stata cambiata per esser visualizzata meglio su carta;
+\item I form della pagina Prenota Visita e Consulti Online sono stati nascosti perché si è pensato che un utente che stampi le relative pagine voglia rispettivamente soltanto la lista delle visite prenotate, o lo storico dei messaggi scambiati con il dottore, e non abbia l'interesse di stampare i form di queste pagine;
 \item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (esempio Consulti \textit{Online-Dott. Marco Donati} per la pagina \textit{consultionline.html}) per dare più contesto;
 \item L'id del logo è stato definito sull'ancora piuttosto che sull'immagine affinché nel CSS di stampa, alla richiesta di mostrare l’indirizzo web dei link, l’indirizzo del logo non venga mostrato. \\
 \end{enumerate}
@@ -76,7 +76,7 @@ Da mobile si presuppone ovvimante JavaScript attivo. \\
 
 Le principali funzioni che abbiamo implementato (tutte contenute all’interno di un unico file) sono state:
 \begin{itemize}
-\item \textbf{validaAccedi()} : questa funzione controlla che tutti i campi immessi nel form specifico per l'accesso al sito siano corretti;
+\item \textbf{validaAccedi()} : questa funzione controlla che il campo email immesso nel form specifico per l'accesso al sito sia corretto, mentre per la password controlla semplicemente che non sia vuota;
 \item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
 \item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
 questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
@@ -91,10 +91,17 @@ questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata l
 \subsection{Compatibilità con browser datati}
 Per garantire la compatibiltà con browser datati:
 \begin{itemize}
+<<<<<<< HEAD
 \item All’interno dei form sono stati usati \textit{type text} per le email e il \textit{type number} per i numeri telefonici, scegliendo quindi di non utilizzare \textit{type email} e \textit{type tel};
 \item \textit{sticky} viene messa in coda al codice come tutte le altre funzioni CSS3,  così che, se la pagina venisse aperta da un browser che non supporta CSS3 la funzionalità della pagina non verrebbe compromessa; semplicemente le funzioni CSS3 opzionali non sarebbero mostrate. Questo vale anche per proprietà come \textit{border-radius}, \textit{box-sizing};
 \item Non usando CSS3 non è possibile fare radio button colorati, quindi un user di IE8 o precedenti vedrà solo dei pallini senza colore. Questo però non inficerà sulla usabilità perché i radio button cliccabili saranno comunque distinguibili da quelli non cliccabili;
 \item Abbiamo usato \textit{@media flex}. Tale proprietà CSS3, pur non essendo supportata dai vecchi browser, non degrada in modo particolare il sito. Anzi si parla solo di una questione puramente estetica;
+=======
+\item All’interno dei form sono stati usati \textit{type text} per le email e il \textit{type number} per i numeri telefonici, scegliendo quindi di non utilizzare \textit{type email} e \textit{type tel} che sono attributi di HTML5;
+\item \textit{sticky} viene messa in coda al codice come tutte le altre funzioni CSS3,  così che, se la pagina venisse aperta da un browser che non supporta CSS3 la funzionalità della pagina non verrebbe compromessa; semplicemente le funzioni CSS3 opzionali non sarebbero mostrate. Questo vale anche per proprietà come \textit{border-radius}, \textit{box-sizing}, \textit{flex}, \textit{transform};
+\item Non usando CSS3 non è possibile fare il bordo dei radio button colorati quando sono selezionati, quindi un user di IE8 o precedenti vedrà solo i pallini senza il bordo della label colorata. Questo però non inficerà sulla usabilità perché i radio button cliccabili saranno comunque distinguibili da quelli non cliccabili;
+\item Come detto in precedenza in §\ref{frontend:css} abbiamo usato \textit{@media flex}, questa proprietà CSS3, pur non essendo supportata dai vecchi browser, non degrada in modo particolare il sito. Anzi è solo una questione puramente estetica;
+>>>>>>> b387c4195c109d0915ba7a632111a06af5298e8a
 \item Per quanto riguarda la mappa di Google Maps, per utilizzarne la funzionalità non abbiamo avuto scelta se non usare funzioni HTML 5, che quindi risultano errate in un validatore xHTML 1.0 Strict. (Come è stato detto a lezione);
 Quindi nella pagina contatti, il documento è stato dichiarato come HTML 5, unica eccezione del nostro sito.
 \end{itemize}
