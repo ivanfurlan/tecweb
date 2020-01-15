@@ -9,7 +9,6 @@ Si è deciso di utilizzare HTML 5 solo per l'utilizzo della mappa interattiva Go
 
 
 Strumento fondamentale per validare la correttezza del codice xHTML 1.0 e HTML 5 è stato il validatore fornito da W3C. Il validatore è stato settato con Document Type xHTML 1.0 Strict.
-Da notare il fatto che le funzionalità HTML 5 sono state implementate per ultime, in maniera tale da preservare le funzionalità principali del sito nel caso in cui si utilizzi un browser che non supporta la suddetta versione di HTML. Questa caratteristica permette al nostro sito di “degradare elegantemente”.
 \\
 \\
 Da menzionare il fatto che si è presa la decisione di definire il current link come classe e non come id, per evitare un conflitto con l’id dell’area medica precedentemente definito.
@@ -21,6 +20,8 @@ Fin da subito si è deciso di progettare 3 fogli di stile separati, rispettivame
 \item Stile mobile;
 \item Stile stampa.
 \end{enumerate}
+
+Da notare il fatto che le funzionalità CSS3 sono state implementate per ultime, in maniera tale da preservare la struttura principale del sito nel caso in cui si utilizzi un browser che non supporta la suddetta versione di CSS. Questa caratteristica permette al nostro sito di "degradare elegantemente".
 
 \subsubsection{CSS desktop}
 \label{frontend:css}
@@ -45,8 +46,10 @@ Le modifiche che abbiamo effettuato per l’adattamento alla versione mobile son
 \end{enumerate}
 \end{itemize}
 
+\smallskip
+
 \begin{center}
-\fbox{\includegraphics[width=12cm]{../img/mobile}}
+\fbox{\includegraphics[scale=0.5]{../img/mobile}}
 \end{center}
 \captionof{figure}{Esempio di una pagina mobile, in questo caso \textit{Notizie}}
 
@@ -58,9 +61,8 @@ Il CSS  di stampa è stato scritto seguendo tutte le linee guida illustrate a le
 \item I link sono stati colorati in grigio (\#5E5E64) (per garantire una stampa full b/w) e l’indirizzo URL è stato esplicitato;
 \item Il menù di navigazione è stato rimosso;
 \item La mappa di Google Maps è stata rimossa dalla stampa, poiché non è ritenuta utile come immagine statica;
-\item I form della pagina Prenota Visita e Consulti Online sono stati nascosti perché si è pensato che un utente che stampi le relative pagine voglia rispettivamente soltanto la lista delle visite prenotate, o lo storico dei messaggi scambiati con il dottore, e non abbia l'interesse di stampare i form di queste pagine;
-\item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (esempio Consulti \textit{Online-Dott. Marco Donati} per la pagina \textit{consultionline.html}) per dare più contesto;
-\item L'id del logo è stato definito sull'ancora piuttosto che sull'immagine affinché nel CSS di stampa, alla richiesta di mostrare l’indirizzo web dei link, l’indirizzo del logo non venga mostrato. \\
+\item I form della pagina \textit{Prenota Visita} e \textit{Consulti Online} sono stati nascosti perché si è pensato che un utente che stampi le relative pagine voglia rispettivamente soltanto la lista delle visite prenotate, o lo storico dei messaggi scambiati con il dottore, e non abbia l'interesse di stampare i form di queste pagine;
+\item In alto, accanto alla data, è stata lasciata la stampa dell’id pagina (Es. \textit{Consulti Online - Dott. Marco Donati} per la pagina \textit{consultionline.html}) per dare più contesto.
 \end{enumerate}
 
 \begin{center}
@@ -77,7 +79,7 @@ Da mobile si presuppone ovvimante JavaScript attivo. \\
 Le principali funzioni che abbiamo implementato (tutte contenute all’interno di un unico file) sono state:
 \begin{itemize}
 \item \textbf{validaAccedi()} : questa funzione controlla che il campo email immesso nel form specifico per l'accesso al sito sia corretto, mentre per la password controlla semplicemente che non sia vuota;
-\item \textbf{validaRegistratii()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
+\item \textbf{validaRegistrati()} : questa funzione controlla che tutti i campi immessi nel form specifico per la registrazione al sito siano corretti;
 \item \textbf{setPrenotaVisitaForJS()} : viene eseguita solo se c'è javascript;
 questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata la pagina come dovrebbe essere (con tutti i controlli e le chiamate alla pagina PHP per controllare la disponibilità), mentre per chi non dovesse avere JavaScript attivo, non venga eseguita questa funzione e quindi venga lasciata la pagina così com'è impostata in HTML, comunque utilizzabile;
 \item \textbf{dataValida(date)} : funzione che controlla che la data sia inserita nel giusto formato (d/m/y);
@@ -87,6 +89,8 @@ questa funzione fa si che, per chi abbia JavaScript attivo, venga visualizzata l
 \item \textbf{showDivs(n)} : funzione per mostrare le diverse immagini dello slideshow;
 \item \textbf{changeFocusAccedi(event, campo)}: funzione che, al premere del tasto invio una volta che è stata inserita la email nel form per accedere al sito, passa il focus sul campo password, senza inviare direttamente il form. \\
 \end{itemize}
+
+\pagebreak
 
 \subsection{Compatibilità con browser datati}
 Per garantire la compatibiltà con browser datati:

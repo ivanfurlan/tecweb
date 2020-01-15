@@ -1,7 +1,7 @@
 \section{Implementazione lato back-end}
 
 \subsection{PHP}
-Il comportamento del sito dal lato server è gestito da file PHP, i quali sostituiscono completamente i controlli JavaScript nell'eventualità che sia disabilitato o non disponibile. I file PHP interagiscono con il database, forniscono sessioni di utilizzo per utenti loggati (incluso l'admin) e caratterizzano il comportamento generale delle pagine. Le funzioni più utilizzate e generali sono state definite in un file a parte \textit{funzioni.php}, mentre i file specifici per ogni pagina contengono le funzioni di utilità a loro associati. 
+Il comportamento del sito lato server è gestito da file PHP, i quali sostituiscono completamente i controlli JavaScript nell'eventualità che sia disabilitato o non disponibile. I file PHP interagiscono con il database, forniscono sessioni di utilizzo per utenti loggati (incluso l'admin) e caratterizzano il comportamento generale delle pagine. Le funzioni più utilizzate e generali sono state definite in un file a parte \textit{funzioni.php}, mentre i file specifici per ogni pagina contengono le funzioni di utilità a loro associati. 
 
 Descriviamo quindi le funzioni di maggiore importanza contenute in \textit{funzioni.php}:
 \begin{itemize}
@@ -18,6 +18,8 @@ Una volta eseguiti questi passaggi ritorna una stringa contenente la pagina HTML
 \item \textbf{preparaHTMLListaVisite(arrayVisite)}: Funzione che riceve un array dove ogni elemento è a sua volta un array con le informazioni della singola visita. Ritorna una stringa contenente la lista delle visite in codice HTML.\\
 \end{itemize}
 
+\pagebreak
+
 
 Descriviamo inoltre le funzioni degne di nota relative alla connessione con il database contenute in \textit{dbaccess.php}:
 \begin{itemize}
@@ -25,7 +27,7 @@ Descriviamo inoltre le funzioni degne di nota relative alla connessione con il d
 \item \textbf{openDBConnection()}: apre la connessione con il database;
 \item \textbf{login(email, password)}: se il login avviene con successo ritorna l'email, nome e cognome dell'utente, altrimenti ritorna false;
 \item \textbf{registrazioneUtente(email, nome, cognome, telefono, password)}: ritorna true se la registrazione è andata a buon fine, altrimenti ritorna false;
-\item \textbf{getListaVisitePrenotatePeriodo(periodo, email, getNomeUtente)}: questa funzione ritorna un array con le visite prenotate in un determinato periodo che viene passato come parametro. Questo parametro è una stringa contenente un codice per identificare il periodo desiderato (E. "f7" indica i prossimi 7 giorni da oggi, "20p" indica le ultime 20 visite già passate) \\I parametri email e getNomeUtente sono opzionali, infatti se non viene passato il campo email vengono considerate le visite di qualsiasi account, mentre getNomeUtente, che serve per dichiarare se si vuole ricevere anche i dati relativi a chi ha prenotato la visita, di default è true.
+\item \textbf{getListaVisitePrenotatePeriodo(periodo, email, getNomeUtente)}: questa funzione ritorna un array con le visite prenotate in un determinato periodo che viene passato come parametro. Questo parametro è una stringa contenente un codice per identificare il periodo desiderato (Es. "f7" indica i prossimi 7 giorni da oggi, "20p" indica le ultime 20 visite già passate). \\I parametri email e getNomeUtente sono opzionali, infatti se non viene passato il campo email vengono considerate le visite di qualsiasi account, mentre getNomeUtente, che serve per dichiarare se si vuole ricevere anche i dati relativi a chi ha prenotato la visita, di default è true.
 \end{itemize}
 
 \pagebreak

@@ -34,13 +34,13 @@ I punti cardine di queste due pagine sono:
 \subsection{Design}
 Abbiamo deciso di separare completamente la parte statica da quella dinamica, in modo da poter rendere semplice l’aggiornamento del sito in qualunque momento.
 La struttura di ogni pagina web è templetizzata in modo
-tale da incrementare robustezza del sito web, sul quale vengono applicati fogli di stile in CSS puri.
-Tali layout in CSS sono stati sviluppati per ottenere un design fluido, scalabile e funzionale per la maggior parte dei browser e dei dispositivi.
+tale da incrementare robustezza del sito web, sul quale vengono applicati fogli di stile CSS puri.
+Tali layout sono stati sviluppati per ottenere un design fluido, scalabile e funzionale per la maggior parte dei browser e dei dispositivi.
 Sul lato stilistico i colori scelti sono quelli standard che ci si aspetta da un sito web medico-sanitario. Comprendono infatti varie gradazioni di blu e bianco, le quali risultano rilassanti all’occhio.
 
 \subsubsection{Header}
 All’interno dell’header è presente il \textit{logo} del sito, i pulsanti \textit{accedi/registrati} e la \textit{navbar}.
-Il \textit{logo} è situato a sinistra ed è caratterizzato da un link non circolare, ovvero funziona come link in tutte le pagine fatta eccezione per la home.
+Il \textit{logo} è situato a sinistra ed è caratterizzato da un link non circolare, ovvero funziona come link in tutte le pagine fatta eccezione per la home. \textit{(Una precisazione in questo senso: nell'index è stato messo un link a \# che di fatto se schiacciato non compie nessuna azione. Questo è stato fatto per non eliminare completamente l'ancora, perché è attraverso questa che nel CSS viene definito lo stile del logo.)} \\
 I pulsanti \textit{accedi/registrati} sono posti in alto a destra e dopo aver effettuato il login o la registrazione, spariscono, lasciando spazio ad un singolo pulsante \textit{esci} per uscire dal proprio account.
 Infine la \textit{navbar} occupa una lunga linea che taglia tutto il sito orizzontalmente.
 Questa ospita tutti i link alle pagine del sito ed è l’elemento centrale della navigazione nel sito web.
@@ -70,15 +70,15 @@ Le \textit{breadcrumbs} sono presenti in tutte le pagine del sito, sia mobile ch
 \subsubsection{Contenuto}
 Lo schema che abbiamo utilizzato è quello a tre panelli, i quali corrispondono alle seguenti domande:
 \begin{enumerate}
-\item \textbf{Dove mi trovo?} la prima risposta a questa domanda si trova nel titolo della pagina .La seconda si trova nelle \textit{breadcrumbs}, che indicano il percorso fatto per arrivare in quel punto;
+\item \textbf{Dove mi trovo?} la prima risposta a questa domanda si trova nel titolo della pagina. La seconda si trova nelle \textit{breadcrumbs}, che indicano il percorso fatto per arrivare in quel punto;
 \item \textbf{Di cosa parla questa pagina?} la risposta a questa domanda si trova nello stesso contenuto della pagina, diviso solitamente in due colonne, una posizionata a sinistra per seguire le regole date dalla termografia e una a destra contenente un immagine. Questa disposizione è dettata anche dal fatto che il contenuto delle pagine web si comporta in modo opposto a quello fisico. Ad esempio nei giornali le immagini prendono gran parte della pagina poiché attirano maggiormente l'attenzione, mentre nel web è il testo a fare da leader nell’attenzione ricevuta. Questo viene definito effetto zapping. Il nostro sito cerca di evitarlo;
-\item \textbf{Dove posso andare?} la risposta a questa domanda si trova nella \textit{navbar} ,la quale non cambia mai di posizione. \\
+\item \textbf{Dove posso andare?} la risposta a questa domanda si trova nella \textit{navbar}, la quale non cambia mai di posizione. \\
 \end{enumerate}
 
 \begin{center}
 \fbox{\includegraphics[width=12cm]{../img/contenuto}}
 \end{center}
-\captionof{figure}{Esempio del contenuto di una pagina, in questo caso \textit{Notizie}} 
+\captionof{figure}{Esempio del contenuto di una pagina, in questo caso \textit{Citologia Nasale}} 
 
 \bigskip
 
