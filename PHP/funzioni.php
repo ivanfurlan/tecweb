@@ -142,7 +142,7 @@ function getPaginaHTML($pageName)
                         $pageTitle = 'Aggiungi notizia';
                     } elseif ($_GET['azione'] == "modifica" && isset($_GET['notizia'])) {
                         $breadcrumbs .= '<a href="notizie.php">Notizie</a>  &gt;&gt; ';
-                        $pageTitle = 'Modifica notizia n:'.$_GET['notizia'];
+                        $pageTitle = 'Modifica notizia n:' . $_GET['notizia'];
                     }
                 }
                 break;
@@ -227,6 +227,12 @@ function dataGiaPassata($giorno, $mese, $anno)
     return (mktime(0, 0, 0, $mese, $giorno, $anno) <= mktime(0, 0, 0, date("m"), date("d"), date("Y")));
 }
 
+//controllo se la data è un sabato e una domenica. Se sì return true, false altrimenti
+function isGiornoDiChiusura($giorno, $mese, $anno)
+{
+    return (date('N', strtotime("$anno/$mese/$giorno")) >= 6);
+}
+
 function preparaHTMLListaVisite($arrayVisite)
 {
     if (!$arrayVisite) {
@@ -234,7 +240,7 @@ function preparaHTMLListaVisite($arrayVisite)
     }
     $result = '';
     foreach ($arrayVisite as $visita) {
-        $result .= '<li>Visita di <span class="grassetto">' . $visita['Tipologia'] . '</span> in data <span class="grassetto">' . $visita['Giorno'] . '</span> alle <span class="grassetto">' . $visita['Ora'] . '</span>' . ((isset($visita['Nome'], $visita['Cognome'], $visita['Email'])) ? ' da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')' : "").'</li>';
+        $result .= '<li>Visita di <span class="grassetto">' . $visita['Tipologia'] . '</span> in data <span class="grassetto">' . $visita['Giorno'] . '</span> alle <span class="grassetto">' . $visita['Ora'] . '</span>' . ((isset($visita['Nome'], $visita['Cognome'], $visita['Email'])) ? ' da ' . $visita['Nome'] . ' ' . $visita['Cognome'] . ' (' . $visita['Email'] . ')' : "") . '</li>';
     }
     return $result;
 }

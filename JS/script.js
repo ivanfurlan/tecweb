@@ -262,6 +262,15 @@ function checkData(giorno, mese, anno) {
     } else {
         togliErrore(formPrenotaVisita, false)
     }
+
+    if (dataScelta.getDay() == 6 || dataScelta.getDay() == 0) {
+        // La funzione getDay ritorna 6 per il sabato e 0 per la domenica. Insomma conta da 0 a 6 partendo da domenica
+        mostraErrore(formPrenotaVisita, 'La data scelta non rientra tra i giorni lavorativi dello studio. Selezionare un giorno tra Lunedì e Venerdì.', false);
+        return false;
+    } else {
+        togliErrore(formPrenotaVisita, false)
+    }
+
     return true;
 }
 

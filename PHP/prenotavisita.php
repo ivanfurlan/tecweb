@@ -32,9 +32,12 @@ if (isset($_SESSION['emailUtente'], $_POST['giorno'], $_POST['mese'], $_POST['an
     } elseif (dataGiaPassata($giorno, $mese, $anno)) {
         // la data è antecedente alla data corrente
         $erroriDaMostrare .= "<li>La data scelta non può essere già passata. Selezionare una data futura.</li>";
+    } elseif (isGiornoDiChiusura($giorno, $mese, $anno)) {
+        // la data è antecedente alla data corrente
+        $erroriDaMostrare .= "<li>La data scelta non rientra tra i giorni lavorativi dello studio. Selezionare un giorno tra Lunedì e Venerdì.</li>";
     } elseif (!isset($_POST['orario']) || (isset($_POST['orario']) && $_POST['orario'] == false)) {
         // non è stato impostato un orario
-        $erroriDaMostrare .= "<li>Nessun orario selezinoato. Selezionato un orario</li>";
+        $erroriDaMostrare .= "<li>Nessun orario selezinoato. Selezionare un orario tra quelli disponibili</li>";
     } elseif (!$oggettoConnessione->dataOraVisitaDisponibile($giorno, $mese, $anno, $_POST['orario'])) {
         // data e ora selezionati non sono disponibili
         $erroriDaMostrare .= "<li>La data e l'orario scelti non sono disponibili.</li>";
