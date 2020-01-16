@@ -166,11 +166,11 @@ function getPaginaHTML($pageName)
         $headerHTML = str_replace('<a href="index.php" id="logo">', '<a href="#" id="logo">', $headerHTML);
         $headerHTML = str_replace('<h1><a href="index.php"><abbr title="Dottor">Dott.</abbr> Marco Donati</a></h1>', '<h1><abbr title="Dottor">Dott.</abbr> Marco Donati</h1>', $headerHTML);
 
-        $headerHTML = str_replace('<li xml:lang="en"><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
+        $headerHTML = str_replace('<li xml:lang="en"><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li id="currentLink">' . $pageTitle . '</li>', $headerHTML);
     } elseif ($pageName == "areamedica.php") {
-        $headerHTML = str_replace('<li id="navAreaMedica"><a href="' . $pageName . '">' . $pageTitle . '</a>', '<li id="navAreaMedica" class="currentLink">' . $pageTitle, $headerHTML);
+        $headerHTML = str_replace('<li class="menuTendina"><a href="' . $pageName . '">' . $pageTitle . '</a>', '<li class="menuTendina" id="currentLink">' . $pageTitle, $headerHTML);
     } elseif (!($pageName == "notizie.php" && isset($_SESSION['isAdmin'], $_GET['azione']) && $_SESSION['isAdmin'] && ($_GET['azione'] == "aggiungi" || $_GET['azione'] == "modifica"))) { // Non metto il currentLink se sto modificando o aggiungendo una notizia e sono admin
-        $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li class="currentLink">' . $pageTitle . '</li>', $headerHTML);
+        $headerHTML = str_replace('<li><a href="' . $pageName . '">' . $pageTitle . '</a></li>', '<li id="currentLink">' . $pageTitle . '</li>', $headerHTML);
     }
     if ($pageName == "contatti.php") {
         $headerHTML = str_replace('xml:lang="en"', 'lang="en"', $headerHTML);

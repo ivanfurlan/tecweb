@@ -110,11 +110,11 @@ p, dt, dl, li {
     width: 50%;
 }
 
-#header .currentLink {
+#header #currentLink {
     padding: 0;
 }
 
-#navAreaMedica:hover ul {
+#nav .menuTendina:hover ul {
     display: none;
 }
 
@@ -127,17 +127,17 @@ p, dt, dl, li {
     top: unset;
 }
 
-#nav .currentLink, #header .currentLink{
+#nav #currentLink, #header #currentLink{
     padding: 0;
     height: 1em;
     border-top: 1em solid #192168;
     border-bottom: 1em solid #192168;
 }
-#header .currentLink{
+#header #currentLink{
     padding-bottom: 2px;
 }
 
-#navAreaMedica {
+#nav .menuTendina {
     display: block;
 }
 

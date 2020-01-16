@@ -182,7 +182,7 @@ p {
 
 /*      CSS NAVIGAZIONE AREAMEDICA SOTTOMENU       */
 
-#navAreaMedica {
+#nav .menuTendina {
     /*border: none;*/
     /*cursor: pointer;*/
     position: relative;
@@ -190,7 +190,7 @@ p {
     display: inline-block;
 }
 
-#navAreaMedica ul {
+#nav .menuTendina ul {
     display: none;
     position: absolute;
     background-color: #192168;
@@ -199,12 +199,12 @@ p {
     margin-left: -0.5em;*/
 }
 
-.currentLink ul {
+#currentLink ul {
     margin-top: 1em;
     margin-left: -0.5em;
 }
 
-#navAreaMedica ul li {
+#nav .menuTendina ul li {
     background-color: #192168; /* Aggiunto anche qua sennò su IE8 non mostra lo sfondo blu */
     color: white;
     text-decoration: none;
@@ -212,19 +212,19 @@ p {
     min-width: 10em;
 }
 
-#navAreaMedica ul li a {
+#nav .menuTendina ul li a {
     min-width: 10em;
 }
 
-#navAreaMedica ul li:hover {
+#nav .menuTendina ul li:hover {
     background-color: #2E5894
 }
 
-#navAreaMedica:hover ul {
+#nav .menuTendina:hover ul {
     display: block;
 }
 
-#nav .currentLink, #header .currentLink {
+#nav #currentLink, #header #currentLink {
     background-color: #192168;
     color: white;
     padding: 1em 0.5em;
@@ -233,7 +233,7 @@ p {
     /*font-weight: bold;*/
 }
 
-#navAreaMedica .currentLink {
+#nav .menuTendina #currentLink {
     background-color: #2E5894;
     color: white;
     /*font-weight: bold;*/
