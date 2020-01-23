@@ -246,10 +246,10 @@ function checkData(giorno, mese, anno) {
 
     // se check =false -> data non corretta 
     if (!check) {
-        mostraErrore(formPrenotaVisita, 'La data scelta non è una data valida.', false);
+        mostraErrore(formPrenotaVisita, 'La data scelta non è una data valida.');
         return false;
     } else {
-        togliErrore(formPrenotaVisita, false)
+        togliErrore(formPrenotaVisita)
     }
 
     var dataCorrente = new Date();
@@ -257,18 +257,18 @@ function checkData(giorno, mese, anno) {
 
     // controllo se la data e' gia passato o no 
     if (dataScelta <= dataCorrente) {
-        mostraErrore(formPrenotaVisita, 'La data scelta non può essere passata.', false);
+        mostraErrore(formPrenotaVisita, 'La data scelta non può essere passata.');
         return false;
     } else {
-        togliErrore(formPrenotaVisita, false)
+        togliErrore(formPrenotaVisita)
     }
 
     if (dataScelta.getDay() == 6 || dataScelta.getDay() == 0) {
         // La funzione getDay ritorna 6 per il sabato e 0 per la domenica. Insomma conta da 0 a 6 partendo da domenica
-        mostraErrore(formPrenotaVisita, 'La data scelta non rientra tra i giorni lavorativi dello studio. Selezionare un giorno tra Lunedì e Venerdì.', false);
+        mostraErrore(formPrenotaVisita, 'La data scelta non rientra tra i giorni lavorativi dello studio. Selezionare un giorno tra Lunedì e Venerdì.');
         return false;
     } else {
-        togliErrore(formPrenotaVisita, false)
+        togliErrore(formPrenotaVisita)
     }
 
     return true;
@@ -347,7 +347,7 @@ function controlloOrario() { // funzione di validazione del form PrenotaVisita
     });
 
     if (selezionato == 0) {
-        mostraErrore(formPrenotaVisita, 'Scegli un orario tra quelli disponibili.', false);
+        mostraErrore(formPrenotaVisita, 'Scegli un orario tra quelli disponibili.');
         return false;
     }
 

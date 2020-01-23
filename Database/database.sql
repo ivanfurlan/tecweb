@@ -95,7 +95,7 @@ TRUNCATE TABLE `Notizie`;
 -- Dumping data for table `Notizie`
 --
 
-INSERT DELAYED INTO `Notizie` (`id`, `Data`, `Titolo`, `Contenuto`) VALUES
+INSERT  INTO `Notizie` (`id`, `Data`, `Titolo`, `Contenuto`) VALUES
 (1, '2020-01-23', 'Attivato il nuovo servizio consulti <span xml:lang=\"en\">online</span>', 'Il servizio gratuito è rivolto a tutti i pazienti registrati che desiderano una valutazione o un\r\n                consiglio, da parte del <abbr title=\"Dottor\">Dott.</abbr>Marco Donati, su disturbi o patologie di\r\n                pertinenza otorinolaringoiatrica e sui disturbi dell’equilibrio. <br />\r\n                Per accedervi basta seguire questo <span xml:lang=\"en\">link</span> e registrarsi al sito <a\r\n                    href=\"consultionline.php\">Consulti <span xml:lang=\"en\">Online</span></a>'),
 (2, '2020-01-16', 'Annuncio nuova Terapia', 'Dal giorno 10 Febbraio 2020 sarà disponibile per la prenotazione una nuova terapia nell\'ambito della\r\n                citologianasale.<br />\r\n                Per ogni comunicazione potete chiamare al numero 0491234567 o scrivere una mail ad\r\n                info@dottormarcodonati.it'),
 (3, '2019-12-22', 'Chiusura attività studio', 'Dal giorno 24 Dicembre al giorno 26 Dicembre 2019 l’attività ambulatoriale è momentaneamente sospesa.\r\n                Per ogni comunicazione potete chiamare dal 27 Agosto 2019 al numero 0491234567 o scrivere una <span xml:lang=\"en\">mail</span> ad\r\n                info@dottormarcodonati.it'),
@@ -139,7 +139,7 @@ user@user.com       =>      user
 user2@user.com       =>      user
 */
 
-INSERT DELAYED INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES
+INSERT  INTO `Utenti` (`Email`, `Nome`, `Cognome`, `Telefono`, `Password`) VALUES
 ('admin@admin.com', 'Marco', 'Donati', '3450178933', 'D033E22AE348AEB5660FC2140AEC35850C4DA997'),
 ('user@user.com', 'user', 'user', '+39123456789', '12dea96fec20593566ab75692c9949596833adc9'),
 ('user2@user.com', 'user2', 'user2', '+39987654321', '12dea96fec20593566ab75692c9949596833adc9');
@@ -176,7 +176,7 @@ TRUNCATE TABLE `Visite`;
 -- Dumping data for table `Visite`
 --
 
-INSERT DELAYED INTO `Visite` (`id`, `Giorno`, `Ora`, `Tipologia`, `EmailUtente`) VALUES
+INSERT  INTO `Visite` (`id`, `Giorno`, `Ora`, `Tipologia`, `EmailUtente`) VALUES
 (1, '2020-01-15', '10:00:00', 'Impedenzometria', 'user2@user.com'),
 (2, '2020-01-16', '18:00:00', 'Otomicroscopia', 'user2@user.com'),
 (3, '2020-01-17', '09:00:00', 'Posturografia', 'user2@user.com'),
