@@ -1,9 +1,0 @@
-image: ubuntu:18.04
-
-before_script:
-  - apt-get update -qy
-  - apt-get install -y lftp
-  
-build:
-  script:
-    - lftp -e "set ssl:verify-certificate no; open ftp.dottmarcodonati.altervista.org; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ -X Relazione/* --reverse --verbose --parallel=8 ./ ./; bye"
