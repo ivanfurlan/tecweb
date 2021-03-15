@@ -1,0 +1,64 @@
+\section{Implementazione lato back-end}
+
+\subsection{PHP}
+Il comportamento del sito lato server è gestito da file PHP, i quali sostituiscono completamente i controlli JavaScript nell'eventualità che sia disabilitato o non disponibile. I file PHP interagiscono con il database, forniscono sessioni di utilizzo per utenti loggati (incluso l'admin) e caratterizzano il comportamento generale delle pagine. Le funzioni più utilizzate e generali sono state definite in un file a parte \textit{funzioni.php}, mentre i file specifici per ogni pagina contengono le funzioni di utilità a loro associati. 
+
+Descriviamo quindi le funzioni di maggiore importanza contenute in \textit{funzioni.php}:
+\begin{itemize}
+\item \textbf{getPaginaHTML(pageName)}: Funzione che, ricevuto in ingresso la pagina corrente, ne recupera il file HTML corrispondente e successivamente:
+\begin{itemize}
+\item ci inserisce Header e Footer;
+\item mostra il pulsante Esci se si è loggati;
+\item inserisce i breadcrumbs
+\item nel casi si sia admin modifica le voci del menu di navigazione "Prenota visita" e "Consulti online" rispettivamente in "Visite prenotate" e "Elenco chat"
+\item elimina i link ricorsivi.
+\end{itemize}
+Una volta eseguiti questi passaggi ritorna una stringa contenente la pagina HTML, senza eventuale contenuto dinamico all'interno del main (che sarà da gestire poi nella relativa pagina).
+\item \textbf{controlloCampiDatiRegistrati(nome, cognome, telefono, email, password, confermapassword)}: Funzione che, ricevute in ingresso le credenziali del form di registrazione, ritorna true se e solo se tutti i dati sono stati compilati correttamente (non vuoti e conformi alle espressioni regolari a loro corrispondenti), altrimenti ritorna una stringa contenente gli errori relativi ai campi compilati erroneamente;
+\item \textbf{preparaHTMLListaVisite(arrayVisite)}: Funzione che riceve un array dove ogni elemento è a sua volta un array con le informazioni della singola visita. Ritorna una stringa contenente la lista delle visite in codice HTML.\\
+\end{itemize}
+
+\pagebreak
+
+
+Descriviamo inoltre le funzioni degne di nota relative alla connessione con il database contenute in \textit{dbaccess.php}:
+\begin{itemize}
+\item \textbf{\_\_destruct()}: ridefinisce il distruttore della classe, in modo che chiuda la sessione corrente con il database (qualora sia stata aperta);
+\item \textbf{openDBConnection()}: apre la connessione con il database;
+\item \textbf{login(email, password)}: se il login avviene con successo ritorna l'email, nome e cognome dell'utente, altrimenti ritorna false;
+\item \textbf{registrazioneUtente(email, nome, cognome, telefono, password)}: ritorna true se la registrazione è andata a buon fine, altrimenti ritorna false;
+\item \textbf{getListaVisitePrenotatePeriodo(periodo, email, getNomeUtente)}: questa funzione ritorna un array con le visite prenotate in un determinato periodo che viene passato come parametro. Questo parametro è una stringa contenente un codice per identificare il periodo desiderato (Es. "f7" indica i prossimi 7 giorni da oggi, "20p" indica le ultime 20 visite già passate). \\I parametri email e getNomeUtente sono opzionali, infatti se non viene passato il campo email vengono considerate le visite di qualsiasi account, mentre getNomeUtente, che serve per dichiarare se si vuole ricevere anche i dati relativi a chi ha prenotato la visita, di default è true.
+\end{itemize}
+
+\pagebreak
+
+Infine, descriviamo le scelte implementative degne di nota relative alle singole pagine: \\
+
+\textbf{registrati.php} \\ 
+Nel contesto dell'inserimento errato delle credenziali, la pagina, una volta ricevute tramite form le informazioni da inviare al database, notifica gli errori relativi all'inserimento dei campi errati, mantenendo però le informazioni precedentemente inserite dall'utente. Questo per evitare all'utente di dover reinserire nuovamente tutte le informazioni. \\ \\
+
+\textbf{accedi.php} \\ 
+Per quanto riguarda questa pagina, la funzionalità descritta nel paragrafo precedente non è stata implementata. Questo per non dare troppe informazioni ad un eventuale utente malevolo, relativo al campo immesso erroneamente. Infatti, se mostrassimo quale campo si è sbagliato, lasciando inserito quello corretto, daremmo delle informazioni che potrebbero essere usate in modo malintenzionato. \\ \\
+
+\textbf{controllaDisponibila.php} \\
+Questa pagina serve solo per stampare un file in formato JSON che viene utilizzato come API da JavaScript in \textit{prenotavisita.php}. Se non dovessero esserci variabili impostate, si viene reindirizzati alla pagina 404 (per esempio se si dovesse provare ad accedere alla pagina copiando un URL).
+Non serve controllare che la data sia corretta, perché questa pagina viene chiamata soltanto da JavaScript, che quindi dovrà essere attivo (e deve aver già fatto i controlli).
+Se JavaScript non dovesse essere attivo i controlli saranno semplicemente fatti lato server tramite PHP quando verrà inviata la richiesta, e quindi questa pagina non verrà chiamata. \\ \\
+
+\textbf{prenotavisita.php} \& \textbf{consultionline.php} \\
+Se non si è loggati, il sito lo riconosce e invita il visitatore ad effettuare l'accesso oppure a compiere la registrazione. Tutto questo è stato implementato tramite PHP. \\ \\
+
+\textbf{notizie.php} \\
+Il form relativo all'inserimento e alla modifica di una notizia è lo stesso, cambia solo il valore del pulsante \textit{submit}, che poi (sempre in PHP) serve ad identificare l'azione corrispondente. \\ \\
+
+\bigskip
+\bigskip
+
+Una ultima precisazione in merito alle pagine contenenti form: è presente un tag \textit{<erroriDaMostrare />} che, nel caso ci siano errori, viene sostituito con gli errori che devono essere mostrati  relativi alla singola pagina, mentre se non ce ne sono viene semplicemente sostituito dalla stringa vuota.
+
+
+
+
+
+
+

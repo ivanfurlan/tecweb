@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Homepage - Dott. Marco Donati</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description"
+        content="Sito del dott. Marco Donati, otorinolaringoiatra di Padova. Offre consulenza online e visite specialistiche su prenotazione." />
+    <meta name="keywords"
+        content="dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,padova" />
+    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <headLinks />
+</head>
+
+<body>
+
+    <pageHeader />
+
+    <div id="main">
+        <div class="skipLink">
+            <a href="#contenuto">Salta lo <span xml:lang="en">slider delle immagini</span></a>
+        </div>
+        <img src="../img/studio2.jpg" class="imgSlider" alt="Sala d'attesa dello studio" />
+        <img src="../img/studio3.jpg" class="nascosto imgSlider"
+            alt="Dottore che effettua una Citologia nasale su un paziente" />
+        <img src="../img/studio1.jpg" class="nascosto imgSlider" alt="Dottor Marco Donati che visita un paziente" />
+
+        <button id="leftButton" onclick="plusDivs(-1)">&#10094;</button>
+        <button id="rightButton" onclick="plusDivs(1)">&#10095;</button>
+
+        <p id="contenuto">
+            Nello studio di Via Paolotti 2, in provincia di Padova, il <abbr title="Dottor">Dott.</abbr> Marco Donati
+            esegue visite specialistiche preoccupandosi della salute del condotto uditivo, nasale e sui disturbi
+            dell'equilibrio dovuti a posture scorrette. <br /> Per avere informazioni dettagliate sulle prestazioni
+            offerte si consiglia di visitare la pagina presente nel menù di navigazione, denominata <a
+                href="areamedica.php">Area medica</a>. Il dottore svolge anche un <a href="consultionline.php"
+                title="Pagina consulti online">servizio di consulti online gratuiti</a>, per avere rapida un'opinione
+            sullo stato di salute, magari da approfondire con una visita.<br />
+            I servizi offerti dallo studio sono in continuo aggiornamento, quindi vi consigliamo di controllare la
+            pagina <a href="notizie.php">Notizie</a> per restare aggiornati e per informazioni su eventuali chiusure
+            eccezionali dello studio.
+        </p>
+    </div>
+
+    <pageFooter />
+</body>
+
+</html>

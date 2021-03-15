@@ -1,0 +1,21 @@
+\pagestyle{fancy}
+\fancyhf{}
+\setlength\headheight{26pt}
+\rhead{ \documentName }
+\lhead{\includegraphics[scale=0.03]{../img/Unipd}}
+\cfoot{\thepage}
+
+% Linea nel footer 
+\renewcommand{\footrulewidth}{0.4pt}
+
+% 3 e 4 livello di profondita' per section e ToC
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Indentazione prima linea dei paragrafi
+\usepackage{indentfirst}
+

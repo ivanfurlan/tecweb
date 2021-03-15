@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Registrati - Dott. Marco Donati</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description"
+        content="Registrati al sito del dott. Marco Donati per comunicare direttamente con il dottore." />
+    <meta name="keywords"
+        content="registrati,registrazione,dottore,dott,dottor,Marco Donati,visite specialistiche,otorino,otorinolaringoiatra,consulenza,medico,Padova" />
+    <meta name="author" content="Francesco Bari, Ivan Furlan, Zhaohui Lin, Francesco Pecile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+    <headLinks />
+</head>
+
+<body>
+
+    <pageHeader />
+    <div id="main">
+        <h1>Registrati</h1>
+        <p id="descrizioneForm">
+            Registrati completando con i tuoi dati il modulo sottostante, cos&igrave; potrai prenotare le visite
+            direttamente su questo sito, o inviare un messaggio al <abbr title="Dottor">Dott.</abbr> Marco Donati
+            chiedendo una consulenza <span xml:lang="en">online</span>.
+        </p>
+        
+        <erroriDaMostrare />
+        <form id="formRegistrati" action="registrati.php" onsubmit="return validaRegistrati()" method="post">
+            <fieldset>
+                <legend class="nascosto">Registrati</legend>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" />
+
+                <label for="cognome">Cognome:</label>
+                <input type="text" name="cognome" id="cognome" />
+
+                <label for="telefono">Telefono:</label>
+                <input type="text" name="telefono" id="telefono" /> 
+
+                <label for="email" xml:lang="en">Email:</label>
+                <input type="text" name="email" id="email" />
+
+                <label for="password" xml:lang="en">Password:</label>
+                <input type="password" name="password" id="password" />
+
+                <label for="confermapassword">Conferma <span xml:lang="en">password</span>:</label>
+                <input type="password" name="confermapassword" id="confermapassword" />
+
+                <input type="submit" value="Registrati" />
+            </fieldset>
+        </form>
+        <p><a href="accedi.php">Se sei gi&agrave; registrato clicca qui</a></p>
+    </div>
+
+    <pageFooter />
+</body>
+
+</html>

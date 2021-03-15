@@ -1,0 +1,86 @@
+/*      CSS PRINT       */
+
+* {
+    overflow: visible;
+    background-color: unset;
+}
+
+#header, html, body {
+    background-color: unset;
+}
+
+#pulsanteMenuUser, #pulsanteMenuNav, .skipLink, #logo, img, #header ul, #nav, #footer, #formPrenotaVisita, #chat form, #mappaGoogle {
+    display: none;
+}
+
+html, body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-variant: small-caps;
+}
+
+a:visited, a:hover, #header h1 a:link, #header h1 a:visited, a:link, a:link:after, a:visited:after {
+    color: #5e5e64;
+}
+
+a:link:after, a:visited:after {
+    content: " [" attr(href) "] ";
+    font-size: 90%;
+}
+
+div#header h1 a:link:after, div#header h1 a:visited:after{
+    content: none;
+}
+
+p {
+    word-spacing: 2.5px;
+    line-height: 22px;
+}
+
+.colonna1, .colonna2 {
+    width: 100%;
+}
+
+form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button {
+    border: 1px solid #ccc;
+}
+
+form fieldset {
+    border: 0;
+}
+
+form input[type=text], form input[type=password], form input[type=submit], form select, form textarea, form button, form input[type="radio"], form input[type="radio"][name="orario"]+label, form input[type="radio"][name="orario"][disabled="disabled"]+label, form input[type="radio"][name="orario"]:checked+label {
+    color: black;
+}
+
+.messaggioUtente .intestazioneMessaggio, .messaggioDottore .intestazioneMessaggio {
+    color: white;
+    background-color: black;
+}
+
+#chat {
+    margin: 1em;
+}
+
+.messaggioUtente, .messaggioDottore {
+    border: 1px solid #cbcccf;
+    page-break-inside: avoid;
+}
+
+.testoMessaggioChat {
+    max-height: unset;
+}
+
+.notizia {
+    border-bottom: 1px solid #000;
+    page-break-inside: avoid;
+}
+
+abbr {
+    text-decoration: none;
+}
+

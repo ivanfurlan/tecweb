@@ -1,0 +1,155 @@
+p, dt, dl, li {
+    font-size: initial;
+}
+
+#logo img {
+    margin: 0.5em 0.5em 0.5em 1.5em;
+    padding: 0;
+	
+	/* invertire il colore del immagine*/
+	filter:invert(100%);
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+	
+	color:white;
+	background-color: #2E5894;
+}
+
+#header h1 {
+    margin: 0.2em;
+    width: 56%;
+    height: 0;
+    margin-top: 0.5em;
+}
+
+@media (max-width: 510px) {
+    #logo img {
+        max-width: 2em;
+        max-height: 2em;
+        margin-top: 1.5em;
+    }
+    #header h1 {
+        margin: 0;
+        max-height: 1em;
+        width: 56%;
+        margin-top: 0.5em;
+    }
+}
+
+@media (max-width: 346px) {
+    #header h1 {
+        min-height: 4em;
+        max-width: 1em;
+    }
+}
+
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: block;
+    width: 2em;
+    height: 2em;
+    min-height: 48px;
+    min-width: 48px;
+    padding: 1em;
+	
+	filter:invert(100%);
+}
+
+.menuClose {
+    display: none;
+}
+
+.menuOpen {
+    display: block;
+    position: relative;
+    overflow: auto;
+}
+
+.menuOpen ul {
+    position: absolute;
+    background-color: #2E5894;
+}
+
+#pulsanteMenuUser {
+    float: left;
+}
+
+#pulsanteMenuNav {
+    float: right;
+}
+
+#nav ul li, #header ul li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /*min-height: 48px;*/
+}
+
+#header ul li a, #nav ul li a {
+    display: block;
+    margin: 0;
+    padding: 1em 0;
+    height: 1em;
+    width: 100%;
+}
+
+#header ul li {
+    border-bottom: 2px solid #192168;
+}
+
+#header ul {
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+
+#header ul li {
+    width: 50%;
+}
+
+#header #currentLink {
+    padding: 0;
+}
+
+#nav .menuTendina:hover ul {
+    display: none;
+}
+
+#nav li {
+    width: 100%;
+}
+
+#nav {
+    position: unset;
+    top: unset;
+}
+
+#nav #currentLink, #header #currentLink{
+    padding: 0;
+    height: 1em;
+    border-top: 1em solid #192168;
+    border-bottom: 1em solid #192168;
+}
+#header #currentLink{
+    padding-bottom: 2px;
+}
+
+#nav .menuTendina {
+    display: block;
+}
+
+.colonna1, .colonna2 {
+    width: 100%;
+    margin: 1.5em 0;
+}
+
+#mappaGoogle {
+    min-height: 23em;
+}
+
+#leftButton, #rightButton {
+    zoom: 0.7;
+}

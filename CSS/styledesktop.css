@@ -1,0 +1,553 @@
+/*      CSS GENERALE       */
+
+#pulsanteMenuUser, #pulsanteMenuNav {
+    display: none;
+}
+
+* {
+    padding: 0em;
+    margin: 0em;
+}
+
+.grassetto{
+    font-weight: bold;
+}
+
+.elencoPuntato{
+    padding-left: 3em;
+    padding-bottom: 1em;
+}
+
+.nascosto{
+    display: none;
+}
+
+abbr {
+    border-bottom: none;
+    cursor: inherit;
+    text-decoration: none
+}
+
+.menuClose {
+    display: inherit;
+}
+
+.menuOpen {
+    display: inherit;
+}
+
+html, body {
+    font-family: Verdana, Helvetica, sans-serif;
+    background-color: white;
+    margin: auto;
+    height: 100%;
+    max-width: 1024px;
+    overflow: auto;
+    /*overflow: visible;*/
+}
+
+body {
+    font-size: 0.8em;
+    background-color: #F8F8FF;
+    /*CSS3*/
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-variant: small-caps;
+    margin-bottom: 0.2em;
+}
+
+a:link {
+    color: #000099;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #A0A;
+}
+
+a:hover {
+    color: #A0A;
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+.skipLink {
+    position: absolute;
+    z-index: -1;
+    top: -99999999999999%;
+    left: -999999999999999%;
+}
+
+#logo img {
+    display: block;
+    float: left;
+    border: none; /* Aggiunto sennò su IE8 mostrava un bordo intorno all'immagine */
+    width: 5em;
+    height: 5em;
+    margin: 1em;
+    padding: 1em;
+}
+
+#header h1 a:link, #header h1 a:visited, #header h1 a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Stile per paragrafo(può essere cambiato in futuro) */
+
+p {
+    word-spacing: 2.5px;
+    line-height: 22px;
+}
+
+/*      CSS HEADER       */
+
+#header ul {
+    float: right;
+    list-style-type: none;
+    margin: 1em 1em 0 0;
+}
+
+#header li {
+    background-color: #2E5894;
+    float: right;
+    margin: 1em;
+    min-width: 5.5em;
+}
+
+#header {
+    background-color: #F8F8FF;
+    overflow: auto;
+    /*CSS3*/
+    flex: 0 0 auto;
+}
+
+#header h1 {
+    float: left;
+    width: 45%;
+    margin-top: 1em;
+}
+
+/*      CSS NAVIGAZIONE       */
+
+#nav {
+    clear: both;
+    background-color: #2E5894;
+    color: white;
+    width: 100%;
+    overflow: visible;
+    /*CSS3*/
+    flex: 0 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#nav ul {
+    float: left;
+    list-style-type: none;
+}
+
+#nav li {
+    background-color: #2E5894; /* Aggiunto anche qua sennò su IE8 non mostra lo sfondo blu */
+    float: left;
+    min-width: 5.5em;
+}
+
+#nav ul li, #header ul li {
+    display: block;
+    text-align: center;
+    /*padding: 0.5em;*/
+    /*text-decoration: none;*/
+}
+
+#nav li:hover, #header li:hover {
+    background-color: #192168;
+    /*text-decoration: underline;*/
+    /*color: white;*/
+}
+
+#nav a, #header li a {
+    display: block;
+    color: white;
+    padding: 1em 0.5em;
+    min-width: 5.5em;
+}
+
+/*      CSS NAVIGAZIONE AREAMEDICA SOTTOMENU       */
+
+#nav .menuTendina {
+    /*border: none;*/
+    /*cursor: pointer;*/
+    position: relative;
+    /*CSS3*/
+    display: inline-block;
+}
+
+#nav .menuTendina ul {
+    display: none;
+    position: absolute;
+    background-color: #192168;
+    z-index: 1;
+    /*margin-top: 0.5em;
+    margin-left: -0.5em;*/
+}
+
+#currentLink ul {
+    margin-top: 1em;
+    margin-left: -0.5em;
+}
+
+#nav .menuTendina ul li {
+    background-color: #192168; /* Aggiunto anche qua sennò su IE8 non mostra lo sfondo blu */
+    color: white;
+    text-decoration: none;
+    display: block;
+    min-width: 10em;
+}
+
+#nav .menuTendina ul li a {
+    min-width: 10em;
+}
+
+#nav .menuTendina ul li:hover {
+    background-color: #2E5894
+}
+
+#nav .menuTendina:hover ul {
+    display: block;
+}
+
+#nav #currentLink, #header #currentLink {
+    background-color: #192168;
+    color: white;
+    padding: 1em 0.5em;
+    cursor: default;
+    /*min-width: 5.5em;*/
+    /*font-weight: bold;*/
+}
+
+#nav .menuTendina #currentLink {
+    background-color: #2E5894;
+    color: white;
+    /*font-weight: bold;*/
+}
+
+/*      CSS BREADCRUMS       */
+
+#breadcrumbs {
+    clear: left;
+    background-color: white;
+    margin-bottom: 1em;
+    padding: 0.3em 0 0.3em 0.3em;
+    /*CSS3*/
+    flex: 0 0 auto;
+}
+
+/*      CSS MAIN       */
+
+#main {
+    margin: 0 1.5em 0;
+    text-align: left;
+    overflow: auto;
+    width: auto;
+    /*CSS3*/
+    flex: 1 0 auto;
+}
+
+.colonna1 {
+    float: left;
+    width: 50%;
+    text-align: justify;
+}
+
+.colonna2 {
+    float: right;
+    width: 45%;
+    overflow: hidden;
+}
+
+.colonna2 img {
+    width: 100%;
+}
+
+/*      CSS FOOTER       */
+
+#footer {
+    clear: both;
+    margin-top: 2em;
+    background-color: #2E5894;
+    color: white;
+    text-align: center;
+    padding: 0.3em;
+    margin-bottom: 0.5em;
+    /*CSS3*/
+    flex: 0 0 auto;
+}
+
+#footer img {
+    width: 6em;
+    float: left;
+}
+
+@media (max-width: 906px) {
+    #footer img {
+        display: none;
+    }
+}
+
+/*      CSS FORM      */
+.erroreCampiForm li{
+    margin: 0.3em;
+    margin-left: 2em;
+}
+.erroreCampiForm {
+    display: block;
+    padding: 0.5em;
+    margin-bottom: 0.7em;
+    background-color: #8B0000;
+    color: white;
+    font-weight: bold;
+    /*CSS3*/
+    border-radius: 10px;
+}
+
+form {
+    padding: 0.5em;
+    overflow: auto;
+    /*CSS3*/
+    border-radius: 0.5em;
+}
+form label{
+    font-size: 1.2em;
+}
+
+form input[type=text], form input[type=password], form input[type=submit], form input[type=button], form select, form textarea, form button {
+    width: 100%;
+    padding: 1em 1.5em;
+    margin: 0.8em 0;
+    border: 1px solid #ccc;
+    /*CSS3*/
+    display: inline-block;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+}
+
+#descrizioneForm {
+    padding: 1em;
+    font-size: 1.1em;
+}
+
+form input[type=submit], form button, form input[type=button] {
+    font-size: 1.1em;
+    background-color: #2E5894;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type=submit]:hover, form button:hover, form input[type=button]:hover {
+    background-color: #192168;
+}
+
+form fieldset {
+    border: 0;
+}
+
+form legend {
+    padding-bottom: 1em;
+    font-size: 1.1em;
+}
+
+form select {
+    width: 100%;
+    padding: 0.6em;
+    /*CSS3*/
+    border-radius: 0.5em;
+}
+
+form input[type="radio"][name="orario"] {
+    /*visibility: hidden;*/
+    /*position: relative;*/
+    float: left;
+    margin: 0.77em 0 0 1em;
+    height: 1.3em;
+    width: 1.3em;
+}
+
+form input[type="radio"][name="orario"]+label {
+    display: block;
+    padding: 0.5em 0.2em;
+    margin: 0 0.1em 1.4em;
+    background-color: green;
+    border: 3px solid green;
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    /*CSS3*/
+    border-radius: 0.5em;
+    box-sizing: border-box;
+}
+
+form input[type="radio"][name="orario"][disabled="disabled"]+label {
+    background-color: #8B0000;
+    border: 3px solid #8B0000;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+/*CSS3*/
+
+form input[type="radio"][name="orario"]:checked+label {
+    font-weight: bold;
+    border: 3px solid rgb(11, 95, 39);
+    background-color: green;
+}
+
+form input[type="radio"][name="orario"][disabled="disabled"] {
+    visibility: hidden;
+}
+
+/*      CSS SPECIFICO AREAMEDICA.HTML       */
+
+#contenutoAreaMedica dt, #contenutoElencoMenu dt {
+    padding: 1.2em;
+    padding-bottom: 0.3em;
+    font-size: 1.2em;
+}
+
+#contenutoAreaMedica dd, #contenutoElencoMenu dd {
+    padding: 0 1.2em 1.2em;
+    font-size: 1.2em;
+    border-bottom: 1px solid;
+}
+
+/*      CSS SPECIFICO SUBAREAMEDICA.HTML       */
+
+/*      CSS SPECIFICO CONSULTIONLINE.HTML       */
+
+#chat {
+    margin: 1em;
+}
+
+#chat form {
+    border-top: 1px solid;
+    margin-top: 1.5em;
+    /*CSS3*/
+    border-radius: unset;
+}
+
+.messaggioUtente, .messaggioDottore {
+    border: 1px solid #cbcccf;
+    border-top: none;
+    margin: 1em;
+    /* width: 100%;*/
+    background-color: white;
+}
+
+.messaggioUtente p, .messaggioDottore p {
+    padding: 0.2em 0.5em 0.5em;
+}
+
+.intestazioneMessaggio {
+    padding: 0.2em;
+    background-color: #2E5894;
+    color: white;
+    overflow: auto;
+}
+
+.messaggioDottore .intestazioneMessaggio {
+    background-color: #192168;
+}
+
+.intestazioneMessaggio .email {
+    padding: 0 0.2em 0.1em;
+    float: left;
+}
+
+.intestazioneMessaggio .orario {
+    padding: 0 0.2em 0.1em;
+    float: right;
+}
+
+.testoMessaggioChat{
+    /* Se il mesasggio è più lungo, anziché essere mostrato tutto con hoverflow auto c'è lo scroll del singolo messaggio*/
+    max-height: 20em;
+    overflow: auto;
+}
+
+/*      CSS SPECIFICO CONTATTI.HTML       */
+
+#mappaGoogle {
+    width: 100%;
+    min-height: 16em;
+}
+
+.contatti em {
+    font-style: normal;
+    font-weight: bold;
+}
+
+#recapitiContatti, #prezzi {
+    padding-top: 1.5em;
+}
+
+#recapitiContatti dt, #prezzi dt {
+    float: left;
+    font-weight: bold;
+    padding-right: 0.4em;
+}
+
+#recapitiContatti dl, #prezzi dl {
+    float: left;
+}
+
+/*      CSS INDEX.HTML       */
+
+.imgSlider {
+    /*Questa classe serve per far si che in js si possa "prendere" tutte le immagine dello slider.*/
+    max-width: 100%;
+}
+
+#leftButton, #rightButton {
+    margin-top: -30%;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.307);
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    /*top: 10%;*/
+    left: 2em;
+    float: left;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    border: none;
+}
+
+#leftButton:hover, #rightButton:hover {
+    background-color: #192168;
+    color: white;
+}
+
+#rightButton {
+    float: right;
+    margin-right: 1em;
+    /*padding: 1em;*/
+}
+
+.notizia {
+    padding: 1em;
+    border-bottom: 1px solid #000;
+}
+
+.notizia p {
+    padding: 0.2em;
+}
